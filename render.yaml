@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: line-openai-bot
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: LINE_CHANNEL_SECRET
+        sync: false
+      - key: LINE_CHANNEL_ACCESS_TOKEN
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-5.6-luna
+      - key: BOT_NAME
+        value: Codex Line Helper
+      - key: BOT_SYSTEM_PROMPT
+        sync: false

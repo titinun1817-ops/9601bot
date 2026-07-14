@@ -1,0 +1,16 @@
+{
+  "name": "line-openai-bot",
+  "version": "1.0.0",
+  "description": "Ready-to-deploy LINE Messaging API bot powered by OpenAI.",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "start:local": "node --env-file=.env src/server.js",
+    "dev": "node --env-file=.env --watch src/server.js",
+    "check": "node --check src/server.js"
+  },
+  "engines": {
+    "node": ">=20.6"
+  }
+}
