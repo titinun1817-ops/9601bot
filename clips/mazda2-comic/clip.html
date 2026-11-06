@@ -1,0 +1,196 @@
+<!doctype html><html><head><meta charset=utf-8><style>
+@font-face{font-family:K;font-weight:800;src:url(fonts/fontsource-kanit/files/kanit-thai-800-normal.woff2)}
+@font-face{font-family:K;font-weight:800;src:url(fonts/fontsource-kanit/files/kanit-latin-800-normal.woff2);unicode-range:U+0000-00FF}
+@font-face{font-family:K;font-weight:400;src:url(fonts/fontsource-kanit/files/kanit-thai-400-normal.woff2)}
+@font-face{font-family:K;font-weight:400;src:url(fonts/fontsource-kanit/files/kanit-latin-400-normal.woff2);unicode-range:U+0000-00FF}
+@font-face{font-family:BB;src:url(fonts/fontsource-bebas-neue/files/bebas-neue-latin-400-normal.woff2)}
+:root{--red:#E3202A;--acc:#FFD400;--ink:#0B0B0B;--paper:#F4EFE3;--line:8px;--th:K;--num:BB}
+*{margin:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
+#st{position:absolute;inset:0;overflow:hidden;font-family:var(--th);font-weight:800;color:#fff}
+.sc{position:absolute;inset:0;display:none}
+.fill{position:absolute;inset:0}
+.ph{position:absolute;object-fit:cover}
+.lines{position:absolute;inset:-400px;background:repeating-conic-gradient(from 0deg at 50% 50%,#ffffff14 0deg 2.2deg,transparent 2.2deg 7deg)}
+.grain{position:absolute;inset:0;opacity:.14;mix-blend-mode:overlay;pointer-events:none}
+.burst{position:absolute;left:50%;top:50%;transform-origin:center}
+.burst svg{display:block;overflow:visible}
+.bt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--ink);line-height:1.12}
+.kw{position:absolute;left:50%;transform-origin:center;background:var(--acc);color:var(--ink);border:var(--line) solid var(--ink);padding:10px 34px 14px;font-size:84px;line-height:1.15;white-space:nowrap;text-align:center;box-shadow:14px 14px 0 var(--ink)}
+.kw.r{background:var(--red);color:#fff}
+.panel{position:absolute;overflow:hidden;border:var(--line) solid var(--ink);background:#000}
+.panel img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover}
+.ic{width:1em;height:1em;fill:currentColor;vertical-align:-0.12em}
+#badge{position:absolute;right:36px;top:300px;width:190px}
+.num{font-family:var(--num);font-variant-numeric:tabular-nums;letter-spacing:2px}
+#flash{position:absolute;inset:0;background:#fff;opacity:0}
+.small{font-weight:400}
+</style></head><body><div id=st>
+<svg width=0 height=0 style="position:absolute"><filter id=gr><feTurbulence type=fractalNoise baseFrequency=.9 numOctaves=2 seed=3 /><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.4 -.4"/></filter></svg>
+
+<!-- HOOK -->
+<div class=sc id=hook>
+ <img class="ph fill" id=strobe src="photos/p1.jpg" style="width:100%;height:100%">
+ <div class=fill id=hookbg style="background:var(--red)"><div class=lines id=hl></div></div>
+ <div class=burst id=pow1><svg id=pows width=980 height=760 viewBox="-490 -380 980 760"><polygon id=powp fill="var(--acc)" stroke="var(--ink)" stroke-width=10 stroke-linejoin=miter /></svg>
+  <div class=bt style="font-size:104px">ติดแบล็คลิสต์<br>เราช่วยได้!</div></div>
+ <div class=kw id=hk2 style="top:1180px;font-size:76px" ><span class=small style="font-weight:800">ดาวน์แค่</span> <span class=num style="font-size:120px">74,000</span></div>
+</div>
+<!-- MODEL -->
+<div class=sc id=model>
+ <img class="ph fill" src="photos/p3.jpg" style="width:100%;height:100%;filter:brightness(.55)" id=mimg>
+ <div class=lines id=ml></div>
+ <svg class=fill id=shock viewBox="0 0 1080 1920"><circle id=shc cx=540 cy=860 r=10 fill=none stroke="var(--acc)" stroke-width=24 /></svg>
+ <div class=burst id=mb><div style="background:var(--red);border:10px solid var(--ink);box-shadow:18px 18px 0 var(--ink);padding:20px 50px 30px;text-align:center">
+  <div class=num style="font-size:230px;line-height:.9">MAZDA2</div><div style="font-size:130px;line-height:1;color:var(--acc)">ได้!</div></div></div>
+ <div class=kw id=msub style="top:1240px;font-size:60px">ดีเซล 1.5XD Hi Connect</div>
+</div>
+<div class=sc id=s1><div class=fill style="background:var(--paper)"><div class=lines style="background:repeating-conic-gradient(from 0deg at 50% 45%,#0000000f 0deg 2.2deg,transparent 2.2deg 7deg)"></div></div>
+ <div class=panel id=s1a style="left:40px;top:330px;width:1000px;height:560px"><img src="photos/p2.jpg" style="object-position:30% 50%"></div>
+ <div class=panel id=s1b style="left:40px;top:910px;width:490px;height:420px"><img src="photos/p2.jpg" style="object-position:0% 70%;transform:scale(1.6);transform-origin:20% 70%"></div>
+ <div class=panel id=s1c style="left:550px;top:910px;width:490px;height:420px"><img src="photos/p2.jpg" style="object-position:100% 40%;transform:scale(1.6);transform-origin:80% 40%"></div>
+ <div class="kw " id=s1k style="top:1350px;font-size:70px">2016/17 · ออโต้ · สีแดง</div>
+ <div class=num id=s1n style="position:absolute;left:56px;top:342px;background:var(--ink);color:var(--acc);font-size:54px;padding:0 16px">#1</div></div>
+<div class=sc id=s2><div class=fill style="background:var(--paper)"><div class=lines style="background:repeating-conic-gradient(from 0deg at 50% 45%,#0000000f 0deg 2.2deg,transparent 2.2deg 7deg)"></div></div>
+ <div class=panel id=s2a style="left:40px;top:330px;width:1000px;height:560px"><img src="photos/p8.jpg" style="object-position:30% 50%"></div>
+ <div class=panel id=s2b style="left:40px;top:910px;width:490px;height:420px"><img src="photos/p8.jpg" style="object-position:0% 70%;transform:scale(1.6);transform-origin:20% 70%"></div>
+ <div class=panel id=s2c style="left:550px;top:910px;width:490px;height:420px"><img src="photos/p8.jpg" style="object-position:100% 40%;transform:scale(1.6);transform-origin:80% 40%"></div>
+ <div class="kw r" id=s2k style="top:1350px;font-size:70px"><svg class="ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M196,76a16,16,0,1,1-16-16A16,16,0,0,1,196,76Zm48,22.74A84.3,84.3,0,0,1,160.11,180H160a83.52,83.52,0,0,1-23.65-3.38l-7.86,7.87A12,12,0,0,1,120,188H108v12a12,12,0,0,1-12,12H84v12a12,12,0,0,1-12,12H40a20,20,0,0,1-20-20V187.31a19.86,19.86,0,0,1,5.86-14.14l53.52-53.52A84,84,0,1,1,244,98.74ZM202.43,53.57A59.48,59.48,0,0,0,158,36c-32,1-58,27.89-58,59.89a59.69,59.69,0,0,0,4.2,22.19,12,12,0,0,1-2.55,13.21L44,189v23H60V200a12,12,0,0,1,12-12H84V176a12,12,0,0,1,12-12h19l9.65-9.65a12,12,0,0,1,13.22-2.55A59.58,59.58,0,0,0,160,156h.08c32,0,58.87-26.07,59.89-58A59.55,59.55,0,0,0,202.43,53.57Z"/></svg> มือเดียว · กุญแจ 2 ดอก</div>
+ <div class=num id=s2n style="position:absolute;left:56px;top:342px;background:var(--ink);color:var(--acc);font-size:54px;padding:0 16px">#2</div></div>
+<div class=sc id=s3><div class=fill style="background:var(--paper)"><div class=lines style="background:repeating-conic-gradient(from 0deg at 50% 45%,#0000000f 0deg 2.2deg,transparent 2.2deg 7deg)"></div></div>
+ <div class=panel id=s3a style="left:40px;top:330px;width:1000px;height:560px"><img src="photos/p6.jpg" style="object-position:30% 50%"></div>
+ <div class=panel id=s3b style="left:40px;top:910px;width:490px;height:420px"><img src="photos/p6.jpg" style="object-position:0% 70%;transform:scale(1.6);transform-origin:20% 70%"></div>
+ <div class=panel id=s3c style="left:550px;top:910px;width:490px;height:420px"><img src="photos/p6.jpg" style="object-position:100% 40%;transform:scale(1.6);transform-origin:80% 40%"></div>
+ <div class="kw " id=s3k style="top:1350px;font-size:70px"><svg class="ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M176.49,95.51a12,12,0,0,1,0,17l-56,56a12,12,0,0,1-17,0l-24-24a12,12,0,1,1,17-17L112,143l47.51-47.52A12,12,0,0,1,176.49,95.51ZM236,128A108,108,0,1,1,128,20,108.12,108.12,0,0,1,236,128Zm-24,0a84,84,0,1,0-84,84A84.09,84.09,0,0,0,212,128Z"/></svg> Book Service + คู่มือครบ</div>
+ <div class=num id=s3n style="position:absolute;left:56px;top:342px;background:var(--ink);color:var(--acc);font-size:54px;padding:0 16px">#3</div></div>
+<div class=sc id=s4><div class=fill style="background:var(--paper)"><div class=lines style="background:repeating-conic-gradient(from 0deg at 50% 45%,#0000000f 0deg 2.2deg,transparent 2.2deg 7deg)"></div></div>
+ <div class=panel id=s4a style="left:40px;top:330px;width:1000px;height:560px"><img src="photos/p5.jpg" style="object-position:30% 50%"></div>
+ <div class=panel id=s4b style="left:40px;top:910px;width:490px;height:420px"><img src="photos/p5.jpg" style="object-position:0% 70%;transform:scale(1.6);transform-origin:20% 70%"></div>
+ <div class=panel id=s4c style="left:550px;top:910px;width:490px;height:420px"><img src="photos/p5.jpg" style="object-position:100% 40%;transform:scale(1.6);transform-origin:80% 40%"></div>
+ <div class="kw r" id=s4k style="top:1350px;font-size:70px">ไมล์ <span class=num style='font-size:110px'>10x,xxx</span> กม.</div>
+ <div class=num id=s4n style="position:absolute;left:56px;top:342px;background:var(--ink);color:var(--acc);font-size:54px;padding:0 16px">#4</div></div>
+<div class=sc id=s5><div class=fill style="background:var(--paper)"><div class=lines style="background:repeating-conic-gradient(from 0deg at 50% 45%,#0000000f 0deg 2.2deg,transparent 2.2deg 7deg)"></div></div>
+ <div class=panel id=s5a style="left:40px;top:330px;width:1000px;height:560px"><img src="photos/p7.jpg" style="object-position:30% 50%"></div>
+ <div class=panel id=s5b style="left:40px;top:910px;width:490px;height:420px"><img src="photos/p7.jpg" style="object-position:0% 70%;transform:scale(1.6);transform-origin:20% 70%"></div>
+ <div class=panel id=s5c style="left:550px;top:910px;width:490px;height:420px"><img src="photos/p7.jpg" style="object-position:100% 40%;transform:scale(1.6);transform-origin:80% 40%"></div>
+ <div class="kw " id=s5k style="top:1350px;font-size:70px">ไม่มีชนหนัก · ไม่มีน้ำท่วม</div>
+ <div class=num id=s5n style="position:absolute;left:56px;top:342px;background:var(--ink);color:var(--acc);font-size:54px;padding:0 16px">#5</div></div>
+
+<!-- PRICE -->
+<div class=sc id=price>
+ <div class=fill style="background:var(--ink)"><div class=lines id=pl></div></div>
+ <div id=pr1 style="position:absolute;left:70px;right:70px;top:300px;background:var(--red);border:var(--line) solid #fff;padding:14px 30px;display:flex;justify-content:space-between;align-items:baseline">
+  <span style="font-size:58px">ราคา</span><span class=num style="font-size:140px;line-height:1">258,000.-</span></div>
+ <div id=pr1b style="position:absolute;left:70px;top:500px;font-size:46px;color:var(--acc)">ซื้อสดไม่มี VAT</div>
+ <div id=printer style="position:absolute;left:110px;right:110px;top:600px;height:70px;background:#2a2a2a;border:6px solid #fff;border-radius:14px"></div>
+ <div id=rcpt style="position:absolute;left:150px;right:150px;top:650px;overflow:hidden;height:0">
+  <div id=rin style="background:var(--paper);color:var(--ink);padding:40px 40px 50px;height:740px;position:relative;clip-path:polygon(0 0,100% 0,100% 96%,95% 100%,90% 96%,85% 100%,80% 96%,75% 100%,70% 96%,65% 100%,60% 96%,55% 100%,50% 96%,45% 100%,40% 96%,35% 100%,30% 96%,25% 100%,20% 96%,15% 100%,10% 96%,5% 100%,0 96%)">
+   <div style="font-size:50px;text-align:center;border-bottom:5px dashed var(--ink);padding-bottom:12px">ติดแบล็คลิสต์ เราช่วยได้!</div>
+   <div style="font-size:60px;margin-top:20px;text-align:center;color:var(--red)">เงินดาวน์</div>
+   <div id=dn class=num style="font-size:250px;line-height:1;text-align:center;width:100%;transform-origin:center">74,000</div>
+   <div class=small style="font-size:40px;text-align:center;border-top:5px dashed var(--ink);padding-top:16px">เครดิตดี ผ่อน <span class=num style="font-size:54px">5,700</span> × 72 งวด</div>
+  </div></div>
+ <div class=burst id=landb style="top:1050px"><svg width=980 height=780 viewBox="-550 -450 1100 900"><polygon id=landp fill="var(--acc)" stroke="var(--ink)" stroke-width=10 /></svg></div>
+ <div class=small style="position:absolute;z-index:3;left:0;right:0;top:1440px;background:var(--ink);padding:6px 0;text-align:center;font-size:34px;color:#ddd">*ผลอนุมัติขึ้นอยู่กับการพิจารณาของไฟแนนซ์</div>
+</div>
+<!-- CTA -->
+<div class=sc id=cta>
+ <div class=fill style="background:var(--red)"><div class=lines id=cl></div></div>
+ <div id=lgw style="position:absolute;left:260px;top:330px;width:560px;height:560px">
+  <img id=lgbig src="logo.png" style="width:100%;height:100%;object-fit:contain" onerror="this.style.display='none'">
+  <div id=glint style="position:absolute;inset:0;-webkit-mask:url(logo.png) center/contain no-repeat;mask:url(logo.png) center/contain no-repeat;background:linear-gradient(105deg,transparent 40%,#fff9 50%,transparent 60%);background-size:300% 100%"></div></div>
+ <div id=btn style="position:absolute;left:50%;top:960px;background:var(--acc);color:var(--ink);border:10px solid var(--ink);box-shadow:16px 16px 0 var(--ink);font-size:96px;padding:10px 50px 20px;white-space:nowrap"><svg class="ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M120,128a16,16,0,1,1-16-16A16,16,0,0,1,120,128Zm32-16a16,16,0,1,0,16,16A16,16,0,0,0,152,112Zm84,16A108,108,0,0,1,78.77,224.15L46.34,235A20,20,0,0,1,21,209.66l10.81-32.43A108,108,0,1,1,236,128Zm-24,0A84,84,0,1,0,55.27,170.06a12,12,0,0,1,1,9.81l-9.93,29.79,29.79-9.93a12.1,12.1,0,0,1,3.8-.62,12,12,0,0,1,6,1.62A84,84,0,0,0,212,128Z"/></svg> ทักแชทส่งเคส</div>
+ <div style="position:absolute;left:0;right:0;top:1200px;text-align:center;font-size:52px">บ้านรถสวย รัชดา-พระราม 9</div>
+ <div class=small style="position:absolute;left:0;right:0;top:1290px;text-align:center;font-size:40px">ส่งเคสมาให้เช็กก่อน มีโอกาสออกรถ</div>
+ <div class=small style="position:absolute;left:0;right:0;top:1380px;text-align:center;font-size:32px;color:#ffe">*ผลอนุมัติขึ้นอยู่กับการพิจารณาของไฟแนนซ์</div>
+</div>
+<!-- tear overlay -->
+<svg class=fill id=tear viewBox="0 0 1080 1920" style="display:none"><polygon id=tearp fill="var(--ink)"/></svg>
+<svg class="fill grain" viewBox="0 0 1080 1920"><rect id=grr width=1300 height=2200 filter="url(#gr)"/></svg>
+<img id=badge src="logo.png" onerror="this.style.display='none'">
+<div id=flash></div>
+</div>
+<script>
+const D=24.2; window.DURATION=D;
+const R1=0.30,R2=3.55,R3=5.70,R4=8.60,R5=14.60,R6=18.20,R7=21.10;
+const LAND=R6+1.25;
+const S=[['hook',0,3.5],['model',3.5,5.6],['s1',5.6,8.4],['s2',8.4,10.4],['s3',10.4,12.4],['s4',12.4,13.4],['s5',13.4,14.5],['price',14.5,21.0],['cta',21.0,D+1]];
+window.SCENES=S; window.LAND=LAND;
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const eo=x=>{x=cl(x);return x==1?1:1-Math.pow(2,-10*x)};
+const ei=x=>{x=cl(x);return x==0?0:Math.pow(2,10*x-10)};
+const back=x=>{x=cl(x);const c=2.2;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const hs=n=>{const s=Math.sin(n*127.1+311.7)*43758.5453;return s-Math.floor(s)};
+function star(r1,r2,n,seed){let p=[];for(let i=0;i<n*2;i++){const a=i/(n*2)*Math.PI*2;const r=(i%2?r2:r1)*(0.85+0.3*hs(seed+i));p.push((Math.cos(a)*r*1.25).toFixed(1)+','+(Math.sin(a)*r).toFixed(1))}return p.join(' ')}
+$('powp').setAttribute('points',star(370,250,14,1));
+$('landp').setAttribute('points',star(420,300,16,7));
+function shake(t,t0,amp,dur){const k=t-t0;if(k<0||k>dur)return'';const a=amp*(1-k/dur);return `translate(${(hs(t*91)-.5)*2*a}px,${(hs(t*57)-.5)*2*a}px)`}
+function render(t){
+ let cur=null,prev=null;
+ for(const s of S){const on=t>=s[1]&&t<s[2];$(s[0]).style.display='none';if(on)cur=s}
+ const i=S.indexOf(cur); const TE=0.30; const k=(t-cur[1])/TE;
+ if(i>0&&k<1&&cur[0]!='cta'){prev=S[i-1];$(prev[0]).style.display='block'}
+ $(cur[0]).style.display='block';
+ // page-tear: current scene clipped by jagged diagonal edge
+ const el=$(cur[0]);
+ if(prev){const e=eo(k);const x0=-600+e*2400;let pts=[];for(let j=0;j<=24;j++){const y=j*80;const off=(j%2?40:-40)+(hs(j+i*13)-.5)*50;pts.push(`${x0-y*0.45+off}px ${y}px`)}
+   el.style.clipPath=`polygon(-10px -10px, ${pts.join(',')}, -10px 1930px)`;el.style.zIndex=2;$(prev[0]).style.zIndex=1}
+ else{el.style.clipPath='none';el.style.zIndex=2}
+ if(cur[0]=='cta'&&k<1){/* black cut into cta */}
+ $('grr').setAttribute('x',-(hs(Math.floor(t*12))*200));$('grr').setAttribute('y',-(hs(Math.floor(t*12)+5)*200));
+ $('badge').style.display=(t<0.65||cur[0]=='cta')?'none':'block';
+ $('flash').style.opacity=0;
+ let stT='';
+ // HOOK
+ if(cur[0]=='hook'||prev&&prev[0]=='hook'){
+  const strobe=t<0.6;$('strobe').style.display=strobe?'block':'none';$('hookbg').style.display=strobe?'none':'block';
+  if(strobe){const f=Math.floor(t/0.1)%4;const ps=['p1','p2','p3','p8'];$('strobe').src='photos/'+ps[f]+'.jpg';$('strobe').style.objectPosition=(30+f*15)+'% 50%';$('strobe').style.transform=`scale(${1.15+0.1*(t%0.1)*10})`}
+  $('hl').style.transform=`rotate(${t*8}deg)`;
+  const p=(t-0.6)/0.32; const sc=t<0.6?0:back(p)*(1+0.03*Math.sin(t*20)*cl(1-(t-1)));
+  $('pow1').style.transform=`translate(-50%,-50%) translate(0,-180px) rotate(${-6+4*eo(p)}deg) scale(${sc})`;
+  $('pow1').style.top='960px';
+  const p2=(t-1.85)/0.3; $('hk2').style.transform=`translateX(-50%) scale(${t<1.85?0:back(p2)}) rotate(-3deg)`;
+  stT=shake(t,0.6,26,0.45)||shake(t,1.85,16,0.3);
+ }
+ // MODEL
+ if(cur[0]=='model'){const p=(t-3.6)/0.3;$('mb').style.top='860px';
+  $('mb').style.transform=`translate(-50%,-50%) scale(${back(p)}) rotate(-4deg)`;
+  const q=cl((t-3.65)/0.6);$('shc').setAttribute('r',20+eo(q)*900);$('shc').style.opacity=1-q;
+  $('ml').style.transform=`rotate(${t*-10}deg)`;$('mimg').style.transform=`scale(${1.1+0.06*(t-3.5)})`;
+  const p3=(t-4.4)/0.3;$('msub').style.transform=`translateX(-50%) scale(${back(p3)}) rotate(2deg)`;
+  stT=shake(t,3.6,22,0.4);}
+ // photo scenes: comic-panel split (3 panels fly in staggered)
+ for(const s of S.slice(2,7)){const id=s[0];if(!(cur[0]==id||prev&&prev[0]==id))continue;const lt=t-s[1];
+  const pa=eo(lt/0.35),pb=eo((lt-0.12)/0.35),pc=eo((lt-0.22)/0.35);
+  $(id+'a').style.transform=`translateY(${(1-pa)*-700}px) rotate(${(1-pa)*-6}deg)`;
+  $(id+'b').style.transform=`translateX(${(1-pb)*-700}px) rotate(${(1-pb)*8}deg)`;
+  $(id+'c').style.transform=`translateX(${(1-pc)*700}px) rotate(${(1-pc)*-8}deg)`;
+  for(const q of 'abc'){$(id+q).querySelector('img').style.translate=`${(lt*14)*(q=='b'?1:-1)}px 0`}
+  const pk=(lt-0.38)/0.25;$(id+'k').style.transform=`translateX(-50%) scale(${lt<0.38?0:back(pk)}) rotate(${id.endsWith('2')||id.endsWith('4')?2:-2}deg)`;
+  if(cur[0]==id)stT=shake(t,s[1]+0.38,10,0.2);}
+ // PRICE
+ if(cur[0]=='price'||prev&&prev[0]=='price'){
+  const lt=t-14.5;$('pl').style.transform=`rotate(${t*6}deg)`;
+  const p1=(t-14.65)/0.3;$('pr1').style.transform=`scale(${back(p1)}) rotate(-1.5deg)`;$('pr1').style.opacity=t<14.65?0:1;
+  $('pr1b').style.opacity=cl((t-15.2)/0.2);
+  // receipt prints from R6-0.4 to LAND
+  const P0=R6-0.5; const pr=cl((t-P0)/(LAND-P0)); const ph=eo(pr)*0.0+pr*740;
+  $('rcpt').style.height=ph+'px'; $('rin').style.transform=`translateY(${ph-740}px)`;
+  const d=$('dn'); const hit=t>=LAND; const lp=(t-LAND)/0.35;
+  d.style.transform=hit?`scale(${1+0.55*(1-eo(lp))})`:'scale(1)'; d.style.color=hit?'var(--red)':'var(--ink)';
+  d.textContent=hit?'74,000':(pr>0? (()=>{let j=0;return '##,###'.replace(/#/g,()=>Math.floor(hs(Math.floor(t*30)*7+(j++)*13)*10))})() : '74,000');
+  $('landb').style.transform=`translate(-50%,-50%) scale(${hit?eo(lp)*1:0}) rotate(${t*4}deg)`;$('landb').style.zIndex=0;$('rcpt').style.zIndex=1;
+  $('flash').style.opacity=hit?Math.max(0,0.85-(t-LAND)*6):0;
+  stT=shake(t,LAND,34,0.6)||shake(t,14.65,12,0.25);
+ }
+ // CTA
+ if(cur[0]=='cta'){const lt=t-21.0;$('cl').style.transform=`rotate(${t*8}deg)`;
+  const p=lt/0.35;$('lgw').style.transform=`scale(${back(p)}) rotate(${(1-eo(p))*-12}deg)`;
+  $('glint').style.backgroundPosition=`${100-cl((lt-0.5)/0.7)*100}% 0`;
+  const pb=(lt-0.55)/0.3;$('btn').style.transform=`translateX(-50%) scale(${(lt<0.55?0:back(pb))*(1+0.05*Math.sin(lt*9)*cl(lt-0.9))}) rotate(-2deg)`;
+  stT=shake(t,21.05,20,0.4);}
+ $('st').style.transform=stT;
+}
+window.render=render;
+</script></body></html>

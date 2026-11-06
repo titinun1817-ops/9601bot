@@ -40,6 +40,7 @@ For EVERY video clip made or edited, first produce THREE readable images and sen
 | orange (Yaris) | orange | 3-2-1 countdown + caution tape | shutter slats | zoom-blur cut | speedometer gauge | - | funk 110 |
 | violet-neon (Sienta, Oct 24) | violet | neon-sign flicker + strobe | single panel with neon frame + counter tag | whip-pan horizontal blur | 7-segment LED roll | perspective neon grid floor + grain | see sound.py |
 | mint-tape (Attrage, Oct 25) | mint | tape slap then torn in half | polaroid drop-in with tape | spin-zoom cut | digit-by-digit stamp | halftone dots | see sound.py |
+| yellow-comic (Mazda2 1.5XD, Nov 6) | yellow | comic POW burst + shake | comic-panel split (3 panels fly in) | page-tear jagged wipe | receipt-printer roll + scramble | ink focus-lines + paper grain | drum&bass 172 |
 Unused ideas: game level-up, comic panels, receipt printer, gacha capsule, GPS route, polaroid scrapbook (partly used), neon night city (partly used). After each new clip, give the fingerprint so the user can save it here.
 - More fresh ideas: search the ui-ux-pro-max style data (`python3 $HOME/.cache/ui-ux-pro-max/.claude/skills/ui-ux-pro-max/scripts/search.py "<mood words>" --domain style -n 5`) and borrow ONE device per clip (shape language, texture, reveal, colour block); skip anything that breaks the no-cliché rules above. Details in `blacklist-car-clip` section 0.
 

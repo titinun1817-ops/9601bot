@@ -1,1 +1,5 @@
 clips/*/fonts/
+clips/*/voice/raw*.bin
+clips/*/voice/url*.txt
+clips/*/stills/
+clips/*/*.log
