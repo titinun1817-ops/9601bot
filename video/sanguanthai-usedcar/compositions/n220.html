@@ -1,0 +1,24 @@
+<template>
+<style>@font-face{font-family:"Kanit TH";font-weight:700;src:url('assets/fonts/kanit-thai-700-normal.woff2')}
+@font-face{font-family:"Kanit TH";font-weight:700;src:url('assets/fonts/kanit-latin-700-normal.woff2')}
+@font-face{font-family:"Kanit TH";font-weight:900;src:url('assets/fonts/kanit-thai-900-normal.woff2')}
+@font-face{font-family:"Kanit TH";font-weight:900;src:url('assets/fonts/kanit-latin-900-normal.woff2')}#n220{position:absolute;inset:0;font-family:"Kanit TH";font-weight:900;color:#fff}
+.lead{font-size:64px;font-weight:700;text-shadow:0 4px 16px rgba(0,0,0,.7),0 0 3px #000;line-height:1.15}
+.box{display:inline-block;position:relative;margin-top:14px;padding:4px 36px 14px;font-size:116px;line-height:1.15}
+.bg{position:absolute;inset:0;background:#E3202A;border-radius:24px;transform-origin:left center;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+.word{position:relative;display:inline-block}
+.num{display:inline-flex;width:92px;height:92px;border-radius:50%;background:#fff;color:#E3202A;font-size:62px;font-weight:900;align-items:center;justify-content:center;vertical-align:middle;margin-right:18px;text-shadow:none}
+.cap{position:absolute;left:60px;right:60px;top:250px;text-align:center}
+.card{position:absolute;inset:0;background:#17181C;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.05) 2px,transparent 2px);background-size:90px 90px}
+.ru{color:#E3202A}.bl{color:#2F6FDB}
+</style>
+<div id="n220" data-composition-id="n220" data-width="1080" data-height="1920">
+<div class="card" id="n-card"><div class="grid"></div><div class="lead" style="text-shadow:none">ตรวจสภาพ</div><div id="n-num" class="ru" style="font-size:340px;line-height:1;font-variant-numeric:tabular-nums">0</div><div id="n-u" style="font-size:100px">รายการ</div><div id="n-k" style="color:#5BB947;font-size:58px;margin-top:24px">✓ ก่อนส่งมอบทุกคัน</div></div>
+</div>
+<script>
+const tl=gsap.timeline({paused:true});
+tl.fromTo("#n-card",{x:-1080},{x:0,duration:0.22,ease:"power3.out"},0);const o={v:0};tl.fromTo(o,{v:0},{v:220,duration:1.0,ease:"expo.out",onUpdate:()=>{document.querySelector("#n-num").textContent=Math.round(o.v)}},0.13);tl.fromTo("#n-num",{scale:1},{scale:1.08,duration:0.1,yoyo:true,repeat:1,ease:"power2.out"},1.0);tl.fromTo("#n-u",{opacity:0},{opacity:1,duration:0.12},1.05);tl.fromTo("#n-k",{opacity:0,y:20},{opacity:1,y:0,duration:0.2},0.35);
+window.__timelines["n220"]=tl;
+</script>
+</template>

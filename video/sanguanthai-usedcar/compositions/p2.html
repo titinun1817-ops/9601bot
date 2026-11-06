@@ -1,0 +1,24 @@
+<template>
+<style>@font-face{font-family:"Kanit TH";font-weight:700;src:url('assets/fonts/kanit-thai-700-normal.woff2')}
+@font-face{font-family:"Kanit TH";font-weight:700;src:url('assets/fonts/kanit-latin-700-normal.woff2')}
+@font-face{font-family:"Kanit TH";font-weight:900;src:url('assets/fonts/kanit-thai-900-normal.woff2')}
+@font-face{font-family:"Kanit TH";font-weight:900;src:url('assets/fonts/kanit-latin-900-normal.woff2')}#p2{position:absolute;inset:0;font-family:"Kanit TH";font-weight:900;color:#fff}
+.lead{font-size:64px;font-weight:700;text-shadow:0 4px 16px rgba(0,0,0,.7),0 0 3px #000;line-height:1.15}
+.box{display:inline-block;position:relative;margin-top:14px;padding:4px 36px 14px;font-size:116px;line-height:1.15}
+.bg{position:absolute;inset:0;background:#E3202A;border-radius:24px;transform-origin:left center;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+.word{position:relative;display:inline-block}
+.num{display:inline-flex;width:92px;height:92px;border-radius:50%;background:#fff;color:#E3202A;font-size:62px;font-weight:900;align-items:center;justify-content:center;vertical-align:middle;margin-right:18px;text-shadow:none}
+.cap{position:absolute;left:60px;right:60px;top:250px;text-align:center}
+.card{position:absolute;inset:0;background:#17181C;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.05) 2px,transparent 2px);background-size:90px 90px}
+.ru{color:#E3202A}.bl{color:#2F6FDB}
+</style>
+<div id="p2" data-composition-id="p2" data-width="1080" data-height="1920">
+<div class="cap" style="top:250px"><div id="c2-lead" class="lead"><span class="num">2</span>ผ่านช่าง</div><div class="box"><div id="c2-bg" class="bg"></div><span id="c2-w" class="word">ศูนย์บริการอีซูซุ</span></div></div>
+</div>
+<script>
+const tl=gsap.timeline({paused:true});
+tl.fromTo("#c2-lead",{y:40,opacity:0},{y:0,opacity:1,duration:0.3,ease:"expo.out"},0.23);tl.fromTo("#c2-bg",{scaleX:0},{scaleX:1,duration:0.25,ease:"expo.out"},1.05);tl.fromTo("#c2-w",{y:50,opacity:0},{y:0,opacity:1,duration:0.25,ease:"expo.out"},1.05+0.08);
+window.__timelines["p2"]=tl;
+</script>
+</template>
