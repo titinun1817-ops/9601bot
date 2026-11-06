@@ -20,7 +20,7 @@ function count(sel,to,at,dur,pre){const o={v:0};tl.fromTo(o,{v:0},{v:to,duration
 function pop(sel,at,d){tl.fromTo(sel,{scale:0,opacity:0},{scale:1,opacity:1,duration:d||0.32,ease:"back.out(2.2)"},at);}
 function up(sel,at){tl.fromTo(sel,{y:40,opacity:0},{y:0,opacity:1,duration:0.28,ease:"expo.out"},at);}
 function wipe(sel,at){tl.fromTo(sel,{clipPath:"inset(0 100% 0 0)"},{clipPath:"inset(0 0% 0 0)",duration:0.26,ease:"expo.out"},at);}
-tl.fromTo("#h-1",{scale:1.2,opacity:1},{scale:1,opacity:1,duration:0.35,ease:"expo.out"},0);pop("#h-3",0.15,0.35);count("#h-num",143857,0.2,1.9,"฿");wipe("#h-2w",1.25);
+tl.fromTo("#h-1",{scale:1.2,opacity:1},{scale:1,opacity:1,duration:0.35,ease:"expo.out"},0);pop("#h-3",0.15,0.35);count("#h-num",140000,0.2,1.6,"฿");wipe("#h-2w",1.25);
 window.__timelines["hook"]=tl;
 </script>
 </template>
