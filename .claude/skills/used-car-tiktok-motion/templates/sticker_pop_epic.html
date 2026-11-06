@@ -1,0 +1,214 @@
+<style>
+.row{position:absolute;left:0;right:0;text-align:center;pointer-events:none}
+.st{position:relative;display:inline-block;font-weight:900;border-radius:30px;padding:.04em .36em 0;border:9px solid #fff;box-shadow:0 0 0 6px var(--ink),0 18px 0 6px rgba(0,0,0,.28);white-space:nowrap;line-height:1.2;transform-origin:50% 60%;vertical-align:middle}
+.red{background:var(--red);color:#fff}.wht{background:#fff;color:var(--ink)}.ink{background:var(--ink);color:#fff}
+.bub{position:relative;display:inline-block;background:#fff;color:var(--ink);border-radius:46px;padding:30px 56px 22px;font-weight:900;box-shadow:0 0 0 6px var(--ink),0 16px 0 6px rgba(0,0,0,.25);transform-origin:50% 100%;line-height:1.2;white-space:nowrap;text-align:center}
+.bub .tail{position:absolute;left:50%;margin-left:-28px;bottom:-30px;width:56px;height:56px;background:#fff;transform:rotate(45deg);border-right:6px solid var(--ink);border-bottom:6px solid var(--ink);border-radius:0 0 12px 0}
+.wd{display:inline-block;transform-origin:50% 70%}
+.box{width:74px;height:74px;border:7px solid var(--ink);border-radius:18px;background:#fff;flex:none;position:relative}
+.box svg{position:absolute;left:3px;top:3px}
+.box path{stroke-dasharray:70;stroke-dashoffset:70}
+#grad{position:absolute;left:0;right:0;top:0;height:1000px;background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,0))}
+#vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(0,0,0,0) 35%,rgba(0,0,0,.85) 100%);opacity:0}
+#bgrad{position:absolute;left:0;right:0;bottom:0;height:900px;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.55));opacity:0}
+.hv{font-weight:900;font-style:italic;line-height:1.15;white-space:nowrap}
+.numA{font-weight:900;font-style:italic;color:#fff;-webkit-text-stroke:20px var(--ink);paint-order:stroke fill;font-variant-numeric:tabular-nums;line-height:1.1;white-space:nowrap;text-shadow:12px 14px 0 var(--red)}
+.boxA{position:relative;display:inline-block;background:var(--ink);color:#fff;border-top:10px solid var(--red);border-radius:16px;padding:12px 30px 4px;white-space:nowrap;text-align:left;vertical-align:top}
+.tagA{display:inline-block;padding:0 30px;border-radius:14px;transform:skewX(-8deg);vertical-align:bottom}
+.ring{position:absolute;border-radius:50%;border:14px solid #fff;opacity:0;pointer-events:none}
+.cf{position:absolute;left:0;top:0;width:22px;height:34px;border-radius:5px;opacity:0}
+.sl{position:absolute;left:0;height:10px;border-radius:10px;background:#fff;opacity:0}
+.stamp{display:inline-block;color:var(--red);border:16px solid var(--red);border-radius:26px;padding:.02em .3em 0;font-weight:900;font-style:italic;background:rgba(255,255,255,.95);box-shadow:0 0 0 6px var(--ink),0 20px 0 6px rgba(0,0,0,.3);transform-origin:50% 50%}
+.slot{display:inline-block;width:.6em;text-align:center}
+#scan{position:absolute;left:60px;right:60px;height:6px;background:#fff;box-shadow:0 0 30px 10px rgba(255,255,255,.6),0 0 80px 30px rgba(227,32,42,.45);opacity:0}
+.brk{position:absolute;width:110px;height:110px;border:0 solid #fff;opacity:0}
+</style>
+<div id=grad></div><div id=vig></div><div id=bgrad></div>
+<div id=speed></div>
+<!-- HOOK -->
+<div class=sc id=s0>
+ <div class=row style="top:200px"><div class="st wht" id=h_pre style="font-size:56px;border-width:7px">ซื้อรถมือสองอะ…</div></div>
+ <div class=row style="top:330px"><div class=bub id=h_q style="font-size:100px">
+   <span class=wd id=h_w1>รู้ได้ไงว่า</span><br><span class=wd id=h_w2>ไม่โดน</span><span class=wd id=h_w3 style="color:var(--red)">โกง</span><div class=tail></div></div></div>
+ <div class=row style="top:250px;left:790px;right:auto"><div class="st red" id=h_qm style="font-size:160px;padding:0 .3em">?</div></div>
+</div>
+<!-- BRAND -->
+<div class=sc id=s1>
+ <div class=row style="top:330px"><div class=stamp id=b_stamp style="font-size:150px">โกงได้ไง!</div></div>
+ <svg class=abs id=b_rays width=1600 height=1600 viewBox="-800 -800 1600 1600" style="left:-260px;top:-260px;transform-origin:800px 800px;opacity:0;-webkit-mask-image:radial-gradient(circle at 50% 50%,#000 0,#000 25%,transparent 55%)"></svg>
+ <div class=row style="top:230px"><div class="st wht" id=b_1 style="font-size:84px">ที่เดียวกับ</div></div>
+ <div class=row style="top:400px"><div class="st red" id=b_2 style="font-size:126px">อีซูซุป้ายแดง</div></div>
+ <div class=row style="top:640px"><div class="st ink" id=b_3 style="font-size:88px;display:inline-flex;align-items:center;gap:18px;padding:.08em .5em .02em .35em;overflow:hidden">
+  <svg width=100 height=100 viewBox="0 0 64 64"><path d="M18 6h28v14a14 14 0 0 1-28 0z" fill="#F5C518" stroke="#fff" stroke-width="3"/><path d="M18 10H8v6a10 10 0 0 0 10 10M46 10h10v6a10 10 0 0 1-10 10" fill="none" stroke="#F5C518" stroke-width="4"/><rect x="28" y="33" width="8" height="10" fill="#F5C518"/><rect x="18" y="43" width="28" height="9" rx="2" fill="#F5C518" stroke="#fff" stroke-width="2"/></svg>
+  <span><span id=b_cnt style="display:inline-block;min-width:1.1em;text-align:right;color:#F5C518">1</span> ปีซ้อน</span>
+  <div id=b_shine style="position:absolute;top:-40%;left:0;width:120px;height:180%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent)"></div></div></div>
+</div>
+<!-- CAR -->
+<div class=sc id=s2>
+ <div class=row style="top:220px"><div class="st red" id=c_t1 style="font-size:130px;font-style:italic">SPACECAB</div></div>
+ <div class=row style="top:440px">
+  <div class="st wht" id=c_g0 style="font-size:84px;font-style:italic;margin:0 8px;overflow:hidden">3.0<div id=c_shine style="position:absolute;top:-40%;left:0;width:90px;height:180%;background:linear-gradient(90deg,transparent,rgba(227,32,42,.35),transparent)"></div></div><div class="st wht" id=c_g1 style="font-size:84px;margin:0 8px">ปี 2023</div></div>
+ <div class=row style="top:640px"><div class="st ink" id=c_g2 style="font-size:76px">ไมล์ <span style="color:#FF5A62"><span id=c_roll class=slot>0</span> หมื่นกว่า</span></div></div>
+</div>
+<!-- CHECK -->
+<div class=sc id=s3>
+ <div id=scan></div>
+ <div class=brk id=k0 style="left:90px;top:700px;border-left-width:10px;border-top-width:10px;border-radius:18px 0 0 0"></div>
+ <div class=brk id=k1 style="right:150px;top:700px;border-right-width:10px;border-top-width:10px;border-radius:0 18px 0 0"></div>
+ <div class=brk id=k2 style="left:90px;top:1330px;border-left-width:10px;border-bottom-width:10px;border-radius:0 0 0 18px"></div>
+ <div class=brk id=k3 style="right:150px;top:1330px;border-right-width:10px;border-bottom-width:10px;border-radius:0 0 18px 0"></div>
+ <div id=c_note style="position:absolute;left:140px;top:240px;width:800px;background:#fff;border-radius:36px;padding:40px 44px 34px;box-shadow:0 0 0 6px var(--ink),0 22px 0 6px rgba(0,0,0,.28);transform-origin:50% 0">
+  <div style="display:flex;align-items:center;gap:26px"><div class=box id=c_b1><svg width=54 height=54 viewBox="0 0 54 54"><path d="M8 28 L22 41 L46 12" fill=none stroke="#5BB947" stroke-width=9 stroke-linecap=round stroke-linejoin=round /></svg></div>
+   <div style="font-size:58px;font-weight:900;color:var(--ink)">ตรวจ <span id=c_220 style="color:var(--red);display:inline-block;min-width:2.1em;text-align:center;font-variant-numeric:tabular-nums">0</span> รายการ</div></div>
+  <div style="height:4px;background:repeating-linear-gradient(90deg,#ccc 0 18px,transparent 18px 32px);margin:28px 0"></div>
+  <div style="display:flex;align-items:center;gap:26px"><div class=box id=c_b2><svg width=54 height=54 viewBox="0 0 54 54"><path d="M8 28 L22 41 L46 12" fill=none stroke="#5BB947" stroke-width=9 stroke-linecap=round stroke-linejoin=round /></svg></div>
+   <div id=c_r2 style="color:var(--ink)"><div style="font-size:38px;font-weight:800">รับประกันเครื่อง เกียร์ เฟืองท้าย</div><div style="font-size:62px;font-weight:900;color:var(--red);line-height:1.15">1 ปี / 25,000 กม.</div></div></div>
+ </div>
+</div>
+<!-- PRICE -->
+<div class=sc id=s4>
+ <svg class=abs id=p_rays width=1600 height=1600 viewBox="-800 -800 1600 1600" style="left:-260px;top:-350px;transform-origin:800px 800px;-webkit-mask-image:radial-gradient(circle at 50% 50%,#000 0,#000 30%,transparent 55%)"></svg>
+ <div class=row style="top:200px"><div id=p_tag style="display:inline-block;transform-origin:50% 50%">
+  <span class="hv tagA" style="font-size:92px;color:#fff;background:var(--red)">ผ่อน/เดือน</span>
+  <span class="hv tagA" id=p_84 style="font-size:64px;color:var(--ink);background:#fff;margin-left:12px;box-shadow:0 0 0 5px var(--ink)">84 งวด</span></div></div>
+ <div class=row style="top:315px"><div class=numA id=p_num style="display:inline-block;font-size:270px;transform-origin:50% 60%"><span class=slot id=d0>0</span>,<span class=slot id=d1>0</span><span class=slot id=d2>0</span><span class=slot id=d3>0</span></div></div>
+ <div class=row style="top:610px;left:-60px"><div class=hv id=p_unit style="display:inline-block;font-size:70px;color:#fff;text-shadow:5px 5px 0 var(--red);margin-left:560px">บาท</div></div>
+ <div class=row style="top:720px">
+  <div class=boxA id=p_d><div style="font-size:38px;font-weight:700">ดาวน์</div><div class=hv style="font-size:76px;line-height:1.05">50,000</div></div>
+  <div class=boxA id=p_p style="margin-left:18px"><div style="font-size:38px;font-weight:700">ราคา</div><div class=hv style="font-size:76px;line-height:1.05">499,000</div></div></div>
+</div>
+<!-- CTA -->
+<div class=sc id=s5>
+ <div class=row style="top:1170px"><div id=c_cta style="display:inline-block;position:relative">
+   <div id=c_rp1 style="position:absolute;inset:-6px;border-radius:999px;border:8px solid #fff"></div>
+   <div id=c_rp2 style="position:absolute;inset:-6px;border-radius:999px;border:8px solid #fff"></div>
+   <div class="st red" id=c_btn style="font-size:110px;display:inline-flex;align-items:center;gap:26px;border-radius:999px;padding:.12em .6em .04em">
+    <svg width=104 height=96 viewBox="0 0 76 70"><path d="M8 6h60a6 6 0 0 1 6 6v34a6 6 0 0 1-6 6H30L14 66V52H8a6 6 0 0 1-6-6V12a6 6 0 0 1 6-6z" fill=#fff /><circle cx=22 cy=29 r=5 fill=#E3202A /><circle cx=38 cy=29 r=5 fill=#E3202A /><circle cx=54 cy=29 r=5 fill=#E3202A /></svg>สนใจทักแชท</div></div></div>
+</div>
+<div id=fx></div>
+<!--JS-->
+<script>
+SEG=[0,2.85,10.0,14.95,21.5,25.8,30.05];
+CUTS=[2.85,6.45,10.0,13.1,14.95,15.88,16.82,17.75,18.68,19.62,20.55,21.5,25.8];
+const BIG=[2.85,10.0,14.95,21.5,25.8];
+BGDIR='../bg32/';
+const LAND=23.65, LOCK=[22.55,22.95,23.3,23.65], FINAL=['6','8','7','6'];
+let RINGS=[],CF=[],SPEED=[],SP=[];
+// effect schedules
+const RING_AT=[[2.35,540,560,'#fff'],[2.95,540,420,'#E3202A'],[4.95,540,470,'#fff'],[7.7,540,700,'#F5C518'],[13.6,540,690,'#fff'],[17.25,240,320,'#5BB947'],[20.15,240,520,'#5BB947'],[LAND,540,460,'#fff'],[LAND+.12,540,460,'#E3202A'],[25.95,540,1230,'#fff']];
+const CF_AT=[[7.7,540,700,['#F5C518','#fff','#F5C518','#E3202A']],[LAND,540,460,['#E3202A','#fff','#F5C518','#17181C']],[25.95,540,1230,['#E3202A','#fff','#F5C518']]];
+const SPEED_AT=[0.0,2.85,10.0,10.95,21.5];
+function setup(){
+ const fx=$('fx');
+ RING_AT.forEach(([at,x,y,c])=>{const d=document.createElement('div');d.className='ring';d.style.borderColor=c;fx.appendChild(d);RINGS.push({d,at,x,y})});
+ CF_AT.forEach(([at,x,y,cols])=>{for(let i=0;i<60;i++){const d=document.createElement('div');d.className='cf';d.style.background=cols[i%cols.length];if(cols[i%cols.length]=='#fff')d.style.boxShadow='0 0 0 3px #17181C';fx.appendChild(d);
+   const a=-Math.PI/2+(R()-.5)*2.8,v=900+R()*1400;CF.push({d,at:at+R()*.06,x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,rs:(R()-.5)*1400})}});
+ const sp=$('speed');for(let i=0;i<10;i++){const d=document.createElement('div');d.className='sl';const w=300+R()*500;d.style.width=w+'px';d.style.top=(150+R()*1300)+'px';sp.appendChild(d);SPEED.push({d,w,del:R()*.18})}
+ const rays=n=>{let s='';for(let i=0;i<n;i++){const a=i*360/n;s+=`<polygon points="0,0 ${800*Math.cos((a-4)*Math.PI/180)},${800*Math.sin((a-4)*Math.PI/180)} ${800*Math.cos((a+4)*Math.PI/180)},${800*Math.sin((a+4)*Math.PI/180)}" fill="#fff"/>`}return s};
+ $('p_rays').innerHTML=rays(20);$('b_rays').innerHTML=rays(18).replaceAll('#fff','#FFE27A');
+ for(let i=0;i<18;i++){const e=document.createElementNS('http://www.w3.org/2000/svg','svg');e.setAttribute('width',70);e.setAttribute('height',70);e.setAttribute('viewBox','-10 -10 20 20');e.style.position='absolute';
+  e.innerHTML=`<path d="M0-10 L2.5-2.5 L10 0 L2.5 2.5 L0 10 L-2.5 2.5 L-10 0 L-2.5-2.5Z" fill="${i%3?'#fff':'#F5C518'}"/>`;fx.appendChild(e);const a=R()*Math.PI*2;SP.push({e,dx:Math.cos(a),dy:Math.sin(a)*.8,dist:280+R()*320,sc:.6+R()*.9})}
+}
+let t_=0;
+function pop(id,a,r=0,d=.42){const k=bo(P(t_,a,d));S(id,{op:P(t_,a,.07),s:.55+.45*k,y:(1-k)*36,r:r})}
+function slam(id,a,r=0,from=2.6,d=.2){const k=eo(P(t_,a,d));S(id,{op:P(t_,a,.05),s:from-(from-1)*k,r:r*(1-k)+0,b:(1-k)*10})}
+function outFly(id,a,d=.25){const k=eio(P(t_,a,d));if(k>0){const e=$(id);e.style.opacity=1-k;e.style.transform+=` translateY(${-200*k}px) scale(${1+.4*k})`}}
+function render(t){
+ t_=t;scenes(t);
+ const bgEl=$('bg');let bgs=1,blur=0,sx=0,sy=0,shk=[0,0];
+ for(const b of CUTS){if(t>=b)bgs=Math.max(bgs,1+.04*(1-eo(P(t,b,.3))))}
+ for(const b of BIG){const d=t-b;if(d>-.12&&d<.3){const k=d<0?1+d/.12:1-d/.3;blur=Math.max(blur,16*k);bgs=Math.max(bgs,1+.16*k)}}
+ const addShake=(at,amp,dur=.35)=>{const s=shake(t,at,amp,dur);shk[0]+=s[0];shk[1]+=s[1]};
+ // suspense vignette
+ let vg=0;
+ // ---------- HOOK
+ if(t<SEG[1]){
+  vg=.35+.35*P(t,1.4,1.3);
+  pop('h_pre',.2,-2,.35); if(t>1.3){const k=P(t,1.3,.2);$('h_pre').style.opacity=1-k}
+  const kb=bo(P(t,1.4,.4));S('h_q',{op:P(t,1.4,.06),s:.5+.5*kb,y:(1-kb)*60});
+  slam('h_w1',1.45,0,1.8,.18);slam('h_w2',1.95,0,1.8,.18);slam('h_w3',2.35,-8,3.2,.2);
+  addShake(2.4,22,.4);
+  const kq=el(P(t,2.5,.6));S('h_qm',{op:P(t,2.5,.05),s:kq*(1+.1*Math.sin(Math.max(0,t-2.9)*16)),r:360*(1-Math.min(kq,1))+12});
+  // heartbeat bg
+  const hb=[.3,.8,1.3,1.8];for(const h of hb){const k=P(t,h,.25);if(t>h&&k<1)bgs*=1+.025*Math.sin(Math.PI*k)}
+ }
+ // ---------- BRAND
+ else if(t<SEG[2]){
+  // stamp 2.9 -> out 4.3
+  slam('b_stamp',2.9,-14,3,.18);if(t>=2.9){$('b_stamp').style.transform+=` rotate(-8deg)`}addShake(2.98,30,.45);outFly('b_stamp',4.2,.25);
+  pop('b_1',4.45,-2);slam('b_2',4.95,4,2.4,.2);addShake(5.1,18,.35);
+  const kr=eo(P(t,4.95,.4));const br=$('b_rays');br.style.opacity=.28*kr*(t<9.8?1:1-P(t,9.8,.2));br.style.transform=`translateY(${t<6.4?-120:220*eo(P(t,6.4,.4))-120}px) rotate(${t*25}deg) scale(${.5+.6*kr})`;
+  // trophy count 1->10
+  const kt=bo(P(t,6.4,.45));S('b_3',{op:P(t,6.4,.07),s:.4+.6*kt});
+  const c=t<6.5?1:Math.min(10,1+Math.floor(9*Math.pow(P(t,6.5,1.15),1.6)));$('b_cnt').textContent=c;
+  if(t>=7.7){const kk=P(t,7.7,.3);$('b_3').style.transform+=` scale(${1+.18*Math.sin(Math.PI*kk)})`}addShake(7.7,24,.4);
+  S('b_shine',{x:-200+1000*eio(P(t,7.75,.6)),r:18,op:t>7.75&&t<8.35?1:0});
+  vg=.25+.25*P(t,6.5,1.15)*(t<7.7?1:1-P(t,7.7,.4));
+  if(t>9.75){['b_1','b_2','b_3'].forEach(id=>outFly(id,9.75,.22))}
+ }
+ // ---------- CAR
+ else if(t<SEG[3]){
+  slam('c_t1',10.95,-6,2.8,.18);addShake(11.05,16,.3);
+  slam('c_g0',11.6,0,2.2,.16);S('c_shine',{x:-150+500*eio(P(t,11.75,.5)),r:18,op:t>11.75&&t<12.25?1:0});
+  pop('c_g1',12.5,2,.35);
+  pop('c_g2',13.15,-1,.38);
+  const rl=t<13.2?0:(t<13.6?Math.floor((t*30)%10):3);$('c_roll').textContent=rl;$('c_roll').style.filter=t<13.6?'blur(5px)':'';$('c_roll').style.opacity=t<13.6?.7:1;addShake(13.6,16,.3);
+  if(t>=13.6){const kk=P(t,13.6,.3);$('c_roll').style.transform=`scale(${1+.5*Math.sin(Math.PI*kk)})`}
+  if(t>14.7){['c_t1','c_g0','c_g1','c_g2'].forEach(id=>outFly(id,14.7,.22))}
+ }
+ // ---------- CHECK
+ else if(t<SEG[4]){
+  const a=SEG[3];const k=bo(P(t,a+.08,.45));S('c_note',{op:P(t,a+.08,.08),y:(1-k)*80,s:.9+.1*k,r:-1});
+  $('c_220').textContent=t<15.15?0:Math.round(220*eo(P(t,15.15,2.05)));
+  if(t>=17.2){const kk=P(t,17.2,.3);$('c_220').style.transform=`scale(${1+.35*Math.sin(Math.PI*kk)})`}
+  [['c_b1',17.2],['c_b2',20.1]].forEach(([id,b])=>{$(id).querySelector('path').style.strokeDashoffset=70*(1-eo(P(t,b,.25)));const kk=P(t,b,.3);$(id).style.transform=`scale(${1+.35*Math.sin(Math.PI*kk)})`});
+  addShake(17.25,14,.3);addShake(20.15,14,.3);
+  $('c_r2').style.clipPath=`inset(-20px ${100-100*eio(P(t,18.55,.6))}% -20px 0)`;
+  // scan HUD
+  const scanOn=t>15.0&&t<20.6;const ph=((t-15.0)%1.4)/1.4;$('scan').style.opacity=scanOn?.9:0;$('scan').style.top=(700+640*ph)+'px';
+  ['k0','k1','k2','k3'].forEach((id,i)=>{const kk=bo(P(t,15.0+i*.05,.35));S(id,{op:scanOn?P(t,15+i*.05,.1):1-P(t,20.6,.2),s:1.6-.6*kk})});
+  if(t>21.25)outFly('c_note',21.25,.22);
+ }
+ // ---------- PRICE
+ else if(t<SEG[5]){
+  const a=SEG[4];
+  vg=t<LAND?.45+.45*P(t,21.6,2.0):.9*(1-P(t,LAND,.5))+.2;
+  bgs*=1+.06*P(t,21.6,2.05)*(t<LAND?1:0);
+  slam('p_tag',21.55,-4,2.4,.18);addShake(21.65,14,.3);
+  const pre=P(t,21.85,.15);$('p_num').style.opacity=pre;
+  for(let i=0;i<4;i++){const e=$('d'+i);if(t<LOCK[i]){e.textContent=Math.floor((t*37+i*3.3)*1.7)%10;e.style.transform=`translateY(${Math.sin(t*90+i)*10}px)`;e.style.color='#fff';e.style.filter='blur(6px)';e.style.opacity=.75}
+   else{e.textContent=FINAL[i];const kk=P(t,LOCK[i],.22);e.style.transform=`scale(${1+.35*(1-eo(kk))})`;e.style.color=kk<1?'#FFE27A':'#fff';e.style.filter='';e.style.opacity=1}}
+  LOCK.slice(0,3).forEach(l=>addShake(l,8,.18));
+  const kl=P(t,LAND,.45);$('p_num').style.transform=`scale(${t<LAND?1+.03*Math.sin(t*50):1+.18*(1-eo(kl))})`;
+  addShake(LAND,32,.5);
+  const ku=bo(P(t,LAND+.08,.35));S('p_unit',{op:P(t,LAND+.08,.06),s:.5+.5*ku});
+  const k84=P(t,23.95,.3);$('p_84').style.transform=`skewX(-8deg) scale(${1+.2*Math.sin(Math.PI*k84)})`;
+  const kr=eo(P(t,LAND,.35));const rays=$('p_rays');rays.style.opacity=.3*kr;rays.style.transform=`rotate(${(t-a)*22}deg) scale(${.5+.6*kr})`;
+  [['p_d',24.8],['p_p',25.15]].forEach(([id,b])=>{slam(id,b,0,1.8,.16)});addShake(24.85,10,.25);addShake(25.2,10,.25);
+ }
+ // ---------- CTA
+ else {
+  const a=SEG[5];$('bgrad').style.opacity=eo(P(t,a,.4));
+  const kd=bounce(P(t,a+.05,.7));const urgent=P(t,27.5,.2);
+  const pl=t>a+.8?1-(.04+.05*urgent)*Math.max(0,Math.sin((t-a-.8)*(12+8*urgent))):1;
+  S('c_cta',{op:P(t,a+.05,.05),y:-700*(1-kd),s:pl,r:urgent?Math.sin(t*40)*1.5*urgent*(t<28.6?1:0):0});
+  $('c_btn').style.boxShadow=`0 0 0 6px var(--ink),0 18px 0 6px rgba(0,0,0,.28),0 0 ${60*urgent*(.6+.4*Math.sin(t*12))}px ${20*urgent}px rgba(227,32,42,.9)`;
+  [['c_rp1',a+.6],['c_rp2',a+.85]].forEach(([id,b])=>{const k=((t-b)%.5+.5)%.5/.5;S(id,{op:t>b?(1-k)*.9:0,s:1+.3*k})});
+  addShake(25.95,18,.35);addShake(27.55,10,.3);
+ }
+ // ---------- global FX
+ RINGS.forEach(r=>{const k=P(t,r.at,.55);if(t<r.at||k>=1){r.d.style.opacity=0;return}const R0=40+620*eo(k);r.d.style.left=(r.x-R0)+'px';r.d.style.top=(r.y-R0)+'px';r.d.style.width=r.d.style.height=(2*R0)+'px';r.d.style.opacity=1-k;r.d.style.borderWidth=(16*(1-k)+2)+'px'});
+ CF.forEach(c=>{const tt=t-c.at;if(tt<0||tt>2.2){c.d.style.opacity=0;return}c.d.style.opacity=C(2.2-tt);c.d.style.transform=`translate(${c.x+c.vx*tt}px,${c.y+c.vy*tt+1900*tt*tt}px) rotate(${c.rs*tt}deg) scaleX(${Math.cos(tt*14+c.rs)})`});
+ SP.forEach(s=>{const k=P(t,LAND,.8),d=s.dist*eo(k);s.e.style.opacity=k>0&&k<1?1-k*k:0;s.e.style.left=(540+s.dx*d-35)+'px';s.e.style.top=(460+s.dy*d-35)+'px';s.e.style.transform=`rotate(${k*200}deg) scale(${s.sc*(1-.4*k)})`});
+ let anySpeed=false;SPEED.forEach(s=>{let o=0,x=0;for(const at of SPEED_AT){const k=P(t,at+s.del-.05,.3);if(t>at+s.del-.05&&k<1){o=.85;x=-s.w+(1080+s.w*2)*eio(k)}}s.d.style.opacity=o;s.d.style.transform=`translateX(${x}px)`});
+ $('vig').style.opacity=vg;
+ $('grad').style.opacity=t>=SEG[4]?0:1;
+ sx=shk[0];sy=shk[1];
+ for(let k=0;k<6;k++){const e=$('s'+k);if(e&&e.style.display==='block')e.style.transform=`translate(${sx}px,${sy}px)`}
+ bgEl.style.filter=blur>.2?`blur(${blur}px)`:'';
+ bgEl.style.transform=`translate(${sx*.5}px,${sy*.5}px) scale(${bgs})`;
+ flashAt(t,[2.35,2.9,4.95,7.7,LAND,25.95],.5,.15);
+ // flash also on big cuts (softer)
+ let f=+$('flash').style.opacity;for(const b of BIG){if(t>=b)f=Math.max(f,.35*(1-P(t,b,.12)))}$('flash').style.opacity=f;
+}
+</script>
