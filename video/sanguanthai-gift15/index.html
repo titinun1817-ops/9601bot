@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="th" data-resolution="portrait">
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=1080, height=1920" />
+<script src="vendor/gsap.min.js"></script>
+<style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:#17181C}
+#bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 35%,#20222a 0%,#17181C 70%)}
+#bggrid{position:absolute;inset:-90px;background-image:linear-gradient(rgba(255,255,255,.05) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.05) 2px,transparent 2px);background-size:90px 90px}
+.wave{position:absolute;left:-200px;width:1480px;height:400px}</style></head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="15.7" data-width="1080" data-height="1920">
+<div id="bgwrap" class="clip" data-start="0" data-duration="15.7" data-track-index="0" style="position:absolute;inset:0;z-index:1;overflow:hidden">
+<div id="bg"></div><div id="bggrid"></div>
+<svg id="w1" class="wave" style="top:1480px" viewBox="0 0 1480 400" preserveAspectRatio="none"><path d="M0 120 C200 40 400 200 740 110 S1200 30 1480 120 L1480 400 L0 400Z" fill="#1F3A8A"/></svg>
+<svg id="w2" class="wave" style="top:1580px" viewBox="0 0 1480 400" preserveAspectRatio="none"><path d="M0 140 C260 220 520 40 800 130 S1250 230 1480 110 L1480 400 L0 400Z" fill="#E3202A"/></svg>
+<svg id="w3" class="wave" style="top:1700px" viewBox="0 0 1480 400" preserveAspectRatio="none"><path d="M0 90 C300 10 600 170 900 80 S1300 20 1480 90 L1480 400 L0 400Z" fill="#17181C"/></svg>
+</div>
+<div id="hook" data-composition-id="hook" data-composition-src="compositions/hook.html" data-start="0" data-duration="2.4" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:20"></div>
+<div id="c1" data-composition-id="c1" data-composition-src="compositions/c1.html" data-start="2.4" data-duration="2.15" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:21"></div>
+<div id="c2" data-composition-id="c2" data-composition-src="compositions/c2.html" data-start="4.55" data-duration="2.1" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:22"></div>
+<div id="c3" data-composition-id="c3" data-composition-src="compositions/c3.html" data-start="6.65" data-duration="3.2" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:23"></div>
+<div id="grid" data-composition-id="grid" data-composition-src="compositions/grid.html" data-start="9.85" data-duration="3.1" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:24"></div>
+<div id="cta" data-composition-id="cta" data-composition-src="compositions/cta.html" data-start="12.95" data-duration="2.75" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:25"></div>
+<audio id="a-vo" class="clip" src="assets/audio/vo.wav" data-start="0" data-duration="15.7" data-track-index="5" data-volume="1"></audio>
+<audio id="a-beat" class="clip" src="assets/audio/beat.wav" data-start="0" data-duration="15.7" data-track-index="6" data-volume="1"></audio>
+<audio id="a-sfx" class="clip" src="assets/audio/sfx.wav" data-start="0" data-duration="15.7" data-track-index="7" data-volume="0.6"></audio>
+</div>
+<script>
+const tl=gsap.timeline({paused:true});
+tl.fromTo("#w1",{x:0},{x:180,duration:15.7,ease:"sine.inOut"},0);
+tl.fromTo("#w2",{x:120},{x:-120,duration:15.7,ease:"sine.inOut"},0);
+tl.fromTo("#w3",{x:-60},{x:140,duration:15.7,ease:"sine.inOut"},0);
+tl.fromTo("#bggrid",{y:0},{y:90,duration:15.7,ease:"none"},0);
+window.__timelines["main"]=tl;
+</script>
+</body></html>
