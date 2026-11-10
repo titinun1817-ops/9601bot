@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<script src="assets/gsap.min.js"></script>
+<style>
+@font-face{font-family:"PromptX";font-weight:900;font-style:italic;src:url("assets/fonts/prompt-thai-900-italic.woff2") format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC;}
+@font-face{font-family:"PromptX";font-weight:900;font-style:italic;src:url("assets/fonts/prompt-latin-900-italic.woff2") format("woff2");unicode-range:U+0000-00FF,U+2022,U+2013-2014;}
+@font-face{font-family:"PromptX";font-weight:800;font-style:italic;src:url("assets/fonts/prompt-thai-800-italic.woff2") format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC;}
+@font-face{font-family:"PromptX";font-weight:800;font-style:italic;src:url("assets/fonts/prompt-latin-800-italic.woff2") format("woff2");unicode-range:U+0000-00FF,U+2022;}
+:root{--red:#e8141c;--red2:#ff3b30;--dark:#7a0008;--ink:#fff}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+#root{position:relative;width:100%;height:100%;font-family:"PromptX",sans-serif;font-style:italic;font-weight:900;overflow:hidden}
+#cam{position:absolute;inset:0;transform-origin:50% 45%}
+#base{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover}
+#shade{position:absolute;left:0;top:0;width:1080px;height:900px;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.25) 60%,rgba(0,0,0,0));pointer-events:none}
+.beat{position:absolute;inset:0}
+.lead{position:absolute;left:0;right:0;text-align:center;font-size:76px;color:#fff;line-height:1.25;text-shadow:0 6px 0 rgba(0,0,0,.55),0 0 22px rgba(0,0,0,.6)}
+.lead .sl{color:var(--red2);letter-spacing:-6px;text-shadow:0 0 18px rgba(255,40,40,.8)}
+.model{position:absolute;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:22px}
+.mn{font-size:118px;line-height:1.15;color:var(--red);paint-order:stroke fill;-webkit-text-stroke:14px #fff;filter:drop-shadow(0 0 18px rgba(255,20,20,.9)) drop-shadow(0 8px 0 rgba(0,0,0,.4))}
+.tag{display:inline-block;background:#fff;color:var(--red);font-size:70px;line-height:1.2;padding:4px 30px;transform:skewX(-14deg);box-shadow:0 8px 0 rgba(0,0,0,.35)}
+.keywrap{position:absolute;left:0;right:0;display:flex;justify-content:center}
+.key{font-size:116px;line-height:1.2;color:#fff;padding:10px 54px 22px;background:linear-gradient(180deg,#ff4a3d,#e8141c 55%,#a3000a);border:7px solid #fff;border-radius:22px;box-shadow:0 16px 0 var(--dark),0 22px 40px rgba(0,0,0,.55),0 0 40px rgba(255,30,30,.6);text-shadow:0 6px 0 var(--dark),0 0 2px #000}
+.bolt{position:absolute;top:-70px;left:120px;width:120px;height:240px;opacity:0;fill:none;stroke:#fff6a0;stroke-width:10;filter:drop-shadow(0 0 12px #ffe14a) drop-shadow(0 0 26px #ff8a00)}
+.bolt.b2{left:auto;right:110px;top:-40px;transform:scaleX(-1)}
+.cap{position:absolute;left:50%;width:880px;margin-left:-440px;text-align:center;font-size:58px;line-height:1.3;color:#fff;background:rgba(10,10,10,.82);border:5px solid #fff;border-radius:80px;padding:12px 30px}
+.numwrap{position:absolute;left:0;right:0;height:320px;display:flex;justify-content:center;align-items:center}
+.rays{position:absolute;left:50%;top:50%;width:900px;height:900px;margin:-450px 0 0 -450px;border-radius:50%;background:repeating-conic-gradient(rgba(255,210,60,.55) 0 7deg,rgba(255,60,30,0) 7deg 20deg);-webkit-mask:radial-gradient(circle,#000 0 25%,transparent 62%);mask:radial-gradient(circle,#000 0 25%,transparent 62%)}
+.num{position:relative;display:flex;align-items:baseline;gap:20px}
+.nv{font-size:250px;line-height:1.1;color:var(--red);paint-order:stroke fill;-webkit-text-stroke:18px #fff;filter:drop-shadow(0 0 24px rgba(255,20,20,.95)) drop-shadow(0 12px 0 rgba(0,0,0,.45))}
+.nu{font-size:96px;color:#fff;text-shadow:0 6px 0 var(--dark),0 0 20px rgba(0,0,0,.7)}
+#fx{position:absolute;inset:0;pointer-events:none}
+.spk{position:absolute;top:0;border-radius:50%;background:radial-gradient(circle,#fff7c0,#ffb020 45%,rgba(255,60,0,0) 70%);box-shadow:0 0 12px #ff8a00}
+#flash{position:absolute;inset:0;background:#fff;opacity:0}
+#b4-num11 .num{flex-direction:column;align-items:center;gap:0}#b4-num11 .nv{font-size:205px;-webkit-text-stroke:15px #fff}#b4-num11 .nu{font-size:90px;margin-top:-10px}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="19.5" data-width="1080" data-height="1920">
+  <div id="cam"><video id="base" class="clip" src="assets/base.mp4" data-start="0" data-duration="19.5" data-track-index="0" muted playsinline></video></div>
+  <div id="shade"></div>
+  <audio id="mix" class="clip" src="assets/mix.m4a" data-start="0" data-duration="19.5" data-track-index="5" data-volume="1"></audio>
+  <div id="fxlayer" class="clip" data-start="0" data-duration="19.5" data-track-index="1" data-layout-ignore><div id="fx"><i class="spk" id="spk0" style="left:946px;width:10px;height:10px"></i><i class="spk" id="spk1" style="left:1060px;width:6px;height:6px"></i><i class="spk" id="spk2" style="left:994px;width:6px;height:5px"></i><i class="spk" id="spk3" style="left:934px;width:8px;height:6px"></i><i class="spk" id="spk4" style="left:205px;width:5px;height:10px"></i><i class="spk" id="spk5" style="left:947px;width:6px;height:5px"></i><i class="spk" id="spk6" style="left:149px;width:5px;height:5px"></i><i class="spk" id="spk7" style="left:409px;width:6px;height:5px"></i><i class="spk" id="spk8" style="left:970px;width:8px;height:10px"></i><i class="spk" id="spk9" style="left:420px;width:6px;height:8px"></i><i class="spk" id="spk10" style="left:1043px;width:5px;height:5px"></i><i class="spk" id="spk11" style="left:956px;width:8px;height:10px"></i><i class="spk" id="spk12" style="left:190px;width:8px;height:8px"></i><i class="spk" id="spk13" style="left:490px;width:8px;height:5px"></i><i class="spk" id="spk14" style="left:163px;width:5px;height:10px"></i><i class="spk" id="spk15" style="left:240px;width:8px;height:10px"></i><i class="spk" id="spk16" style="left:156px;width:5px;height:5px"></i><i class="spk" id="spk17" style="left:457px;width:6px;height:5px"></i><i class="spk" id="spk18" style="left:982px;width:10px;height:10px"></i><i class="spk" id="spk19" style="left:879px;width:5px;height:6px"></i><i class="spk" id="spk20" style="left:572px;width:8px;height:5px"></i><i class="spk" id="spk21" style="left:657px;width:8px;height:5px"></i><i class="spk" id="spk22" style="left:859px;width:5px;height:6px"></i><i class="spk" id="spk23" style="left:524px;width:5px;height:5px"></i><i class="spk" id="spk24" style="left:142px;width:10px;height:10px"></i><i class="spk" id="spk25" style="left:383px;width:6px;height:10px"></i></div><div id="flash"></div></div>
+  <div id="b1" class="clip beat" data-start="0" data-duration="3.0" data-track-index="2" data-layout-allow-overflow>
+<div id="b1-lead0" class="lead" style="top:240px"><span class="sl">//</span> ป้ายแดง พร้อมส่งมอบ <span class="sl">//</span></div>
+<div id="b1-model1" class="model" style="top:345px"><span class="mn">ISUZU ELF</span><span class="tag">NLR</span></div>
+<div id="b1-key2" class="keywrap" style="top:520px"><div class="key">4 ล้อจัมโบ้</div><svg class="bolt" viewBox="0 0 200 400"><polyline points="120,0 60,170 120,170 40,400 170,140 105,140 160,0"/></svg><svg class="bolt b2" viewBox="0 0 200 400"><polyline points="120,0 60,170 120,170 40,400 170,140 105,140 160,0"/></svg></div>
+<div id="b1-cap3" class="cap" style="top:730px">ต่อตู้ทึบ พร้อมใช้งาน</div>
+</div>
+<div id="b2" class="clip beat" data-start="3.0" data-duration="3.54" data-track-index="2" data-layout-allow-overflow>
+<div id="b2-lead4" class="lead" style="top:240px"><span class="sl">//</span> เตรียมส่งมอบ <span class="sl">//</span></div>
+<div id="b2-model5" class="model" style="top:345px"><span class="mn">ISUZU</span><span class="tag">NLR</span></div>
+<div id="b2-num6" class="numwrap" style="top:520px"><div class="rays"></div><div class="num"><span class="nv">0</span><span class="nu">คัน</span></div></div>
+</div>
+<div id="b3" class="clip beat" data-start="6.54" data-duration="2.94" data-track-index="2" data-layout-allow-overflow>
+<div id="b3-lead7" class="lead" style="top:240px"><span class="sl">//</span> ลูกค้าเอาไปขน <span class="sl">//</span></div>
+<div id="b3-key8" class="keywrap" style="top:380px"><div class="key">สินค้าอุปโภค</div><svg class="bolt" viewBox="0 0 200 400"><polyline points="120,0 60,170 120,170 40,400 170,140 105,140 160,0"/></svg><svg class="bolt b2" viewBox="0 0 200 400"><polyline points="120,0 60,170 120,170 40,400 170,140 105,140 160,0"/></svg></div>
+<div id="b3-cap9" class="cap" style="top:590px">อุปโภค • บริโภค</div>
+</div>
+<div id="b4" class="clip beat" data-start="9.48" data-duration="3.44" data-track-index="2" data-layout-allow-overflow>
+<div id="b4-lead10" class="lead" style="top:240px"><span class="sl">//</span> ใช้เงินออกรถแค่ <span class="sl">//</span></div>
+<div id="b4-num11" class="numwrap" style="top:400px"><div class="rays"></div><div class="num"><span class="nv">0</span><span class="nu">บาท</span></div></div>
+</div>
+<div id="b5" class="clip beat" data-start="12.92" data-duration="2.6" data-track-index="2" data-layout-allow-overflow>
+<div id="b5-lead12" class="lead" style="top:240px"><span class="sl">//</span> อยากได้รถสวย <span class="sl">//</span></div>
+<div id="b5-key13" class="keywrap" style="top:380px"><div class="key">ต่อตู้พร้อม</div><svg class="bolt" viewBox="0 0 200 400"><polyline points="120,0 60,170 120,170 40,400 170,140 105,140 160,0"/></svg><svg class="bolt b2" viewBox="0 0 200 400"><polyline points="120,0 60,170 120,170 40,400 170,140 105,140 160,0"/></svg></div>
+<div id="b5-cap14" class="cap" style="top:590px">แบบนี้เลย!</div>
+</div>
+<div id="b6" class="clip beat" data-start="15.52" data-duration="3.98" data-track-index="2" data-layout-allow-overflow>
+<div id="b6-lead15" class="lead" style="top:240px"><span class="sl">//</span> สนใจติดต่อ <span class="sl">//</span></div>
+<div id="b6-model16" class="model" style="top:345px"><span class="mn">อีซูซุ</span><span class="tag">สงวนไทย</span></div>
+<div id="b6-key17" class="keywrap" style="top:530px"><div class="key">ทักแชทเลย!</div><svg class="bolt" viewBox="0 0 200 400"><polyline points="120,0 60,170 120,170 40,400 170,140 105,140 160,0"/></svg><svg class="bolt b2" viewBox="0 0 200 400"><polyline points="120,0 60,170 120,170 40,400 170,140 105,140 160,0"/></svg></div>
+<div id="b6-cap18" class="cap" style="top:750px">ออกรถ 39,000.- ต่อตู้พร้อม</div>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+function flash(t){ tl.fromTo("#flash",{opacity:.55},{opacity:0,duration:.22,ease:"power2.out"},t); }
+let sk=1;
+function shake(t,a){ const xs=[]; for(let i=0;i<7;i++){ sk=(sk*16807)%2147483647; xs.push(((sk/2147483647)-.5)*2*a*(1-i/7)); }
+  xs.forEach((v,i)=>{ tl.to("#cam",{x:v,y:-v*.6,duration:.035,ease:"none"},t+i*.035); }); tl.to("#cam",{x:0,y:0,duration:.04},t+.25); }
+function countUp(sel,from,to,t,d){ const o={v:from}; const el=document.querySelector(sel);
+  tl.fromTo(o,{v:from},{v:to,duration:d,ease:"power2.out",onUpdate:()=>{el.textContent=Math.round(o.v).toLocaleString("en-US");}},t); }
+// camera snap zooms per shot
+[[0,3.0],[3.0,3.54],[6.54,2.94],[9.48,3.44],[12.92,2.6],[15.52,3.98]].forEach(([s,L])=>{
+  tl.fromTo("#cam",{scale:1.14},{scale:1.0,duration:.32,ease:"expo.out"},s);
+  tl.fromTo("#cam",{scale:1.0},{scale:1.05,duration:L-.32,ease:"none",immediateRender:false},s+.32);
+});
+shake(0.05,26); flash(0.0);
+[3.0,6.54,9.48,12.92,15.52].forEach(c=>flash(c-.02));
+tl.fromTo("#spk0",{y:1760,x:0,opacity:0},{y:-5,x:67,opacity:1,duration:3.28,ease:"none",repeat:8,yoyo:false},0.84);
+tl.fromTo("#spk1",{y:1696,x:0,opacity:0},{y:-81,x:-19,opacity:1,duration:2.79,ease:"none",repeat:8,yoyo:false},0.43);
+tl.fromTo("#spk2",{y:1638,x:0,opacity:0},{y:406,x:-43,opacity:1,duration:3.60,ease:"none",repeat:8,yoyo:false},0.04);
+tl.fromTo("#spk3",{y:1595,x:0,opacity:0},{y:203,x:98,opacity:1,duration:3.04,ease:"none",repeat:8,yoyo:false},1.15);
+tl.fromTo("#spk4",{y:1521,x:0,opacity:0},{y:-51,x:-66,opacity:1,duration:2.82,ease:"none",repeat:8,yoyo:false},0.02);
+tl.fromTo("#spk5",{y:1812,x:0,opacity:0},{y:136,x:92,opacity:1,duration:2.61,ease:"none",repeat:8,yoyo:false},0.15);
+tl.fromTo("#spk6",{y:1546,x:0,opacity:0},{y:13,x:29,opacity:1,duration:3.09,ease:"none",repeat:8,yoyo:false},0.03);
+tl.fromTo("#spk7",{y:1688,x:0,opacity:0},{y:180,x:39,opacity:1,duration:2.83,ease:"none",repeat:8,yoyo:false},1.92);
+tl.fromTo("#spk8",{y:1747,x:0,opacity:0},{y:388,x:-86,opacity:1,duration:3.41,ease:"none",repeat:8,yoyo:false},0.37);
+tl.fromTo("#spk9",{y:1578,x:0,opacity:0},{y:118,x:112,opacity:1,duration:2.52,ease:"none",repeat:8,yoyo:false},1.22);
+tl.fromTo("#spk10",{y:1871,x:0,opacity:0},{y:-6,x:-80,opacity:1,duration:3.24,ease:"none",repeat:8,yoyo:false},1.88);
+tl.fromTo("#spk11",{y:1600,x:0,opacity:0},{y:197,x:105,opacity:1,duration:2.88,ease:"none",repeat:8,yoyo:false},0.16);
+tl.fromTo("#spk12",{y:1524,x:0,opacity:0},{y:-94,x:-93,opacity:1,duration:2.25,ease:"none",repeat:8,yoyo:false},1.93);
+tl.fromTo("#spk13",{y:1622,x:0,opacity:0},{y:201,x:-55,opacity:1,duration:2.79,ease:"none",repeat:8,yoyo:false},1.81);
+tl.fromTo("#spk14",{y:1751,x:0,opacity:0},{y:100,x:13,opacity:1,duration:2.45,ease:"none",repeat:8,yoyo:false},1.44);
+tl.fromTo("#spk15",{y:1535,x:0,opacity:0},{y:-71,x:-62,opacity:1,duration:2.87,ease:"none",repeat:8,yoyo:false},1.31);
+tl.fromTo("#spk16",{y:1815,x:0,opacity:0},{y:429,x:-102,opacity:1,duration:2.59,ease:"none",repeat:8,yoyo:false},1.83);
+tl.fromTo("#spk17",{y:1604,x:0,opacity:0},{y:-184,x:-103,opacity:1,duration:2.58,ease:"none",repeat:8,yoyo:false},0.89);
+tl.fromTo("#spk18",{y:1530,x:0,opacity:0},{y:-153,x:-75,opacity:1,duration:2.59,ease:"none",repeat:8,yoyo:false},1.06);
+tl.fromTo("#spk19",{y:1998,x:0,opacity:0},{y:-66,x:-97,opacity:1,duration:2.71,ease:"none",repeat:8,yoyo:false},1.78);
+tl.fromTo("#spk20",{y:1669,x:0,opacity:0},{y:472,x:67,opacity:1,duration:3.17,ease:"none",repeat:8,yoyo:false},1.17);
+tl.fromTo("#spk21",{y:1571,x:0,opacity:0},{y:404,x:-112,opacity:1,duration:3.49,ease:"none",repeat:8,yoyo:false},0.95);
+tl.fromTo("#spk22",{y:1683,x:0,opacity:0},{y:119,x:-112,opacity:1,duration:2.23,ease:"none",repeat:8,yoyo:false},1.27);
+tl.fromTo("#spk23",{y:1746,x:0,opacity:0},{y:-132,x:67,opacity:1,duration:2.64,ease:"none",repeat:8,yoyo:false},0.27);
+tl.fromTo("#spk24",{y:1537,x:0,opacity:0},{y:-123,x:-5,opacity:1,duration:2.96,ease:"none",repeat:8,yoyo:false},1.47);
+tl.fromTo("#spk25",{y:1960,x:0,opacity:0},{y:-68,x:83,opacity:1,duration:3.55,ease:"none",repeat:8,yoyo:false},0.68);
+tl.fromTo("#b1-lead0",{opacity:0,x:-140,skewX:-20},{opacity:1,x:0,skewX:0,duration:.32,ease:"expo.out"},0.15);
+tl.fromTo("#b1-model1",{opacity:0,scale:2.2},{opacity:1,scale:1,duration:.3,ease:"back.out(2)"},0.45);
+flash(0.45);shake(0.45,14);
+tl.fromTo("#b1-key2 .key",{opacity:0,scale:.2,rotation:-8},{opacity:1,scale:1,rotation:0,duration:.34,ease:"back.out(2.4)"},0.9);
+tl.fromTo("#b1-key2 .bolt",{opacity:0},{opacity:1,duration:.04,yoyo:true,repeat:5},0.9);
+shake(0.9,18);flash(0.9);
+tl.fromTo("#b1-cap3",{opacity:0,y:40},{opacity:1,y:0,duration:.28,ease:"power3.out"},1.5);
+tl.fromTo("#b2-lead4",{opacity:0,x:-140,skewX:-20},{opacity:1,x:0,skewX:0,duration:.32,ease:"expo.out"},3.1);
+tl.fromTo("#b2-model5",{opacity:0,scale:2.2},{opacity:1,scale:1,duration:.3,ease:"back.out(2)"},4.25);
+flash(4.25);shake(4.25,14);
+tl.fromTo("#b2-num6",{opacity:0,scale:.3},{opacity:1,scale:1,duration:.3,ease:"back.out(2)"},5.55);
+tl.fromTo("#b2-num6 .rays",{rotation:0},{rotation:200,duration:0.9900000000000002,ease:"none"},5.55);
+countUp("#b2-num6 .nv",1,3,5.55,0.07000000000000028);
+tl.fromTo("#b2-num6 .num",{scale:1.35},{scale:1,duration:.35,ease:"expo.out"},5.62);shake(5.62,34);flash(5.62);
+tl.fromTo("#b3-lead7",{opacity:0,x:-140,skewX:-20},{opacity:1,x:0,skewX:0,duration:.32,ease:"expo.out"},6.62);
+tl.fromTo("#b3-key8 .key",{opacity:0,scale:.2,rotation:-8},{opacity:1,scale:1,rotation:0,duration:.34,ease:"back.out(2.4)"},7.42);
+tl.fromTo("#b3-key8 .bolt",{opacity:0},{opacity:1,duration:.04,yoyo:true,repeat:5},7.42);
+shake(7.42,18);flash(7.42);
+tl.fromTo("#b3-cap9",{opacity:0,y:40},{opacity:1,y:0,duration:.28,ease:"power3.out"},8.3);
+tl.fromTo("#b4-lead10",{opacity:0,x:-140,skewX:-20},{opacity:1,x:0,skewX:0,duration:.32,ease:"expo.out"},9.55);
+tl.fromTo("#b4-num11",{opacity:0,scale:.3},{opacity:1,scale:1,duration:.3,ease:"back.out(2)"},10.2);
+tl.fromTo("#b4-num11 .rays",{rotation:0},{rotation:200,duration:2.7200000000000006,ease:"none"},10.2);
+countUp("#b4-num11 .nv",0,39000,10.2,0.5800000000000001);
+tl.fromTo("#b4-num11 .num",{scale:1.35},{scale:1,duration:.35,ease:"expo.out"},10.78);shake(10.78,34);flash(10.78);
+tl.fromTo("#b5-lead12",{opacity:0,x:-140,skewX:-20},{opacity:1,x:0,skewX:0,duration:.32,ease:"expo.out"},12.98);
+tl.fromTo("#b5-key13 .key",{opacity:0,scale:.2,rotation:-8},{opacity:1,scale:1,rotation:0,duration:.34,ease:"back.out(2.4)"},13.95);
+tl.fromTo("#b5-key13 .bolt",{opacity:0},{opacity:1,duration:.04,yoyo:true,repeat:5},13.95);
+shake(13.95,18);flash(13.95);
+tl.fromTo("#b5-cap14",{opacity:0,y:40},{opacity:1,y:0,duration:.28,ease:"power3.out"},14.6);
+tl.fromTo("#b6-lead15",{opacity:0,x:-140,skewX:-20},{opacity:1,x:0,skewX:0,duration:.32,ease:"expo.out"},15.6);
+tl.fromTo("#b6-model16",{opacity:0,scale:2.2},{opacity:1,scale:1,duration:.3,ease:"back.out(2)"},16.6);
+flash(16.6);shake(16.6,14);
+tl.fromTo("#b6-key17 .key",{opacity:0,scale:.2,rotation:-8},{opacity:1,scale:1,rotation:0,duration:.34,ease:"back.out(2.4)"},17.25);
+tl.fromTo("#b6-key17 .bolt",{opacity:0},{opacity:1,duration:.04,yoyo:true,repeat:5},17.25);
+shake(17.25,18);flash(17.25);
+tl.fromTo("#b6-cap18",{opacity:0,y:40},{opacity:1,y:0,duration:.28,ease:"power3.out"},17.9);
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>
