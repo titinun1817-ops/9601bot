@@ -71,7 +71,7 @@
     #fr-cta-logo img { width: 900px; display: block; }
     #fr-cta-slogan { left: 0; top: 500px; width: 1080px; text-align: center; font-weight: 700; font-size: 56px; color: var(--ink); line-height: 1; white-space: nowrap; }
     #fr-cta-slogan b { color: var(--red); }
-    #fr-cta-branch { left: 210px; top: 600px; width: 660px; }
+    #fr-cta-branch { left: 210px; top: 330px; width: 660px; }
     #fr-cta-branch img { width: 660px; display: block; }
     #fr-cta-btn { left: 0; top: 1290px; width: 1080px; text-align: center; }
     #fr-cta-pill { background: var(--red); color: #fff; font-weight: 900; font-size: 92px; padding: 18px 60px 26px 44px; border: 8px solid #fff; }
@@ -80,15 +80,8 @@
 
   <div id="root" data-composition-id="front" data-width="1080" data-height="1920">
     <!-- persistent page logo (from library: เบอติดต่อรถมือสอง LP-01) -->
-    <div id="fr-logo" class="abs clip" data-start="0" data-duration="11.0"><img id="fr-logo-img" src="assets/logo-usedcar.png" alt="" /></div>
+    <div id="fr-logo" class="abs clip" data-start="0" data-duration="13.0"><img id="fr-logo-img" src="assets/logo-usedcar.png" alt="" /></div>
 
-    <!-- B1 branch pill -->
-    <div id="fr-branch" class="abs clip" data-start="1.4" data-duration="1.2" data-layout-allow-overflow>
-      <span id="fr-branch-pill" class="pill shadow">
-        <svg id="fr-pin" viewBox="0 0 24 24"><path fill="#fff" d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-        สาขาลาดพร้าว
-      </span>
-    </div>
 
     <!-- whip-style swipe transitions over the camera cuts -->
     <div id="fr-swipe1" class="swipe clip" data-start="2.38" data-duration="0.46" data-layout-allow-overflow data-layout-ignore>
@@ -98,13 +91,6 @@
       <div id="fr-s2w" class="sw sw-w"></div><div id="fr-s2r" class="sw sw-r"></div><div id="fr-s2g" class="sw sw-g"></div>
     </div>
 
-    <!-- B2 card -->
-    <div id="fr-card" class="abs clip shadow" data-start="2.58" data-duration="2.16">
-      <div id="fr-card-label">บริษัท<b>ในเครือ</b></div>
-      <img id="fr-card-logo" src="assets/head-02.png" alt="" />
-      <div id="fr-shine"></div>
-      <div id="fr-card-bar"></div>
-    </div>
 
     <!-- B3 -->
     <div id="fr-flash" class="abs clip" data-start="4.74" data-duration="0.3" data-layout-ignore></div>
@@ -139,11 +125,9 @@
       <div id="fr-map-label" class="abs">ปากซอย<b>ลาดพร้าว 21</b></div>
     </div>
 
-    <!-- CTA -->
-    <div id="fr-cta-logo" class="abs clip" data-start="11.3" data-duration="4.2"><img id="fr-cta-logo-img" src="assets/logo-usedcar.png" alt="" /></div>
-    <div id="fr-cta-slogan" class="abs clip" data-start="11.55" data-duration="3.95">รถสวย สภาพดี <b>เลขไมล์แท้</b></div>
-    <div id="fr-cta-branch" class="abs clip" data-start="11.75" data-duration="3.75"><img id="fr-cta-branch-img" src="assets/branch-ladprao.png" alt="" /></div>
-    <div id="fr-cta-btn" class="abs clip" data-start="12.0" data-duration="3.5" data-layout-allow-overflow>
+    <!-- end: contact info over the real footage -->
+    <div id="fr-cta-branch" class="abs clip" data-start="10.95" data-duration="2.05"><img id="fr-cta-branch-img" src="assets/branch-ladprao.png" alt="" /></div>
+    <div id="fr-cta-btn" class="abs clip" data-start="11.2" data-duration="1.8" data-layout-allow-overflow>
       <span id="fr-cta-pill" class="pill shadow">
         <svg id="fr-chat" viewBox="0 0 24 24"><path fill="#fff" d="M4 3h16a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm3 7a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01z"/></svg>
         สนใจทักแชท
@@ -157,12 +141,7 @@
 
     // logo
     tl.fromTo("#fr-logo-img", { x: 380 }, { x: 0, duration: 0.5, ease: "expo.out" }, 0.1);
-    tl.to("#fr-logo-img", { x: 380, duration: 0.3, ease: "power3.in" }, 10.65);
 
-    // B1 pin pill (word "สาขา" 1.48)
-    tl.fromTo("#fr-branch-pill", { scale: 0, rotation: -8 }, { scale: 1, rotation: 0, duration: 0.42, ease: "back.out(2.4)" }, 1.46);
-    tl.fromTo("#fr-pin", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "bounce.out" }, 1.56);
-    tl.to("#fr-branch-pill", { scale: 0, duration: 0.18, ease: "power3.in" }, 2.36);
 
     // swipes: skewed panels sweep across, fully covering the cut at mid-point
     function swipe(w, r, g, t0, dir) {
@@ -174,13 +153,6 @@
     swipe("#fr-s1w", "#fr-s1r", "#fr-s1g", 2.38, 1);
     swipe("#fr-s2w", "#fr-s2r", "#fr-s2g", 6.53, -1);
 
-    // B2 card: pops at "บริษัท", logo stamps at "อีซูซุ สงวนไทย" 3.58
-    tl.fromTo("#fr-card", { scale: 0.6, opacity: 0, y: 60 }, { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.8)" }, 2.6);
-    tl.fromTo("#fr-card-label", { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.35, ease: "expo.out" }, 2.66);
-    tl.fromTo("#fr-card-logo", { scale: 1.25, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "expo.out" }, 3.56);
-    tl.fromTo("#fr-shine", { x: -160 }, { x: 900, duration: 0.6, ease: "power2.inOut" }, 3.8);
-    tl.fromTo("#fr-card-bar", { scaleX: 0, transformOrigin: "0 50%" }, { scaleX: 1, duration: 0.6, ease: "expo.out" }, 2.7);
-    tl.to("#fr-card", { scale: 0.8, opacity: 0, y: -40, duration: 0.2, ease: "power3.in" }, 4.52);
 
     // B3: single short flash on the snap zoom, rank label, "ปีซ้อน"
     tl.fromTo("#fr-flash", { opacity: 0.75 }, { opacity: 0, duration: 0.28, ease: "power2.out" }, 4.74);
@@ -222,12 +194,10 @@
     tl.fromTo("#fr-map-label", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "expo.out" }, 10.24);
     tl.to("#fr-map", { scale: 0.7, opacity: 0, duration: 0.18, ease: "power3.in" }, 10.9);
 
-    // CTA
-    tl.fromTo("#fr-cta-logo-img", { scale: 1.15, opacity: 0, y: -30 }, { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 11.3);
-    tl.fromTo("#fr-cta-slogan", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "expo.out" }, 11.55);
-    tl.fromTo("#fr-cta-branch-img", { x: 400, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "expo.out" }, 11.75);
-    tl.fromTo("#fr-cta-pill", { scale: 0, rotation: -6 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(2.2)" }, 12.0);
-    tl.fromTo("#fr-cta-pill", { scale: 1 }, { scale: 1.06, duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: 5, immediateRender: false }, 12.6);
+    // end contact info
+    tl.fromTo("#fr-cta-branch-img", { y: -80, scale: 0.6, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.8)" }, 10.95);
+    tl.fromTo("#fr-cta-pill", { scale: 0, rotation: -6 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.2)" }, 11.2);
+    tl.fromTo("#fr-cta-pill", { scale: 1 }, { scale: 1.06, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 11.9);
 
     window.__timelines["front"] = tl;
   </script>

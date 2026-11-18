@@ -10,10 +10,20 @@
     #bh-title { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
     .bh-line { position: absolute; left: 0; width: 1080px; text-align: center; line-height: 1; white-space: nowrap; }
     .bh-line span { display: inline-block; }
-    #bh-l1 { top: 470px; font-weight: 900; font-size: 200px; color: #fff;
-      text-shadow: 0 10px 40px rgba(0,0,0,.45); }
-    #bh-l2 { top: 700px; font-weight: 900; font-size: 212px; color: var(--green);
-      -webkit-text-stroke: 10px #fff; paint-order: stroke fill; text-shadow: 0 14px 40px rgba(0,0,0,.4); }
+    #bh-logo { position: absolute; left: 80px; top: 640px; width: 920px; height: 300px; background: #fff; border-radius: 36px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35); display: flex; align-items: flex-start; justify-content: center; padding-top: 22px; }
+    #bh-logo-img { width: 860px; display: block; }
+    #bh-l2 { top: 985px; font-weight: 900; font-size: 142px; color: #fff;
+      -webkit-text-stroke: 12px #17181c; paint-order: stroke fill; text-shadow: 0 14px 40px rgba(0,0,0,.45); }
+    #bh-l2 em { font-style: normal; color: var(--green); }
+
+    /* ---------- B2 card ---------- */
+    #bh-card { position: absolute; left: 150px; top: 310px; width: 780px; height: 400px; background: #fff; border-radius: 36px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.35); }
+    #bh-card-label { position: absolute; left: 0; top: 18px; width: 780px; text-align: center; font-weight: 800; font-size: 58px; color: var(--ink); line-height: 1.1; }
+    #bh-card-label b { color: var(--red); }
+    #bh-card-bar { position: absolute; left: 0; bottom: 0; width: 780px; height: 16px; background: var(--green); }
+    #bh-card-logo { position: absolute; left: 80px; top: 96px; width: 620px; }
+    #bh-shine { position: absolute; top: -40px; left: 0; width: 120px; height: 480px; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.85), rgba(255,255,255,0)); }
 
     /* ---------- B3 focal: giant number behind the head ---------- */
     #bh-focal { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
@@ -37,8 +47,16 @@
   <div id="root" data-composition-id="behind" data-width="1080" data-height="1920">
     <!-- B1 -->
     <div id="bh-title" class="clip" data-start="0.15" data-duration="2.45" data-layout-allow-overflow data-layout-allow-overlap>
-      <div id="bh-l1" class="bh-line"><span id="bh-l1s">สงวนไทย</span></div>
-      <div id="bh-l2" class="bh-line"><span id="bh-l2s">รถมือสอง</span></div>
+      <div id="bh-logo"><img id="bh-logo-img" src="assets/logo-usedcar-slogan.png" alt="" /></div>
+      <div id="bh-l2" class="bh-line"><span id="bh-l2s">สาขา<em>ลาดพร้าว</em></span></div>
+    </div>
+
+    <!-- B2 card (behind her head) -->
+    <div id="bh-card" class="clip" data-start="2.58" data-duration="2.16">
+      <div id="bh-card-label">บริษัท<b>ในเครือ</b></div>
+      <img id="bh-card-logo" src="assets/head-02.png" alt="" />
+      <div id="bh-shine"></div>
+      <div id="bh-card-bar"></div>
     </div>
 
     <!-- B3 -->
@@ -59,24 +77,26 @@
     </div>
     <video id="bh-ring" class="clip" src="assets/ring.webm" data-start="4.75" data-duration="2.0" data-media-start="4.75" muted playsinline></video>
 
-    <!-- CTA canvas -->
-    <div id="bh-cta" class="clip" data-start="11.0" data-duration="4.5" data-layout-allow-overflow>
-      <div id="bh-canvas"></div>
-      <div id="bh-cta-halo"></div>
-      <div id="bh-cta-red"></div>
-      <div id="bh-cta-green"></div>
-    </div>
   </div>
 
   <script>
     const tl = gsap.timeline({ paused: true });
 
     // ---------- B1: title rises behind her (word-timed) ----------
-    tl.fromTo("#bh-l1s", { yPercent: 60, opacity: 0, scale: 0.7 }, { yPercent: 0, opacity: 1, scale: 1, duration: 0.42, ease: "back.out(2)" }, 0.24);
-    tl.fromTo("#bh-l2s", { yPercent: 70, opacity: 0, scale: 0.6, rotation: -4 }, { yPercent: 0, opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.2)" }, 0.9);
+    tl.fromTo("#bh-logo", { y: 120, scale: 0.6, opacity: 0, rotation: -4 }, { y: 0, scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(1.9)" }, 0.22);
+    tl.fromTo("#bh-logo-img", { scale: 1.2 }, { scale: 1, duration: 0.6, ease: "expo.out" }, 0.3);
+    tl.fromTo("#bh-l2s", { yPercent: 70, opacity: 0, scale: 0.6, rotation: -4 }, { yPercent: 0, opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.2)" }, 1.46);
     tl.fromTo("#bh-title", { y: 0 }, { y: -60, duration: 2.3, ease: "none" }, 0.24);
-    tl.to("#bh-l1s", { xPercent: -120, opacity: 0, duration: 0.22, ease: "power3.in" }, 2.36);
+    tl.to("#bh-logo", { xPercent: -130, opacity: 0, duration: 0.22, ease: "power3.in" }, 2.36);
     tl.to("#bh-l2s", { xPercent: 120, opacity: 0, duration: 0.22, ease: "power3.in" }, 2.36);
+
+    // ---------- B2 card ----------
+    tl.fromTo("#bh-card", { scale: 0.6, opacity: 0, y: 80 }, { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.8)" }, 2.6);
+    tl.fromTo("#bh-card-label", { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.35, ease: "expo.out" }, 2.66);
+    tl.fromTo("#bh-card-logo", { scale: 1.25, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "expo.out" }, 3.56);
+    tl.fromTo("#bh-shine", { x: -160 }, { x: 940, duration: 0.6, ease: "power2.inOut" }, 3.8);
+    tl.fromTo("#bh-card-bar", { scaleX: 0, transformOrigin: "0 50%" }, { scaleX: 1, duration: 0.6, ease: "expo.out" }, 2.7);
+    tl.to("#bh-card", { scale: 0.8, opacity: 0, y: -40, duration: 0.2, ease: "power3.in" }, 4.52);
 
     // ---------- B3: burst + number roll 1 -> 10 ----------
     tl.fromTo("#bh-burst", { scale: 0.2, opacity: 0, rotation: 0 }, { scale: 1, opacity: 0.22, rotation: 40, duration: 2.0, ease: "expo.out" }, 4.75);
@@ -90,12 +110,6 @@
     tl.to("#bh-ring", { opacity: 0, duration: 0.2 }, 6.5);
     tl.to("#bh-num", { opacity: 0, scale: 1.4, duration: 0.18, ease: "power2.in" }, 6.55);
 
-    // ---------- CTA: white canvas opens from her centre ----------
-    tl.fromTo("#bh-canvas", { clipPath: "circle(0px at 540px 1150px)" }, { clipPath: "circle(1500px at 540px 1150px)", duration: 0.6, ease: "expo.inOut" }, 11.0);
-    tl.fromTo("#bh-canvas", { backgroundPosition: "0px 0px" }, { backgroundPosition: "0px -180px", duration: 4.5, ease: "none" }, 11.0);
-    tl.fromTo("#bh-cta-halo", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: "expo.out" }, 11.3);
-    tl.fromTo("#bh-cta-red", { xPercent: -110, rotation: -6 }, { xPercent: 0, rotation: -6, duration: 0.5, ease: "expo.out" }, 11.35);
-    tl.fromTo("#bh-cta-green", { xPercent: 110, rotation: -6 }, { xPercent: 0, rotation: -6, duration: 0.5, ease: "expo.out" }, 11.45);
 
     window.__timelines["behind"] = tl;
   </script>
