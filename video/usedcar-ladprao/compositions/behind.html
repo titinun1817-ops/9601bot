@@ -10,10 +10,10 @@
     #bh-title { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
     .bh-line { position: absolute; left: 0; width: 1080px; text-align: center; line-height: 1; white-space: nowrap; }
     .bh-line span { display: inline-block; }
-    #bh-logo { position: absolute; left: 80px; top: 680px; width: 920px; height: 240px; border-radius: 30px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.4); }
+    #bh-logo { position: absolute; left: 80px; top: 520px; width: 920px; height: 240px; border-radius: 30px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.4); }
     #bh-logo-top { position: absolute; left: 0; top: 0; width: 920px; height: 147px; overflow: hidden; }
     #bh-logo-img { width: 920px; display: block; } #bh-logo-sl { position: absolute; left: 0; top: 145px; width: 920px; height: 95px; background: #fff; text-align: center; font-weight: 700; font-size: 58px; line-height: 88px; color: #17181c; white-space: nowrap; } #bh-logo-sl b { color: var(--red); }
-    #bh-l2 { top: 985px; font-weight: 900; font-size: 142px; color: #fff;
+    #bh-l2 { top: 770px; font-weight: 900; font-size: 124px; color: #fff;
       -webkit-text-stroke: 12px #17181c; paint-order: stroke fill; text-shadow: 0 14px 40px rgba(0,0,0,.45); }
     #bh-l2 em { font-style: normal; color: var(--green); }
 
@@ -87,7 +87,6 @@
     tl.fromTo("#bh-logo-img", { scale: 1.2 }, { scale: 1, duration: 0.6, ease: "expo.out" }, 0.3);
     tl.fromTo("#bh-logo-slt", { yPercent: 120, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.4, ease: "expo.out" }, 0.55);
     tl.fromTo("#bh-l2s", { yPercent: 70, opacity: 0, scale: 0.6, rotation: -4 }, { yPercent: 0, opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.2)" }, 1.46);
-    tl.fromTo("#bh-title", { y: 0 }, { y: -60, duration: 2.3, ease: "none" }, 0.24);
     tl.to("#bh-logo", { xPercent: -130, opacity: 0, duration: 0.22, ease: "power3.in" }, 2.36);
     tl.to("#bh-l2s", { xPercent: 120, opacity: 0, duration: 0.22, ease: "power3.in" }, 2.36);
 
