@@ -1,0 +1,102 @@
+<template>
+  <style>
+    @font-face { font-family: "Kanit"; font-weight: 900; src: url("assets/fonts/Kanit-Black.ttf"); }
+    @font-face { font-family: "Kanit"; font-weight: 800; src: url("assets/fonts/Kanit-ExtraBold.ttf"); }
+    @font-face { font-family: "Kanit"; font-weight: 700; src: url("assets/fonts/Kanit-Bold.ttf"); }
+    #root { position: absolute; inset: 0; font-family: "Kanit", sans-serif; --red: #e3202a; --green: #5bb947; --ink: #17181c; }
+    .full { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+
+    /* ---------- B1 intro title behind the presenter ---------- */
+    #bh-title { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    .bh-line { position: absolute; left: 0; width: 1080px; text-align: center; line-height: 1; white-space: nowrap; }
+    .bh-line span { display: inline-block; }
+    #bh-l1 { top: 470px; font-weight: 900; font-size: 200px; color: #fff;
+      text-shadow: 0 10px 40px rgba(0,0,0,.45); }
+    #bh-l2 { top: 700px; font-weight: 900; font-size: 212px; color: var(--green);
+      -webkit-text-stroke: 10px #fff; paint-order: stroke fill; text-shadow: 0 14px 40px rgba(0,0,0,.4); }
+
+    /* ---------- B3 focal: giant number behind the head ---------- */
+    #bh-focal { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #bh-burst { position: absolute; left: 40px; top: -80px; width: 1000px; height: 1000px; }
+    #bh-num { position: absolute; left: 0; top: 40px; width: 1080px; text-align: center; font-weight: 900;
+      font-size: 760px; line-height: 1; color: var(--red); -webkit-text-stroke: 16px #fff; paint-order: stroke fill;
+      text-shadow: 0 30px 80px rgba(0,0,0,.45); font-variant-numeric: tabular-nums; }
+    #bh-ring { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+
+    /* ---------- CTA white canvas ---------- */
+    #bh-cta { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #bh-canvas { position: absolute; inset: 0; background-color: #ffffff;
+      background-image: linear-gradient(rgba(23,24,28,.05) 2px, transparent 2px), linear-gradient(90deg, rgba(23,24,28,.05) 2px, transparent 2px);
+      background-size: 90px 90px; background-position: 0 0; }
+    #bh-cta-red { position: absolute; left: -200px; top: 1560px; width: 1500px; height: 140px; background: var(--red); }
+    #bh-cta-green { position: absolute; left: -200px; top: 1700px; width: 1500px; height: 60px; background: var(--green); }
+    #bh-cta-halo { position: absolute; left: 190px; top: 760px; width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(227,32,42,.16) 0%, rgba(227,32,42,0) 68%); }
+  </style>
+
+  <div id="root" data-composition-id="behind" data-width="1080" data-height="1920">
+    <!-- B1 -->
+    <div id="bh-title" class="clip" data-start="0.15" data-duration="2.45" data-layout-allow-overflow data-layout-allow-overlap>
+      <div id="bh-l1" class="bh-line"><span id="bh-l1s">สงวนไทย</span></div>
+      <div id="bh-l2" class="bh-line"><span id="bh-l2s">รถมือสอง</span></div>
+    </div>
+
+    <!-- B3 -->
+    <div id="bh-focal" class="clip" data-start="4.75" data-duration="2.0" data-layout-allow-overflow>
+      <svg id="bh-burst" viewBox="-500 -500 1000 1000">
+        <g id="bh-rays" fill="#ffffff">
+          <path d="M0 0 L-38 -520 L38 -520 Z"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(22.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(45)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(67.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(90)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(112.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(135)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(157.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(180)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(202.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(225)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(247.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(270)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(292.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(315)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(337.5)"/>
+        </g>
+      </svg>
+      <div id="bh-num" data-layout-allow-overlap data-layout-allow-occlusion><span id="bh-numtxt">1</span></div>
+    </div>
+    <video id="bh-ring" class="clip" src="assets/ring.webm" data-start="4.75" data-duration="2.0" data-media-start="4.75" muted playsinline></video>
+
+    <!-- CTA canvas -->
+    <div id="bh-cta" class="clip" data-start="11.0" data-duration="4.5" data-layout-allow-overflow>
+      <div id="bh-canvas"></div>
+      <div id="bh-cta-halo"></div>
+      <div id="bh-cta-red"></div>
+      <div id="bh-cta-green"></div>
+    </div>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    // ---------- B1: title rises behind her (word-timed) ----------
+    tl.fromTo("#bh-l1s", { yPercent: 60, opacity: 0, scale: 0.7 }, { yPercent: 0, opacity: 1, scale: 1, duration: 0.42, ease: "back.out(2)" }, 0.24);
+    tl.fromTo("#bh-l2s", { yPercent: 70, opacity: 0, scale: 0.6, rotation: -4 }, { yPercent: 0, opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.2)" }, 0.9);
+    tl.fromTo("#bh-title", { y: 0 }, { y: -60, duration: 2.3, ease: "none" }, 0.24);
+    tl.to("#bh-l1s", { xPercent: -120, opacity: 0, duration: 0.22, ease: "power3.in" }, 2.36);
+    tl.to("#bh-l2s", { xPercent: 120, opacity: 0, duration: 0.22, ease: "power3.in" }, 2.36);
+
+    // ---------- B3: burst + number roll 1 -> 10 ----------
+    tl.fromTo("#bh-burst", { scale: 0.2, opacity: 0, rotation: 0 }, { scale: 1, opacity: 0.22, rotation: 40, duration: 2.0, ease: "expo.out" }, 4.75);
+    tl.fromTo("#bh-num", { scale: 2.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "expo.out" }, 5.34);
+    const counter = { v: 1 };
+    const numEl = document.querySelector("#bh-numtxt");
+    tl.fromTo(counter, { v: 1 }, { v: 10, duration: 0.5, ease: "power2.out",
+      onUpdate: () => { numEl.textContent = String(Math.round(counter.v)); } }, 5.84);
+    tl.fromTo("#bh-num", { scale: 1 }, { scale: 1.12, duration: 0.11, yoyo: true, repeat: 1, ease: "power2.out" }, 6.3);
+    tl.fromTo("#bh-ring", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 4.75);
+    tl.to("#bh-ring", { opacity: 0, duration: 0.2 }, 6.5);
+    tl.to("#bh-num", { opacity: 0, scale: 1.4, duration: 0.18, ease: "power2.in" }, 6.55);
+
+    // ---------- CTA: white canvas opens from her centre ----------
+    tl.fromTo("#bh-canvas", { clipPath: "circle(0px at 540px 1150px)" }, { clipPath: "circle(1500px at 540px 1150px)", duration: 0.6, ease: "expo.inOut" }, 11.0);
+    tl.fromTo("#bh-canvas", { backgroundPosition: "0px 0px" }, { backgroundPosition: "0px -180px", duration: 4.5, ease: "none" }, 11.0);
+    tl.fromTo("#bh-cta-halo", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: "expo.out" }, 11.3);
+    tl.fromTo("#bh-cta-red", { xPercent: -110, rotation: -6 }, { xPercent: 0, rotation: -6, duration: 0.5, ease: "expo.out" }, 11.35);
+    tl.fromTo("#bh-cta-green", { xPercent: 110, rotation: -6 }, { xPercent: 0, rotation: -6, duration: 0.5, ease: "expo.out" }, 11.45);
+
+    window.__timelines["behind"] = tl;
+  </script>
+</template>

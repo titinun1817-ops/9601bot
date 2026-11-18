@@ -1,0 +1,63 @@
+<template>
+  <style>
+    @font-face { font-family: "Kanit"; font-weight: 800; src: url("assets/fonts/Kanit-ExtraBold.ttf"); }
+    #root { position: absolute; inset: 0; font-family: "Kanit", sans-serif; }
+    .grp { position: absolute; left: 0; top: 1220px; width: 1080px; height: 160px; display: flex; justify-content: center; align-items: center; gap: 22px; overflow: visible; }
+    .w { display: inline-block; font-weight: 800; font-size: 92px; line-height: 1; color: #fff; white-space: nowrap;
+      -webkit-text-stroke: 12px #17181c; paint-order: stroke fill; text-shadow: 0 8px 24px rgba(0,0,0,.45); }
+    .w.r .wi, .w.g .wi { display: inline-block; -webkit-text-stroke: 0; color: #fff; padding: 6px 26px 16px; border-radius: 22px; text-shadow: none;
+      box-shadow: 0 0 0 6px #fff, 0 10px 28px rgba(0,0,0,.4); }
+    .w.r .wi { background: #e3202a; }
+    .w.g .wi { background: #5bb947; }
+  </style>
+  <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
+    <div id="cp-g0" class="grp clip" data-start="0.2" data-duration="0.68" data-layout-allow-overflow><span id="cp-w0-0" class="w "><span class="wi">สงวนไทย</span></span></div>
+    <div id="cp-g1" class="grp clip" data-start="0.88" data-duration="0.58" data-layout-allow-overflow><span id="cp-w1-0" class="w g"><span class="wi">รถมือสอง</span></span></div>
+    <div id="cp-g2" class="grp clip" data-start="1.46" data-duration="1.09" data-layout-allow-overflow><span id="cp-w2-0" class="w "><span class="wi">สาขา</span></span><span id="cp-w2-1" class="w r"><span class="wi">ลาดพร้าว</span></span></div>
+    <div id="cp-g3" class="grp clip" data-start="2.56" data-duration="1.0" data-layout-allow-overflow><span id="cp-w3-0" class="w "><span class="wi">บริษัท</span></span><span id="cp-w3-1" class="w "><span class="wi">ในเครือ</span></span></div>
+    <div id="cp-g4" class="grp clip" data-start="3.56" data-duration="1.14" data-layout-allow-overflow><span id="cp-w4-0" class="w r"><span class="wi">อีซูซุ</span></span><span id="cp-w4-1" class="w "><span class="wi">สงวนไทย</span></span></div>
+    <div id="cp-g5" class="grp clip" data-start="4.7" data-duration="1.12" data-layout-allow-overflow><span id="cp-w5-0" class="w "><span class="wi">ผู้จำหน่าย</span></span><span id="cp-w5-1" class="w r"><span class="wi">อันดับหนึ่ง</span></span></div>
+    <div id="cp-g6" class="grp clip" data-start="5.82" data-duration="0.92" data-layout-allow-overflow><span id="cp-w6-0" class="w r"><span class="wi">10</span></span><span id="cp-w6-1" class="w "><span class="wi">ปีซ้อน</span></span></div>
+    <div id="cp-g7" class="grp clip" data-start="6.74" data-duration="1.12" data-layout-allow-overflow><span id="cp-w7-0" class="w "><span class="wi">อยู่</span></span><span id="cp-w7-1" class="w "><span class="wi">ชั้น</span></span><span id="cp-w7-2" class="w g"><span class="wi">2</span></span></div>
+    <div id="cp-g8" class="grp clip" data-start="7.86" data-duration="0.7" data-layout-allow-overflow><span id="cp-w8-0" class="w "><span class="wi">ตึก</span></span><span id="cp-w8-1" class="w "><span class="wi">เดียวกับ</span></span></div>
+    <div id="cp-g9" class="grp clip" data-start="8.56" data-duration="1.16" data-layout-allow-overflow><span id="cp-w9-0" class="w r"><span class="wi">อีซูซุ</span></span><span id="cp-w9-1" class="w "><span class="wi">สยามซิตี้</span></span></div>
+    <div id="cp-g10" class="grp clip" data-start="9.72" data-duration="1.28" data-layout-allow-overflow><span id="cp-w10-0" class="w "><span class="wi">ปากซอย</span></span><span id="cp-w10-1" class="w g"><span class="wi">ลาดพร้าว</span></span><span id="cp-w10-2" class="w g"><span class="wi">21</span></span></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#cp-w0-0", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 0.20);
+    tl.to("#cp-g0 .w", { opacity: 0, y: -16, duration: 0.1, ease: "power2.in" }, 0.78);
+    tl.fromTo("#cp-w1-0", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 0.86);
+    tl.to("#cp-g1 .w", { opacity: 0, y: -16, duration: 0.1, ease: "power2.in" }, 1.36);
+    tl.fromTo("#cp-w2-0", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 1.44);
+    tl.fromTo("#cp-w2-1", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 1.90);
+    tl.to("#cp-g2 .w", { opacity: 0, y: -16, duration: 0.1, ease: "power2.in" }, 2.45);
+    tl.fromTo("#cp-w3-0", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 2.54);
+    tl.fromTo("#cp-w3-1", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 3.10);
+    tl.to("#cp-g3 .w", { opacity: 0, y: -16, duration: 0.1, ease: "power2.in" }, 3.46);
+    tl.fromTo("#cp-w4-0", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 3.54);
+    tl.fromTo("#cp-w4-1", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 4.00);
+    tl.to("#cp-g4 .w", { opacity: 0, y: -16, duration: 0.1, ease: "power2.in" }, 4.60);
+    tl.fromTo("#cp-w5-0", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 4.68);
+    tl.fromTo("#cp-w5-1", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 5.30);
+    tl.to("#cp-g5 .w", { opacity: 0, y: -16, duration: 0.1, ease: "power2.in" }, 5.72);
+    tl.fromTo("#cp-w6-0", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 5.80);
+    tl.fromTo("#cp-w6-1", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 6.04);
+    tl.to("#cp-g6 .w", { opacity: 0, y: -16, duration: 0.1, ease: "power2.in" }, 6.64);
+    tl.fromTo("#cp-w7-0", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 6.72);
+    tl.fromTo("#cp-w7-1", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 7.24);
+    tl.fromTo("#cp-w7-2", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 7.48);
+    tl.to("#cp-g7 .w", { opacity: 0, y: -16, duration: 0.1, ease: "power2.in" }, 7.76);
+    tl.fromTo("#cp-w8-0", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 7.84);
+    tl.fromTo("#cp-w8-1", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 8.12);
+    tl.to("#cp-g8 .w", { opacity: 0, y: -16, duration: 0.1, ease: "power2.in" }, 8.46);
+    tl.fromTo("#cp-w9-0", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 8.54);
+    tl.fromTo("#cp-w9-1", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 9.02);
+    tl.to("#cp-g9 .w", { opacity: 0, y: -16, duration: 0.1, ease: "power2.in" }, 9.62);
+    tl.fromTo("#cp-w10-0", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 9.70);
+    tl.fromTo("#cp-w10-1", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 10.20);
+    tl.fromTo("#cp-w10-2", { y: 40, scale: 0.55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(2.6)" }, 10.72);
+    tl.to("#cp-g10 .w", { opacity: 0, y: -16, duration: 0.1, ease: "power2.in" }, 10.90);
+    window.__timelines["captions"] = tl;
+  </script>
+</template>
