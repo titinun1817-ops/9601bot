@@ -1,0 +1,189 @@
+<template>
+  <style>
+    @font-face { font-family: "Kanit"; font-weight: 900; src: url("assets/fonts/Kanit-Black.ttf"); }
+    @font-face { font-family: "Kanit"; font-weight: 800; src: url("assets/fonts/Kanit-ExtraBold.ttf"); }
+    @font-face { font-family: "Kanit"; font-weight: 700; src: url("assets/fonts/Kanit-Bold.ttf"); }
+    #root { position: absolute; inset: 0; font-family: "Kanit", sans-serif; --red: #e3202a; --green: #5bb947; --ink: #17181c; }
+    .full { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+
+    /* ---------- B1 intro title behind the presenter ---------- */
+    #bh-title { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    .bh-line { position: absolute; left: 0; width: 1080px; text-align: center; line-height: 1; white-space: nowrap; }
+    .bh-line span { display: inline-block; }
+    #bh-logo { position: absolute; left: 80px; top: 520px; width: 920px; height: 240px; border-radius: 30px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.4); }
+    #bh-logo-top { position: absolute; left: 0; top: 0; width: 920px; height: 147px; overflow: hidden; }
+    #bh-logo-img { width: 920px; display: block; } #bh-logo-sl { position: absolute; left: 0; top: 145px; width: 920px; height: 95px; background: #fff; text-align: center; font-weight: 700; font-size: 58px; line-height: 88px; color: #17181c; white-space: nowrap; } #bh-logo-sl b { color: var(--red); }
+    #bh-l2 { top: 828px; font-weight: 900; font-size: 124px; color: #fff;
+      -webkit-text-stroke: 12px #17181c; paint-order: stroke fill; text-shadow: 0 14px 40px rgba(0,0,0,.45); }
+    #bh-l2 em { font-style: normal; color: var(--green); }
+
+    /* ---------- B2 card ---------- */
+    #bh-card { position: absolute; left: 150px; top: 440px; width: 780px; height: 400px; background: #fff; border-radius: 36px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.35); }
+    #bh-card-label { position: absolute; left: 0; top: 18px; width: 780px; text-align: center; font-weight: 800; font-size: 58px; color: var(--ink); line-height: 1.1; }
+    #bh-card-label b { color: var(--red); }
+    #bh-card-bar { position: absolute; left: 0; bottom: 0; width: 780px; height: 16px; background: var(--green); }
+    #bh-card-logo { position: absolute; left: 80px; top: 96px; width: 620px; }
+    #bh-shine { position: absolute; top: -40px; left: 0; width: 120px; height: 480px; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.85), rgba(255,255,255,0)); }
+
+    /* ---------- B3 focal: giant number behind the head ---------- */
+    #bh-focal { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #bh-burst { position: absolute; left: 40px; top: 110px; width: 1000px; height: 1000px; }
+    #bh-num { position: absolute; left: 0; top: 230px; width: 1080px; text-align: center; font-weight: 900;
+      font-size: 760px; line-height: 1; color: var(--red); -webkit-text-stroke: 16px #fff; paint-order: stroke fill;
+      text-shadow: 0 0 60px rgba(255,255,255,.9), 0 30px 80px rgba(0,0,0,.45); font-variant-numeric: tabular-nums; }
+    #bh-fx { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #bh-flare { position: absolute; left: -210px; top: -140px; width: 1500px; height: 1500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,.95) 0%, rgba(255,255,255,.55) 18%, rgba(227,32,42,.25) 40%, rgba(227,32,42,0) 65%); }
+    .shock { position: absolute; left: 240px; top: 310px; width: 600px; height: 600px; border-radius: 50%; border: 18px solid #fff; }
+    #bh-shock2 { border-color: #e3202a; border-width: 12px; }
+    .cf { position: absolute; display: block; }
+    #bh-ring { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+
+    /* ---------- CTA white canvas ---------- */
+    #bh-cta { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #bh-canvas { position: absolute; inset: 0; background-color: #ffffff;
+      background-image: linear-gradient(rgba(23,24,28,.05) 2px, transparent 2px), linear-gradient(90deg, rgba(23,24,28,.05) 2px, transparent 2px);
+      background-size: 90px 90px; background-position: 0 0; }
+    #bh-cta-red { position: absolute; left: -200px; top: 1560px; width: 1500px; height: 140px; background: var(--red); }
+    #bh-cta-green { position: absolute; left: -200px; top: 1700px; width: 1500px; height: 60px; background: var(--green); }
+    #bh-cta-halo { position: absolute; left: 190px; top: 760px; width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(227,32,42,.16) 0%, rgba(227,32,42,0) 68%); }
+  </style>
+
+  <div id="root" data-composition-id="behind" data-width="1080" data-height="1920">
+   <div id="bh-shake" style="position:absolute;left:0;top:0;width:1080px;height:1920px">
+    <!-- B1 -->
+    <div id="bh-title" class="clip" data-start="0.112" data-duration="2.348" data-layout-allow-overflow data-layout-allow-overlap>
+      <div id="bh-l2" class="bh-line"><span id="bh-l2s">สาขา<em>ลาดพร้าว</em></span></div>
+    </div>
+
+    <!-- B2 card (behind her head) -->
+    <div id="bh-card" class="clip" data-start="2.438" data-duration="2.482">
+      <div id="bh-card-label">บริษัท<b>ในเครือ</b></div>
+      <img id="bh-card-logo" src="assets/head-02.png" alt="" />
+      <div id="bh-shine"></div>
+      <div id="bh-card-bar"></div>
+    </div>
+
+    <!-- B3 -->
+    <div id="bh-focal" class="clip" data-start="4.93" data-duration="2.47" data-layout-allow-overflow>
+      <svg id="bh-burst" viewBox="-500 -500 1000 1000">
+        <g id="bh-rays" fill="#ffffff">
+          <path d="M0 0 L-38 -520 L38 -520 Z"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(22.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(45)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(67.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(90)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(112.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(135)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(157.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(180)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(202.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(225)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(247.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(270)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(292.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(315)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(337.5)"/>
+        </g>
+      </svg>
+      <div id="bh-num" data-layout-allow-overlap data-layout-allow-occlusion><span id="bh-numtxt">1</span></div>
+    </div>
+    <div id="bh-fx" class="clip" data-start="6.286" data-duration="1.114" data-layout-allow-overflow data-layout-ignore>
+      <div id="bh-flare"></div>
+      <div id="bh-shock1" class="shock"></div>
+      <div id="bh-shock2" class="shock"></div>
+      <div id="bh-cf">
+        <i id="bcf0" class="cf" style="width:18px;height:16px;background:#ffffff;border-radius:3px;left:531px;top:602px"></i>
+        <i id="bcf1" class="cf" style="width:16px;height:11px;background:#ffffff;border-radius:3px;left:532px;top:605px"></i>
+        <i id="bcf2" class="cf" style="width:15px;height:23px;background:#ffffff;border-radius:3px;left:533px;top:599px"></i>
+        <i id="bcf3" class="cf" style="width:17px;height:19px;background:#ffffff;border-radius:3px;left:532px;top:601px"></i>
+        <i id="bcf4" class="cf" style="width:24px;height:23px;background:#ffffff;border-radius:50%;left:528px;top:599px"></i>
+        <i id="bcf5" class="cf" style="width:24px;height:30px;background:#ffffff;border-radius:3px;left:528px;top:595px"></i>
+        <i id="bcf6" class="cf" style="width:16px;height:21px;background:#ffffff;border-radius:3px;left:532px;top:600px"></i>
+        <i id="bcf7" class="cf" style="width:16px;height:24px;background:#ffffff;border-radius:3px;left:532px;top:598px"></i>
+        <i id="bcf8" class="cf" style="width:26px;height:38px;background:#ffffff;border-radius:50%;left:527px;top:591px"></i>
+        <i id="bcf9" class="cf" style="width:21px;height:19px;background:#ffffff;border-radius:3px;left:530px;top:601px"></i>
+        <i id="bcf10" class="cf" style="width:22px;height:27px;background:#5bb947;border-radius:50%;left:529px;top:597px"></i>
+        <i id="bcf11" class="cf" style="width:29px;height:40px;background:#ffffff;border-radius:3px;left:526px;top:590px"></i>
+        <i id="bcf12" class="cf" style="width:30px;height:46px;background:#ffffff;border-radius:3px;left:525px;top:587px"></i>
+        <i id="bcf13" class="cf" style="width:26px;height:13px;background:#ffffff;border-radius:50%;left:527px;top:604px"></i>
+        <i id="bcf14" class="cf" style="width:25px;height:28px;background:#ffffff;border-radius:3px;left:528px;top:596px"></i>
+        <i id="bcf15" class="cf" style="width:29px;height:46px;background:#ffffff;border-radius:3px;left:526px;top:587px"></i>
+        <i id="bcf16" class="cf" style="width:30px;height:14px;background:#ffffff;border-radius:3px;left:525px;top:603px"></i>
+        <i id="bcf17" class="cf" style="width:16px;height:20px;background:#ffffff;border-radius:3px;left:532px;top:600px"></i>
+        <i id="bcf18" class="cf" style="width:20px;height:27px;background:#ffffff;border-radius:3px;left:530px;top:597px"></i>
+        <i id="bcf19" class="cf" style="width:29px;height:21px;background:#e3202a;border-radius:3px;left:526px;top:600px"></i>
+        <i id="bcf20" class="cf" style="width:20px;height:16px;background:#ffffff;border-radius:3px;left:530px;top:602px"></i>
+        <i id="bcf21" class="cf" style="width:17px;height:25px;background:#ffffff;border-radius:3px;left:532px;top:598px"></i>
+        <i id="bcf22" class="cf" style="width:26px;height:25px;background:#5bb947;border-radius:3px;left:527px;top:598px"></i>
+        <i id="bcf23" class="cf" style="width:29px;height:34px;background:#ffffff;border-radius:3px;left:526px;top:593px"></i>
+        <i id="bcf24" class="cf" style="width:18px;height:17px;background:#e3202a;border-radius:3px;left:531px;top:602px"></i>
+        <i id="bcf25" class="cf" style="width:27px;height:38px;background:#ffffff;border-radius:3px;left:527px;top:591px"></i>
+        <i id="bcf26" class="cf" style="width:30px;height:18px;background:#5bb947;border-radius:3px;left:525px;top:601px"></i>
+        <i id="bcf27" class="cf" style="width:17px;height:18px;background:#ffffff;border-radius:50%;left:532px;top:601px"></i>
+        <i id="bcf28" class="cf" style="width:17px;height:17px;background:#ffffff;border-radius:3px;left:532px;top:602px"></i>
+        <i id="bcf29" class="cf" style="width:22px;height:21px;background:#ffffff;border-radius:3px;left:529px;top:600px"></i>
+        <i id="bcf30" class="cf" style="width:20px;height:28px;background:#5bb947;border-radius:3px;left:530px;top:596px"></i>
+        <i id="bcf31" class="cf" style="width:17px;height:25px;background:#ffffff;border-radius:50%;left:532px;top:598px"></i>
+        <i id="bcf32" class="cf" style="width:17px;height:15px;background:#e3202a;border-radius:3px;left:532px;top:603px"></i>
+        <i id="bcf33" class="cf" style="width:25px;height:20px;background:#ffffff;border-radius:3px;left:528px;top:600px"></i>
+        <i id="bcf34" class="cf" style="width:16px;height:9px;background:#ffffff;border-radius:50%;left:532px;top:606px"></i>
+        <i id="bcf35" class="cf" style="width:18px;height:25px;background:#ffffff;border-radius:3px;left:531px;top:598px"></i>
+        <i id="bcf36" class="cf" style="width:16px;height:12px;background:#e3202a;border-radius:3px;left:532px;top:604px"></i>
+        <i id="bcf37" class="cf" style="width:21px;height:11px;background:#ffffff;border-radius:3px;left:530px;top:605px"></i>
+        <i id="bcf38" class="cf" style="width:21px;height:32px;background:#ffffff;border-radius:3px;left:530px;top:594px"></i>
+        <i id="bcf39" class="cf" style="width:19px;height:14px;background:#ffffff;border-radius:3px;left:531px;top:603px"></i>
+        <i id="bcf40" class="cf" style="width:28px;height:16px;background:#ffffff;border-radius:3px;left:526px;top:602px"></i>
+        <i id="bcf41" class="cf" style="width:20px;height:28px;background:#ffffff;border-radius:3px;left:530px;top:596px"></i>
+        <i id="bcf42" class="cf" style="width:22px;height:20px;background:#ffffff;border-radius:3px;left:529px;top:600px"></i>
+        <i id="bcf43" class="cf" style="width:28px;height:18px;background:#ffffff;border-radius:3px;left:526px;top:601px"></i>
+      </div>
+    </div>
+    <video id="bh-ring" class="clip" src="assets/ring.webm" data-start="4.93" data-duration="2.47" data-media-start="4.93" muted playsinline></video>
+
+   </div>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    // ---------- B1: title rises behind her (word-timed) ----------
+    tl.fromTo("#bh-l2s", { yPercent: 70, opacity: 0, scale: 0.6, rotation: -4 }, { yPercent: 0, opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.2)" }, 1.36);
+    tl.to("#bh-l2s", { xPercent: 120, opacity: 0, duration: 0.22, ease: "power3.in" }, 2.198);
+
+    // ---------- B2 card ----------
+    tl.fromTo("#bh-card", { scale: 0.6, opacity: 0, y: 80 }, { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.8)" }, 2.46);
+    tl.fromTo("#bh-card-label", { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.35, ease: "expo.out" }, 2.544);
+    tl.fromTo("#bh-card-logo", { scale: 1.25, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "expo.out" }, 3.602);
+    tl.fromTo("#bh-shine", { x: -160 }, { x: 940, duration: 0.6, ease: "power2.inOut" }, 3.867);
+    tl.fromTo("#bh-card-bar", { scaleX: 0, transformOrigin: "0 50%" }, { scaleX: 1, duration: 0.6, ease: "expo.out" }, 2.601);
+    tl.to("#bh-card", { scale: 0.8, opacity: 0, y: -40, duration: 0.2, ease: "power3.in" }, 4.675);
+
+    // ---------- B3: burst + number roll 1 -> 10 ----------
+    tl.fromTo("#bh-burst", { scale: 0.2, opacity: 0, rotation: 0 }, { scale: 1, opacity: 0.22, rotation: 40, duration: 1.4, ease: "expo.out" }, 4.93);
+    tl.fromTo("#bh-burst", { scale: 1, opacity: 0.22, rotation: 40 }, { scale: 1.5, opacity: 0.55, rotation: 140, duration: 0.6, ease: "expo.out", immediateRender: false }, 6.773);
+    tl.fromTo("#bh-num", { scale: 2.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "expo.out" }, 5.9);
+    const counter = { v: 1 };
+    const numEl = document.querySelector("#bh-numtxt");
+    tl.fromTo(counter, { v: 1 }, { v: 10, duration: 0.3, ease: "power1.in",
+      onUpdate: () => { numEl.textContent = String(Math.round(counter.v)); } }, 6.32);
+    tl.fromTo("#bh-num", { scale: 1.55 }, { scale: 1, duration: 0.4, ease: "elastic.out(1, 0.45)", immediateRender: false }, 6.773);
+    const BCF = [[523, 34, 540, 473, 0.005], [-229, -243, 273, -263, 0.05], [539, -2, 723, -425, 0.043], [-236, -404, 295, -592, 0.045], [322, -259, 472, -352, 0.056], [-145, 375, 1256, 136, 0.013], [-511, -338, 486, 703, 0.028], [-478, -28, 748, 716, 0.025], [-341, 247, 1060, 531, 0.009], [361, -277, 558, 102, 0.044], [490, -182, 406, -248, 0.012], [136, 135, 1025, 374, 0.03], [-290, -503, 155, 673, 0.064], [275, -10, 718, -24, 0.048], [272, -45, 598, 579, 0.02], [-403, -26, 665, -511, 0.06], [410, -211, 405, 392, 0.073], [-25, 181, 810, -264, 0.043], [214, -496, 410, 340, 0.039], [-213, -611, -29, -5, 0.076], [-610, -136, 689, -717, 0.038], [105, -573, -47, -355, 0.035], [-10, -309, 376, -460, 0.002], [-258, 179, 713, -691, 0.064], [381, -435, 375, -205, 0.017], [478, -88, 579, 636, 0.047], [245, 39, 592, -345, 0.049], [-196, 123, 693, -503, 0.071], [-484, -403, 342, 187, 0.026], [-401, -318, 562, 711, 0.042], [173, 2, 581, -572, 0.054], [286, 135, 821, -428, 0.02], [-614, -190, 469, -390, 0.057], [-39, -357, 350, 182, 0.056], [270, -359, 458, -548, 0.021], [287, -568, 162, 111, 0.012], [89, -463, 364, -170, 0.075], [260, -384, 367, 412, 0.033], [317, -162, 414, -82, 0.05], [204, -553, 17, -683, 0.059], [164, -453, 127, 85, 0.078], [-127, -518, -22, -9, 0.079], [456, -16, 576, 316, 0.054], [-26, 28, 621, -47, 0.078]];
+    tl.fromTo("#bh-flare", { scale: 0.2, opacity: 0 }, { scale: 1.1, opacity: 1, duration: 0.18, ease: "expo.out" }, 6.773);
+    tl.to("#bh-flare", { opacity: 0, scale: 1.3, duration: 0.4, ease: "power2.in" }, 6.961);
+    tl.fromTo("#bh-shock1", { scale: 0.2, opacity: 1 }, { scale: 2.6, opacity: 0, duration: 0.55, ease: "expo.out" }, 6.773);
+    tl.fromTo("#bh-shock2", { scale: 0.2, opacity: 1 }, { scale: 2.1, opacity: 0, duration: 0.55, ease: "expo.out" }, 6.846);
+    BCF.forEach((d, i) => {
+      tl.fromTo("#bcf" + i, { x: 0, y: 0, rotation: 0, opacity: 0 }, { x: d[0], y: d[1], rotation: d[3] * 0.4, opacity: 1, duration: 0.3, ease: "expo.out" }, 6.773 + d[4]);
+      tl.to("#bcf" + i, { y: d[2], rotation: d[3], opacity: 0, duration: 0.5, ease: "power1.in" }, 7.087 + d[4]);
+    });
+    tl.fromTo("#bh-ring", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 4.93);
+    tl.to("#bh-ring", { opacity: 0, duration: 0.2 }, 7.139);
+    tl.to("#bh-num", { opacity: 0, scale: 1.4, duration: 0.18, ease: "power2.in" }, 7.201);
+
+
+    function shake(t0, amp, n) {
+      for (let i = 0; i < n; i++) {
+        const a = amp * (1 - i / n), sx = (i % 2 ? -1 : 1) * a, sy = (i % 3 === 0 ? 1 : -1) * a * 0.6;
+        tl.to("#bh-shake", { x: sx, y: sy, scale: 1 + amp * 0.0022, rotation: sx * 0.03, duration: 0.035, ease: "none" }, t0 + i * 0.035);
+      }
+      tl.to("#bh-shake", { x: 0, y: 0, scale: 1, rotation: 0, duration: 0.05, ease: "power1.out" }, t0 + n * 0.035);
+    }
+    tl.set("#bh-shake", { x: 0, y: 0, scale: 1, rotation: 0 }, 0.0);
+    shake(4.93, 14, 6); shake(5.9, 10, 5); shake(6.773, 30, 10);
+    window.__timelines["behind"] = tl;
+  </script>
+</template>
