@@ -55,6 +55,10 @@
       shake(5.54, 14, 6);
       shake(6.39, 10, 5);
       shake(7.695, 30, 10);
+      // no person cutout in the "10 ปีซ้อน" section: graphics sit above her head instead
+      tl.set("#camB", { opacity: 1 }, 0.0);
+      tl.set("#camB", { opacity: 0 }, 5.54);
+      tl.set("#camB", { opacity: 1 }, 8.25);
       window.__timelines["main"] = tl;
     </script>
   </body>
