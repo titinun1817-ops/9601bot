@@ -10,9 +10,8 @@
     #bh-title { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
     .bh-line { position: absolute; left: 0; width: 1080px; text-align: center; line-height: 1; white-space: nowrap; }
     .bh-line span { display: inline-block; }
-    #bh-logo { position: absolute; left: 80px; top: 520px; width: 920px; height: 240px; border-radius: 30px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.4); }
-    #bh-logo-top { position: absolute; left: 0; top: 0; width: 920px; height: 147px; overflow: hidden; }
-    #bh-logo-img { width: 920px; display: block; } #bh-logo-sl { position: absolute; left: 0; top: 145px; width: 920px; height: 95px; background: #fff; text-align: center; font-weight: 700; font-size: 58px; line-height: 88px; color: #17181c; white-space: nowrap; } #bh-logo-sl b { color: var(--red); }
+    #bh-logo { position: absolute; left: 90px; top: 530px; width: 900px; height: 225px; display: flex; align-items: center; justify-content: center; }
+        #bh-logo-img { width: 900px; display: block; filter: drop-shadow(0 6px 14px rgba(0,0,0,.45)); }
     #bh-l2 { top: 770px; font-weight: 900; font-size: 124px; color: #fff;
       -webkit-text-stroke: 12px #17181c; paint-order: stroke fill; text-shadow: 0 14px 40px rgba(0,0,0,.45); }
     #bh-l2 em { font-style: normal; color: var(--green); }
@@ -54,7 +53,7 @@
    <div id="bh-shake" style="position:absolute;left:0;top:0;width:1080px;height:1920px">
     <!-- B1 -->
     <div id="bh-title" class="clip" data-start="0.156" data-duration="2.434" data-layout-allow-overflow data-layout-allow-overlap>
-      <div id="bh-logo"><div id="bh-logo-top"><img id="bh-logo-img" src="assets/logo-usedcar.png" alt="" /></div><div id="bh-logo-sl"><span id="bh-logo-slt">รถสวย สภาพดี <b>เลขไมล์แท้</b></span></div></div>
+      <div id="bh-logo"><img id="bh-logo-img" src="assets/logo-usedcar-official.png" alt="" /></div>
       <div id="bh-l2" class="bh-line"><span id="bh-l2s">สาขา<em>ลาดพร้าว</em></span></div>
     </div>
 
@@ -144,7 +143,6 @@
     // ---------- B1: title rises behind her (word-timed) ----------
     tl.fromTo("#bh-logo", { y: 120, scale: 0.6, opacity: 0, rotation: -4 }, { y: 0, scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(1.9)" }, 0.229);
     tl.fromTo("#bh-logo-img", { scale: 1.2 }, { scale: 1, duration: 0.6, ease: "expo.out" }, 0.312);
-    tl.fromTo("#bh-logo-slt", { yPercent: 120, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.4, ease: "expo.out" }, 0.569);
     tl.fromTo("#bh-l2s", { yPercent: 70, opacity: 0, scale: 0.6, rotation: -4 }, { yPercent: 0, opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.2)" }, 1.451);
     tl.to("#bh-logo", { xPercent: -130, opacity: 0, duration: 0.22, ease: "power3.in" }, 2.408);
     tl.to("#bh-l2s", { xPercent: 120, opacity: 0, duration: 0.22, ease: "power3.in" }, 2.408);
