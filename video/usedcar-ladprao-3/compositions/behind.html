@@ -10,11 +10,11 @@
     #bh-title { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
     .bh-line { position: absolute; left: 0; width: 1080px; text-align: center; line-height: 1; white-space: nowrap; }
     .bh-line span { display: inline-block; }
-    #bh-logo { position: absolute; left: 90px; top: 530px; width: 900px; height: 225px; display: flex; align-items: center; justify-content: center; }
+    #bh-logo { position: absolute; left: 90px; top: 420px; width: 900px; height: 225px; display: flex; align-items: center; justify-content: center; }
         #bh-logo-img { width: 900px; display: block; filter: drop-shadow(0 6px 14px rgba(0,0,0,.45)); }
     #bh-logo2 { position: absolute; left: 90px; top: 420px; width: 900px; }
     #bh-logo2-img { width: 900px; display: block; filter: drop-shadow(0 6px 14px rgba(0,0,0,.45)); }
-    #bh-l2 { top: 770px; font-weight: 900; font-size: 124px; color: #fff;
+    #bh-l2 { top: 660px; font-weight: 900; font-size: 124px; color: #fff;
       -webkit-text-stroke: 12px #17181c; paint-order: stroke fill; text-shadow: 0 14px 40px rgba(0,0,0,.45); }
     #bh-l2 em { font-style: normal; color: var(--green); }
 
@@ -64,7 +64,7 @@
     // rank section: swap to the group logo, lift it and the branch line
     tl.to("#bh-logo", { scale: 0.7, opacity: 0, duration: 0.2, ease: "power2.in" }, 5.485);
     tl.fromTo("#bh-logo2", { scale: 0.6, opacity: 0, y: 40 }, { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.8)" }, 5.583);
-    tl.fromTo("#bh-l2", { y: 0 }, { y: -110, duration: 0.45, ease: "power3.out" }, 5.583);
+    tl.fromTo("#bh-l2", { y: 0 }, { y: 0, duration: 0.45, ease: "power3.out" }, 5.583);
     tl.to("#bh-logo2", { xPercent: -130, opacity: 0, duration: 0.22, ease: "power3.in" }, 8.455);
     tl.to("#bh-l2s", { xPercent: 120, opacity: 0, duration: 0.22, ease: "power3.in" }, 8.455);
 
