@@ -7,7 +7,7 @@ def cam(t):
     for t0,t1,z0,z1,c0,c1,k in segs:
         if t<t1:
             e=ease((t-t0)/(t1-t0),k); return z0+(z1-z0)*e, c0+(c1-c0)*e
-dec=subprocess.Popen(['ffmpeg','-v','error','-ss','0.55','-i',src,'-t','15.8','-vf','fps=30','-pix_fmt','bgr24','-f','rawvideo','-'],stdout=subprocess.PIPE)
+dec=subprocess.Popen(['ffmpeg','-v','error','-ss','0.3','-i',src,'-t','14.3','-vf','fps=30','-pix_fmt','bgr24','-f','rawvideo','-'],stdout=subprocess.PIPE)
 enc=subprocess.Popen(['ffmpeg','-v','error','-y','-f','rawvideo','-pix_fmt','bgr24','-s','1080x1920','-r','30','-i','-','-c:v','libx264','-crf','14','-preset','medium','-pix_fmt','yuv420p',out],stdin=subprocess.PIPE)
 n=0;cams=[]
 while True:

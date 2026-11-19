@@ -43,7 +43,7 @@
   <div id="root" data-composition-id="behind" data-width="1080" data-height="1920">
    <div id="bh-shake" style="position:absolute;left:0;top:0;width:1080px;height:1920px">
     <!-- B1 -->
-    <div id="bh-title" class="clip" data-start="0.156" data-duration="8.566" data-layout-allow-overflow data-layout-allow-overlap>
+    <div id="bh-title" class="clip" data-start="0.163" data-duration="7.791" data-layout-allow-overflow data-layout-allow-overlap>
       <div id="bh-logo"><img id="bh-logo-img" src="assets/logo-usedcar-official.png" alt="" /></div>
       <div id="bh-logo2"><img id="bh-logo2-img" src="assets/logo-usedcar-group.png" alt="" /></div>
       <div id="bh-l2" class="bh-line"><span id="bh-l2s">สาขา<em>ลาดพร้าว</em></span></div>
@@ -58,15 +58,15 @@
     const tl = gsap.timeline({ paused: true });
 
     // ---------- B1: title rises behind her (word-timed) ----------
-    tl.fromTo("#bh-logo", { y: 120, scale: 0.6, opacity: 0, rotation: -4 }, { y: 0, scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(1.9)" }, 0.229);
-    tl.fromTo("#bh-logo-img", { scale: 1.2 }, { scale: 1, duration: 0.6, ease: "expo.out" }, 0.312);
-    tl.fromTo("#bh-l2s", { yPercent: 70, opacity: 0, scale: 0.6, rotation: -4 }, { yPercent: 0, opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.2)" }, 1.451);
+    tl.fromTo("#bh-logo", { y: 120, scale: 0.6, opacity: 0, rotation: -4 }, { y: 0, scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(1.9)" }, 0.238);
+    tl.fromTo("#bh-logo-img", { scale: 1.2 }, { scale: 1, duration: 0.6, ease: "expo.out" }, 0.324);
+    tl.fromTo("#bh-l2s", { yPercent: 70, opacity: 0, scale: 0.6, rotation: -4 }, { yPercent: 0, opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.2)" }, 1.539);
     // rank section: swap to the group logo, lift it and the branch line
-    tl.to("#bh-logo", { scale: 0.7, opacity: 0, duration: 0.2, ease: "power2.in" }, 5.485);
-    tl.fromTo("#bh-logo2", { scale: 0.6, opacity: 0, y: 40 }, { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.8)" }, 5.583);
-    tl.fromTo("#bh-l2", { y: 0 }, { y: 0, duration: 0.45, ease: "power3.out" }, 5.583);
-    tl.to("#bh-logo2", { xPercent: -130, opacity: 0, duration: 0.22, ease: "power3.in" }, 8.455);
-    tl.to("#bh-l2s", { xPercent: 120, opacity: 0, duration: 0.22, ease: "power3.in" }, 8.455);
+    tl.to("#bh-logo", { scale: 0.7, opacity: 0, duration: 0.2, ease: "power2.in" }, 5.06);
+    tl.fromTo("#bh-logo2", { scale: 0.6, opacity: 0, y: 40 }, { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.8)" }, 5.141);
+    tl.fromTo("#bh-l2", { y: 0 }, { y: 0, duration: 0.45, ease: "power3.out" }, 5.141);
+    tl.to("#bh-logo2", { xPercent: -130, opacity: 0, duration: 0.22, ease: "power3.in" }, 7.358);
+    tl.to("#bh-l2s", { xPercent: 120, opacity: 0, duration: 0.22, ease: "power3.in" }, 7.358);
 
     // ---------- B2 card ----------
 
@@ -80,7 +80,7 @@
       tl.to("#bh-shake", { x: 0, y: 0, scale: 1, rotation: 0, duration: 0.05, ease: "power1.out" }, t0 + n * 0.035);
     }
     tl.set("#bh-shake", { x: 0, y: 0, scale: 1, rotation: 0 }, 0.0);
-    shake(5.54, 14, 6); shake(6.39, 10, 5); shake(7.3, 30, 10);
+    shake(5.105, 14, 6); shake(5.82, 10, 5); shake(6.21, 30, 10);
     window.__timelines["behind"] = tl;
   </script>
 </template>

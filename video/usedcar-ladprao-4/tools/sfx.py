@@ -1,6 +1,6 @@
 # Synthesized SFX track (deterministic). Writes assets/sfx.wav (48 kHz stereo, 13 s).
 import numpy as np, scipy.signal as sg, scipy.io.wavfile as wf, sys
-SR=48000; DUR=15.8; rng=np.random.default_rng(3)
+SR=48000; DUR=14.3; rng=np.random.default_rng(3)
 L=np.zeros(int(SR*DUR)); R=np.zeros_like(L)
 def t_(d): return np.arange(int(SR*d))/SR
 import json,os
