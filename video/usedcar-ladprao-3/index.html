@@ -37,9 +37,6 @@
         data-start="0.0" data-duration="15.8" data-track-index="3" data-track-kind="graphics"
         data-width="1080" data-height="1920"></div>
 
-      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html"
-        data-start="0.0" data-duration="15.8" data-track-index="4" data-track-kind="captions"
-        data-width="1080" data-height="1920"></div>
     </div>
     <script>
       const tl = gsap.timeline({ paused: true });
@@ -54,11 +51,7 @@
       tl.set(".cam", { x: 0, y: 0, scale: 1, rotation: 0 }, 0.0);
       shake(5.54, 14, 6);
       shake(6.39, 10, 5);
-      shake(7.695, 30, 10);
-      // no person cutout in the "10 ปีซ้อน" section: graphics sit above her head instead
-      tl.set("#camB", { opacity: 1 }, 0.0);
-      tl.set("#camB", { opacity: 0 }, 5.54);
-      tl.set("#camB", { opacity: 1 }, 8.25);
+      shake(7.3, 30, 10);
       window.__timelines["main"] = tl;
     </script>
   </body>

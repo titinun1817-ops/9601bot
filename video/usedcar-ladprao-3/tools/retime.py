@@ -1,6 +1,6 @@
 # Re-time a composition built for the first Ladprao clip onto this clip's speech (piecewise-linear).
 import re,sys,json,os,numpy as np
-A=json.load(open(os.path.join(os.path.dirname(__file__),'anchors.json')))
+A=json.load(open(os.path.join(os.path.dirname(__file__),os.environ.get('ANCHORS','anchors.json'))))
 _OLD=[(0,0),(0.24,0.18),(0.9,0.8),(1.48,1.38),(1.94,1.74),(2.6,2.46),(3.14,3.22),(3.58,3.62),(4.72,4.9),(4.75,4.93),
    (5.34,5.9),(5.84,6.32),(6.08,6.7),(6.75,7.4),(7.28,8.12),(7.52,8.28),(7.88,8.58),(8.16,8.86),(8.58,9.5),
    (9.74,10.64),(10.24,11.12),(10.76,11.44),(10.9,11.75),(13.0,13.4)]

@@ -1,11 +1,12 @@
 import cv2,numpy as np,json
-ref=256; start=249; end=474
+import sys
+ref,start,end=map(int,sys.argv[1:4])
 def g(n): return cv2.cvtColor(cv2.imread('frames/%04d.jpg'%n),cv2.COLOR_BGR2GRAY)
 r=g(ref); mask=np.zeros_like(r); mask[150:700,350:1000]=255
 p0=cv2.goodFeaturesToTrack(r,400,0.01,8,mask=mask)
 out={}
 for n in range(start,end+1):
-    if n>474: break
+    if n>end: break
     try: im=g(n)
     except: break
     p1,st,_=cv2.calcOpticalFlowPyrLK(r,im,p0,None,winSize=(31,31),maxLevel=4)
