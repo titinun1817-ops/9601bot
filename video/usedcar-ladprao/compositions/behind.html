@@ -12,6 +12,8 @@
     .bh-line span { display: inline-block; }
     #bh-logo { position: absolute; left: 90px; top: 530px; width: 900px; height: 225px; display: flex; align-items: center; justify-content: center; }
         #bh-logo-img { width: 900px; display: block; filter: drop-shadow(0 6px 14px rgba(0,0,0,.45)); }
+    #bh-logo2 { position: absolute; left: 90px; top: 420px; width: 900px; }
+    #bh-logo2-img { width: 900px; display: block; filter: drop-shadow(0 6px 14px rgba(0,0,0,.45)); }
     #bh-l2 { top: 770px; font-weight: 900; font-size: 124px; color: #fff;
       -webkit-text-stroke: 12px #17181c; paint-order: stroke fill; text-shadow: 0 14px 40px rgba(0,0,0,.45); }
     #bh-l2 em { font-style: normal; color: var(--green); }
@@ -43,6 +45,7 @@
     <!-- B1 -->
     <div id="bh-title" class="clip" data-start="0.15" data-duration="8.35" data-layout-allow-overflow data-layout-allow-overlap>
       <div id="bh-logo"><img id="bh-logo-img" src="assets/logo-usedcar-official.png" alt="" /></div>
+      <div id="bh-logo2"><img id="bh-logo2-img" src="assets/logo-usedcar-group.png" alt="" /></div>
       <div id="bh-l2" class="bh-line"><span id="bh-l2s">สาขา<em>ลาดพร้าว</em></span></div>
     </div>
 
@@ -58,7 +61,11 @@
     tl.fromTo("#bh-logo", { y: 120, scale: 0.6, opacity: 0, rotation: -4 }, { y: 0, scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(1.9)" }, 0.22);
     tl.fromTo("#bh-logo-img", { scale: 1.2 }, { scale: 1, duration: 0.6, ease: "expo.out" }, 0.3);
     tl.fromTo("#bh-l2s", { yPercent: 70, opacity: 0, scale: 0.6, rotation: -4 }, { yPercent: 0, opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.2)" }, 1.46);
-    tl.to("#bh-logo", { xPercent: -130, opacity: 0, duration: 0.22, ease: "power3.in" }, 8.28);
+    // rank section: swap to the group logo, lift it and the branch line
+    tl.to("#bh-logo", { scale: 0.7, opacity: 0, duration: 0.2, ease: "power2.in" }, 4.7);
+    tl.fromTo("#bh-logo2", { scale: 0.6, opacity: 0, y: 40 }, { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.8)" }, 4.78);
+    tl.fromTo("#bh-l2", { y: 0 }, { y: -110, duration: 0.45, ease: "power3.out" }, 4.78);
+    tl.to("#bh-logo2", { xPercent: -130, opacity: 0, duration: 0.22, ease: "power3.in" }, 8.28);
     tl.to("#bh-l2s", { xPercent: 120, opacity: 0, duration: 0.22, ease: "power3.in" }, 8.28);
 
     // ---------- B2 card ----------
