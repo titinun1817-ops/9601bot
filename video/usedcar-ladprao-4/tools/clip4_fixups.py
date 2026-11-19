@@ -3,7 +3,7 @@
 import json,re,sys,numpy as np
 A=json.load(open('tools/anchors_port.json'));xo,xn=zip(*A)
 f=lambda t: round(float(np.interp(t,xo,xn)),3)
-T=dict(card_logo=2.85, floor=7.85, loc=8.62, isz=9.5)   # speech-locked times (s): ชั้น 7.88, ตึก 8.62, อีซูซุ สยามซิตี้ 9.5
+T=dict(card_logo=2.41, floor=6.42, loc=7.05, isz=8.05)   # speech-locked (after dead-air cut): ชั้น 6.39, ตึก ~7.05, อีซูซุ สยามซิตี้ ~8.05
 CX=565                                                  # centre x of the ISUZU sign in this shot
 t0,t1=f(6.75),f(9.8); off=round(t0*30)
 p='compositions/front.html'; s=open(p).read()
