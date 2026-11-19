@@ -1,0 +1,86 @@
+<template>
+  <style>
+    @font-face { font-family: "Kanit"; font-weight: 900; src: url("assets/fonts/Kanit-Black.ttf"); }
+    @font-face { font-family: "Kanit"; font-weight: 800; src: url("assets/fonts/Kanit-ExtraBold.ttf"); }
+    @font-face { font-family: "Kanit"; font-weight: 700; src: url("assets/fonts/Kanit-Bold.ttf"); }
+    #root { position: absolute; inset: 0; font-family: "Kanit", sans-serif; --red: #e3202a; --green: #5bb947; --ink: #17181c; }
+    .full { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+
+    /* ---------- B1 intro title behind the presenter ---------- */
+    #bh-title { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    .bh-line { position: absolute; left: 0; width: 1080px; text-align: center; line-height: 1; white-space: nowrap; }
+    .bh-line span { display: inline-block; }
+    #bh-logo { position: absolute; left: 90px; top: 420px; width: 900px; height: 225px; display: flex; align-items: center; justify-content: center; }
+        #bh-logo-img { width: 900px; display: block; filter: drop-shadow(0 6px 14px rgba(0,0,0,.45)); }
+    #bh-logo2 { position: absolute; left: 90px; top: 420px; width: 900px; }
+    #bh-logo2-img { width: 900px; display: block; filter: drop-shadow(0 6px 14px rgba(0,0,0,.45)); }
+    #bh-l2 { top: 660px; font-weight: 900; font-size: 124px; color: #fff;
+      -webkit-text-stroke: 12px #17181c; paint-order: stroke fill; text-shadow: 0 14px 40px rgba(0,0,0,.45); }
+    #bh-l2 em { font-style: normal; color: var(--green); }
+
+    /* ---------- B2 card ---------- */
+    #bh-card { position: absolute; left: 150px; top: 310px; width: 780px; height: 400px; background: #fff; border-radius: 36px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.35); }
+    #bh-card-label { position: absolute; left: 0; top: 18px; width: 780px; text-align: center; font-weight: 800; font-size: 58px; color: var(--ink); line-height: 1.1; }
+    #bh-card-label b { color: var(--red); }
+    #bh-card-bar { position: absolute; left: 0; bottom: 0; width: 780px; height: 16px; background: var(--green); }
+    #bh-card-logo { position: absolute; left: 80px; top: 96px; width: 620px; }
+    #bh-shine { position: absolute; top: -40px; left: 0; width: 120px; height: 480px; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.85), rgba(255,255,255,0)); }
+
+    .cf { position: absolute; display: block; }
+    #bh-ring { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+
+    /* ---------- CTA white canvas ---------- */
+    #bh-cta { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #bh-canvas { position: absolute; inset: 0; background-color: #ffffff;
+      background-image: linear-gradient(rgba(23,24,28,.05) 2px, transparent 2px), linear-gradient(90deg, rgba(23,24,28,.05) 2px, transparent 2px);
+      background-size: 90px 90px; background-position: 0 0; }
+    #bh-cta-red { position: absolute; left: -200px; top: 1560px; width: 1500px; height: 140px; background: var(--red); }
+    #bh-cta-green { position: absolute; left: -200px; top: 1700px; width: 1500px; height: 60px; background: var(--green); }
+    #bh-cta-halo { position: absolute; left: 190px; top: 760px; width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(227,32,42,.16) 0%, rgba(227,32,42,0) 68%); }
+  </style>
+
+  <div id="root" data-composition-id="behind" data-width="1080" data-height="1920">
+   <div id="bh-shake" style="position:absolute;left:0;top:0;width:1080px;height:1920px">
+    <!-- B1 -->
+    <div id="bh-title" class="clip" data-start="0.156" data-duration="8.566" data-layout-allow-overflow data-layout-allow-overlap>
+      <div id="bh-logo"><img id="bh-logo-img" src="assets/logo-usedcar-official.png" alt="" /></div>
+      <div id="bh-logo2"><img id="bh-logo2-img" src="assets/logo-usedcar-group.png" alt="" /></div>
+      <div id="bh-l2" class="bh-line"><span id="bh-l2s">สาขา<em>ลาดพร้าว</em></span></div>
+    </div>
+
+
+
+   </div>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    // ---------- B1: title rises behind her (word-timed) ----------
+    tl.fromTo("#bh-logo", { y: 120, scale: 0.6, opacity: 0, rotation: -4 }, { y: 0, scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(1.9)" }, 0.229);
+    tl.fromTo("#bh-logo-img", { scale: 1.2 }, { scale: 1, duration: 0.6, ease: "expo.out" }, 0.312);
+    tl.fromTo("#bh-l2s", { yPercent: 70, opacity: 0, scale: 0.6, rotation: -4 }, { yPercent: 0, opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.2)" }, 1.451);
+    // rank section: swap to the group logo, lift it and the branch line
+    tl.to("#bh-logo", { scale: 0.7, opacity: 0, duration: 0.2, ease: "power2.in" }, 5.485);
+    tl.fromTo("#bh-logo2", { scale: 0.6, opacity: 0, y: 40 }, { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.8)" }, 5.583);
+    tl.fromTo("#bh-l2", { y: 0 }, { y: 0, duration: 0.45, ease: "power3.out" }, 5.583);
+    tl.to("#bh-logo2", { xPercent: -130, opacity: 0, duration: 0.22, ease: "power3.in" }, 8.455);
+    tl.to("#bh-l2s", { xPercent: 120, opacity: 0, duration: 0.22, ease: "power3.in" }, 8.455);
+
+    // ---------- B2 card ----------
+
+
+
+    function shake(t0, amp, n) {
+      for (let i = 0; i < n; i++) {
+        const a = amp * (1 - i / n), sx = (i % 2 ? -1 : 1) * a, sy = (i % 3 === 0 ? 1 : -1) * a * 0.6;
+        tl.to("#bh-shake", { x: sx, y: sy, scale: 1 + amp * 0.0022, rotation: sx * 0.03, duration: 0.035, ease: "none" }, t0 + i * 0.035);
+      }
+      tl.to("#bh-shake", { x: 0, y: 0, scale: 1, rotation: 0, duration: 0.05, ease: "power1.out" }, t0 + n * 0.035);
+    }
+    tl.set("#bh-shake", { x: 0, y: 0, scale: 1, rotation: 0 }, 0.0);
+    shake(5.54, 14, 6); shake(6.39, 10, 5); shake(7.3, 30, 10);
+    window.__timelines["behind"] = tl;
+  </script>
+</template>
