@@ -37,9 +37,6 @@
         data-start="0" data-duration="13.0" data-track-index="3" data-track-kind="graphics"
         data-width="1080" data-height="1920"></div>
 
-      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html"
-        data-start="0" data-duration="13.0" data-track-index="4" data-track-kind="captions"
-        data-width="1080" data-height="1920"></div>
     </div>
     <script>
       const tl = gsap.timeline({ paused: true });
@@ -55,6 +52,10 @@
       shake(4.75, 14, 6);
       shake(5.34, 10, 5);
       shake(6.15, 30, 10);
+      // rank section: graphics sit low over her body, no cutout
+      tl.set("#camB", { opacity: 1 }, 0);
+      tl.set("#camB", { opacity: 0 }, 4.74);
+      tl.set("#camB", { opacity: 1 }, 6.75);
       window.__timelines["main"] = tl;
     </script>
   </body>
