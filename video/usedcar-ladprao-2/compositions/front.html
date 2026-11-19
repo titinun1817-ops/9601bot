@@ -32,10 +32,10 @@
 
     /* B3 */
     #fr-flash { left: 0; top: 0; width: 1080px; height: 1920px; background: #fff; }
-    #fr-rank { left: 0; top: 900px; width: 1080px; text-align: center; }
+    #fr-rank { left: 0; top: 290px; width: 1080px; text-align: center; }
     #fr-rank-pill { background: #fff; color: var(--ink); font-weight: 800; font-size: 64px; padding: 14px 40px 18px; }
     #fr-rank-pill b { color: var(--red); }
-    #fr-years { left: 0; top: 1005px; width: 1080px; text-align: center; font-weight: 900; font-size: 170px; line-height: 1; color: #fff;
+    #fr-years { left: 0; top: 1062px; width: 1080px; text-align: center; font-weight: 900; font-size: 140px; line-height: 1; color: #fff;
       -webkit-text-stroke: 12px var(--ink); paint-order: stroke fill; text-shadow: 0 14px 40px rgba(0,0,0,.5); white-space: nowrap; }
     .cf { position: absolute; display: block; }
     .spk { position: absolute; width: 90px; height: 90px; }
@@ -71,12 +71,6 @@
     #fr-cta-logo img { width: 900px; display: block; }
     #fr-cta-slogan { left: 0; top: 500px; width: 1080px; text-align: center; font-weight: 700; font-size: 56px; color: var(--ink); line-height: 1; white-space: nowrap; }
     #fr-cta-slogan b { color: var(--red); }
-    #fr-footer { left: 0; top: 1496px; width: 1080px; height: 424px; background: #fff; border-radius: 44px 44px 0 0; box-shadow: 0 -16px 40px rgba(0,0,0,.25); overflow: hidden; }
-    #fr-ft-stripe { position: absolute; left: 0; top: 0; width: 1080px; height: 14px; background: linear-gradient(90deg, #e3202a 0 50%, #5bb947 50% 100%); }
-    #fr-ft-logo { position: absolute; left: 90px; top: 40px; width: 900px; height: 142px; overflow: hidden; border-radius: 18px; }
-    #fr-ft-img { width: 900px; display: block; }
-    #fr-ft-sl { position: absolute; left: 0; top: 196px; width: 1080px; text-align: center; font-weight: 800; font-size: 62px; color: #17181c; line-height: 1; white-space: nowrap; }
-    #fr-ft-sl b { color: #e3202a; }
     #fr-cta-branch { left: 150px; top: 420px; width: 780px; }
     #fr-bc { position: relative; width: 780px; background: #fff; border-radius: 40px; padding: 26px 30px 30px; box-shadow: 0 24px 60px rgba(0,0,0,.4); overflow: hidden; }
     #fr-bc-top { display: flex; align-items: center; justify-content: center; gap: 16px; line-height: 1; height: 130px; }
@@ -153,7 +147,6 @@
       <svg id="fr-spk3" class="spk" style="left:800px;top:1060px" viewBox="-10 -10 20 20"><path fill="#5bb947" d="M0-10 2-2 10 0 2 2 0 10-2 2-10 0-2-2z"/></svg>
       <svg id="fr-spk4" class="spk" style="left:200px;top:1080px" viewBox="-10 -10 20 20"><path fill="#e3202a" d="M0-10 2-2 10 0 2 2 0 10-2 2-10 0-2-2z"/></svg>
     </div>
-    <div id="fr-years-bar" class="abs clip" data-start="6.573" data-duration="0.796"></div>
 
     <!-- B4/B5: pinned to the building (camera-tracked) -->
     <div id="fr-track" class="abs clip" data-start="7.4" data-duration="3.298" data-layout-allow-overflow data-layout-allow-overlap>
@@ -194,12 +187,6 @@
         สนใจทักแชท
       </span>
     </div>
-    <!-- brand footer: covers the logo burned into the source clip, so punch-ins stay clean -->
-    <div id="fr-footer" class="abs clip" data-start="0" data-duration="13.4" data-layout-allow-overflow>
-      <div id="fr-ft-stripe"></div>
-      <div id="fr-ft-logo"><img id="fr-ft-img" src="assets/logo-usedcar.png" alt="" /></div>
-      <div id="fr-ft-sl"><span id="fr-ft-slt">รถสวย สภาพดี <b>เลขไมล์แท้</b></span></div>
-    </div>
   </div>
 
   <script>
@@ -234,7 +221,6 @@
       tl.fromTo(el, { scale: 0, rotation: 0 }, { scale: 1.2, rotation: 90, duration: 0.2, ease: "back.out(3)" }, t);
       tl.to(el, { scale: 0, rotation: 180, duration: 0.25, ease: "power2.in" }, t + 0.25);
     });
-    tl.fromTo("#fr-years-bar", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 6.763);
 
     // B4/B5: tracked group follows the handheld camera
     const trackEl = document.querySelector("#fr-track");
@@ -302,9 +288,6 @@ tl.fromTo("#fr-map", { opacity: 0 }, { opacity: 1, duration: 0.05 }, 10.581);
     tl.fromTo("#fr-cta-pill", { scale: 0, rotation: -6 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.2)" }, 11.986);
     tl.fromTo("#fr-cta-pill", { scale: 1 }, { scale: 1.06, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 12.536);
 
-    tl.fromTo("#fr-ft-logo", { scale: 0.6, opacity: 0, y: 40 }, { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(2)" }, 0.16);
-    tl.fromTo("#fr-ft-slt", { yPercent: 120, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.4, ease: "expo.out" }, 0.6);
-    tl.fromTo("#fr-ft-stripe", { scaleX: 0, transformOrigin: "50% 50%" }, { scaleX: 1, duration: 0.5, ease: "expo.out" }, 0.05);
     window.__timelines["front"] = tl;
   </script>
 </template>
