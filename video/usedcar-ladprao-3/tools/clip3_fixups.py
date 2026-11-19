@@ -17,6 +17,8 @@ R=[("#fr-f2-dot { left: 816px; top: 536px;","#fr-f2-dot { left: 711px; top: 556p
 ("#fr-br-br { left: 720px; top: 560px;","#fr-br-br { left: 680px; top: 560px;"),
 ("#fr-isz-tag { left: 140px; top: 640px; }","#fr-isz-tag { left: 70px; top: 660px; }"),
 ("#fr-same { left: 0; top: 800px;","#fr-same { left: 0; top: 790px;")]
+# card logo right after the card lands (no empty white card)
+R.append(('tl.fromTo("#fr-card-logo", { scale: 1.25, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "expo.out" }, 4.085);','tl.fromTo("#fr-card-logo", { scale: 1.25, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "expo.out" }, 2.95);'))
 for a,b in R:
     assert a in s,a; s=s.replace(a,b)
 tr=sys.argv[1] if len(sys.argv)>1 else 'tools/track3.json'
