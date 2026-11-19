@@ -32,14 +32,14 @@
 
     /* B3 */
     #fr-flash { left: 0; top: 0; width: 1080px; height: 1920px; background: #fff; }
-    #fr-rank { left: 0; top: 960px; width: 1080px; text-align: center; }
+    #fr-rank { left: 0; top: 1075px; width: 1080px; text-align: center; }
     #fr-rank-pill { background: #fff; color: var(--ink); font-weight: 800; font-size: 64px; padding: 14px 40px 18px; }
     #fr-rank-pill b { color: var(--red); }
-    #fr-years { left: 0; top: 1560px; width: 1080px; text-align: center; font-weight: 900; font-size: 150px; line-height: 1; color: #fff;
+    #fr-years { left: 0; top: 1585px; width: 1080px; text-align: center; font-weight: 900; font-size: 140px; line-height: 1; color: #fff;
       -webkit-text-stroke: 12px var(--ink); paint-order: stroke fill; text-shadow: 0 14px 40px rgba(0,0,0,.5); white-space: nowrap; }
     .cf { position: absolute; display: block; }
     .spk { position: absolute; width: 90px; height: 90px; }
-    #fr-years-bar { left: 300px; top: 1730px; width: 480px; height: 22px; background: var(--red); border-radius: 11px; }
+    #fr-years-bar { left: 300px; top: 1745px; width: 480px; height: 22px; background: var(--red); border-radius: 11px; }
 
     /* B4/B5 tracked */
     #fr-track { left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 0 0; }
@@ -89,6 +89,17 @@
     #fr-cta-btn { left: 0; top: 1290px; width: 1080px; text-align: center; }
     #fr-cta-pill { background: var(--red); color: #fff; font-weight: 900; font-size: 92px; padding: 18px 60px 26px 44px; border: 8px solid #fff; }
     #fr-chat { width: 92px; height: 92px; }
+    /* ---------- B3 focal: giant number behind the head ---------- */
+    #bh-focal { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #bh-burst { position: absolute; left: 40px; top: 830px; width: 1000px; height: 1000px; }
+    #bh-num { position: absolute; left: 0; top: 1125px; width: 1080px; text-align: center; font-weight: 900;
+      font-size: 470px; line-height: 1; color: var(--red); -webkit-text-stroke: 16px #fff; paint-order: stroke fill;
+      text-shadow: 0 0 60px rgba(255,255,255,.9), 0 30px 80px rgba(0,0,0,.45); font-variant-numeric: tabular-nums; }
+    #bh-fx { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #bh-flare { position: absolute; left: -210px; top: 580px; width: 1500px; height: 1500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,.95) 0%, rgba(255,255,255,.55) 18%, rgba(227,32,42,.25) 40%, rgba(227,32,42,0) 65%); }
+    .shock { position: absolute; left: 240px; top: 1030px; width: 600px; height: 600px; border-radius: 50%; border: 18px solid #fff; }
+    #bh-shock2 { border-color: #e3202a; border-width: 12px; }
   </style>
 
   <div id="root" data-composition-id="front" data-width="1080" data-height="1920">
@@ -102,15 +113,82 @@
       <div id="fr-shine"></div>
       <div id="fr-card-bar"></div>
     </div>
-    <div id="fr-swipe2" class="swipe clip" data-start="6.53" data-duration="0.46" data-layout-allow-overflow data-layout-ignore>
+    <div id="fr-swipe2" class="swipe clip" data-start="8.3" data-duration="0.46" data-layout-allow-overflow data-layout-ignore>
       <div id="fr-s2w" class="sw sw-w"></div><div id="fr-s2r" class="sw sw-r"></div><div id="fr-s2g" class="sw sw-g"></div>
     </div>
 
 
     <!-- B3 -->
+    <!-- B3 -->
+    <div id="bh-focal" class="abs clip" data-start="4.75" data-duration="3.8" data-layout-allow-overflow>
+      <svg id="bh-burst" viewBox="-500 -500 1000 1000">
+        <g id="bh-rays" fill="#ffffff">
+          <path d="M0 0 L-38 -520 L38 -520 Z"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(22.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(45)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(67.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(90)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(112.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(135)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(157.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(180)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(202.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(225)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(247.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(270)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(292.5)"/>
+          <path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(315)"/><path d="M0 0 L-38 -520 L38 -520 Z" transform="rotate(337.5)"/>
+        </g>
+      </svg>
+      <div id="bh-num" data-layout-allow-overlap data-layout-allow-occlusion><span id="bh-numtxt">1</span></div>
+    </div>
+    <div id="bh-fx" class="abs clip" data-start="5.8" data-duration="0.95" data-layout-allow-overflow data-layout-ignore>
+      <div id="bh-flare"></div>
+      <div id="bh-shock1" class="shock"></div>
+      <div id="bh-shock2" class="shock"></div>
+      <div id="bh-cf">
+        <i id="bcf0" class="cf" style="width:18px;height:16px;background:#ffffff;border-radius:3px;left:531px;top:1322px"></i>
+        <i id="bcf1" class="cf" style="width:16px;height:11px;background:#ffffff;border-radius:3px;left:532px;top:1325px"></i>
+        <i id="bcf2" class="cf" style="width:15px;height:23px;background:#ffffff;border-radius:3px;left:533px;top:1319px"></i>
+        <i id="bcf3" class="cf" style="width:17px;height:19px;background:#ffffff;border-radius:3px;left:532px;top:1321px"></i>
+        <i id="bcf4" class="cf" style="width:24px;height:23px;background:#ffffff;border-radius:50%;left:528px;top:1319px"></i>
+        <i id="bcf5" class="cf" style="width:24px;height:30px;background:#ffffff;border-radius:3px;left:528px;top:1315px"></i>
+        <i id="bcf6" class="cf" style="width:16px;height:21px;background:#ffffff;border-radius:3px;left:532px;top:1320px"></i>
+        <i id="bcf7" class="cf" style="width:16px;height:24px;background:#ffffff;border-radius:3px;left:532px;top:1318px"></i>
+        <i id="bcf8" class="cf" style="width:26px;height:38px;background:#ffffff;border-radius:50%;left:527px;top:1311px"></i>
+        <i id="bcf9" class="cf" style="width:21px;height:19px;background:#ffffff;border-radius:3px;left:530px;top:1321px"></i>
+        <i id="bcf10" class="cf" style="width:22px;height:27px;background:#5bb947;border-radius:50%;left:529px;top:1317px"></i>
+        <i id="bcf11" class="cf" style="width:29px;height:40px;background:#ffffff;border-radius:3px;left:526px;top:1310px"></i>
+        <i id="bcf12" class="cf" style="width:30px;height:46px;background:#ffffff;border-radius:3px;left:525px;top:1307px"></i>
+        <i id="bcf13" class="cf" style="width:26px;height:13px;background:#ffffff;border-radius:50%;left:527px;top:1324px"></i>
+        <i id="bcf14" class="cf" style="width:25px;height:28px;background:#ffffff;border-radius:3px;left:528px;top:1316px"></i>
+        <i id="bcf15" class="cf" style="width:29px;height:46px;background:#ffffff;border-radius:3px;left:526px;top:1307px"></i>
+        <i id="bcf16" class="cf" style="width:30px;height:14px;background:#ffffff;border-radius:3px;left:525px;top:1323px"></i>
+        <i id="bcf17" class="cf" style="width:16px;height:20px;background:#ffffff;border-radius:3px;left:532px;top:1320px"></i>
+        <i id="bcf18" class="cf" style="width:20px;height:27px;background:#ffffff;border-radius:3px;left:530px;top:1317px"></i>
+        <i id="bcf19" class="cf" style="width:29px;height:21px;background:#e3202a;border-radius:3px;left:526px;top:1320px"></i>
+        <i id="bcf20" class="cf" style="width:20px;height:16px;background:#ffffff;border-radius:3px;left:530px;top:1322px"></i>
+        <i id="bcf21" class="cf" style="width:17px;height:25px;background:#ffffff;border-radius:3px;left:532px;top:1318px"></i>
+        <i id="bcf22" class="cf" style="width:26px;height:25px;background:#5bb947;border-radius:3px;left:527px;top:1318px"></i>
+        <i id="bcf23" class="cf" style="width:29px;height:34px;background:#ffffff;border-radius:3px;left:526px;top:1313px"></i>
+        <i id="bcf24" class="cf" style="width:18px;height:17px;background:#e3202a;border-radius:3px;left:531px;top:1322px"></i>
+        <i id="bcf25" class="cf" style="width:27px;height:38px;background:#ffffff;border-radius:3px;left:527px;top:1311px"></i>
+        <i id="bcf26" class="cf" style="width:30px;height:18px;background:#5bb947;border-radius:3px;left:525px;top:1321px"></i>
+        <i id="bcf27" class="cf" style="width:17px;height:18px;background:#ffffff;border-radius:50%;left:532px;top:1321px"></i>
+        <i id="bcf28" class="cf" style="width:17px;height:17px;background:#ffffff;border-radius:3px;left:532px;top:1322px"></i>
+        <i id="bcf29" class="cf" style="width:22px;height:21px;background:#ffffff;border-radius:3px;left:529px;top:1320px"></i>
+        <i id="bcf30" class="cf" style="width:20px;height:28px;background:#5bb947;border-radius:3px;left:530px;top:1316px"></i>
+        <i id="bcf31" class="cf" style="width:17px;height:25px;background:#ffffff;border-radius:50%;left:532px;top:1318px"></i>
+        <i id="bcf32" class="cf" style="width:17px;height:15px;background:#e3202a;border-radius:3px;left:532px;top:1323px"></i>
+        <i id="bcf33" class="cf" style="width:25px;height:20px;background:#ffffff;border-radius:3px;left:528px;top:1320px"></i>
+        <i id="bcf34" class="cf" style="width:16px;height:9px;background:#ffffff;border-radius:50%;left:532px;top:1326px"></i>
+        <i id="bcf35" class="cf" style="width:18px;height:25px;background:#ffffff;border-radius:3px;left:531px;top:1318px"></i>
+        <i id="bcf36" class="cf" style="width:16px;height:12px;background:#e3202a;border-radius:3px;left:532px;top:1324px"></i>
+        <i id="bcf37" class="cf" style="width:21px;height:11px;background:#ffffff;border-radius:3px;left:530px;top:1325px"></i>
+        <i id="bcf38" class="cf" style="width:21px;height:32px;background:#ffffff;border-radius:3px;left:530px;top:1314px"></i>
+        <i id="bcf39" class="cf" style="width:19px;height:14px;background:#ffffff;border-radius:3px;left:531px;top:1323px"></i>
+        <i id="bcf40" class="cf" style="width:28px;height:16px;background:#ffffff;border-radius:3px;left:526px;top:1322px"></i>
+        <i id="bcf41" class="cf" style="width:20px;height:28px;background:#ffffff;border-radius:3px;left:530px;top:1316px"></i>
+        <i id="bcf42" class="cf" style="width:22px;height:20px;background:#ffffff;border-radius:3px;left:529px;top:1320px"></i>
+        <i id="bcf43" class="cf" style="width:28px;height:18px;background:#ffffff;border-radius:3px;left:526px;top:1321px"></i>
+      </div>
+    </div>
     <div id="fr-flash" class="abs clip" data-start="4.74" data-duration="0.3" data-layout-ignore></div>
-    <div id="fr-rank" class="abs clip" data-start="4.72" data-duration="2.0"><span id="fr-rank-pill" class="pill shadow">ผู้จำหน่าย<b>อันดับ</b></span></div>
-    <div id="fr-years" class="abs clip" data-start="6.0" data-duration="0.72">ปีซ้อน</div>
+    <div id="fr-rank" class="abs clip" data-start="4.72" data-duration="3.83"><span id="fr-rank-pill" class="pill shadow">ผู้จำหน่ายยอดเยี่ยม <b>อันดับ 1</b></span></div>
+    <div id="fr-years" class="abs clip" data-start="6.0" data-duration="2.5">ปีซ้อน</div>
     <div id="fr-cfwrap" class="abs clip" data-start="6.15" data-duration="1.5" style="left:0;top:0;width:1080px;height:1920px" data-layout-allow-overflow data-layout-ignore>
         <i id="fcf0" class="cf" style="width:23px;height:16px;background:#5bb947;border-radius:50%;left:529px;top:1632px"></i>
         <i id="fcf1" class="cf" style="width:22px;height:30px;background:#ffffff;border-radius:50%;left:529px;top:1625px"></i>
@@ -151,10 +229,10 @@
       <svg id="fr-spk3" class="spk" style="left:900px;top:1680px" viewBox="-10 -10 20 20"><path fill="#5bb947" d="M0-10 2-2 10 0 2 2 0 10-2 2-10 0-2-2z"/></svg>
       <svg id="fr-spk4" class="spk" style="left:90px;top:1690px" viewBox="-10 -10 20 20"><path fill="#e3202a" d="M0-10 2-2 10 0 2 2 0 10-2 2-10 0-2-2z"/></svg>
     </div>
-    <div id="fr-years-bar" class="abs clip" data-start="6.0" data-duration="0.72"></div>
+    <div id="fr-years-bar" class="abs clip" data-start="6.0" data-duration="2.5"></div>
 
     <!-- B4/B5: pinned to the building (camera-tracked) -->
-    <div id="fr-track" class="abs clip" data-start="6.75" data-duration="3.05" data-layout-allow-overflow data-layout-allow-overlap>
+    <div id="fr-track" class="abs clip" data-start="8.36" data-duration="1.44" data-layout-allow-overflow data-layout-allow-overlap>
       <div id="fr-f2-pulse" class="abs"></div>
       <div id="fr-f2-dot" class="abs"></div>
       <div id="fr-f2-line" class="abs"></div>
@@ -214,13 +292,13 @@
     tl.fromTo("#fr-shine", { x: -160 }, { x: 900, duration: 0.6, ease: "power2.inOut" }, 3.8);
     tl.fromTo("#fr-card-bar", { scaleX: 0, transformOrigin: "0 50%" }, { scaleX: 1, duration: 0.6, ease: "expo.out" }, 2.7);
     tl.to("#fr-card", { scale: 0.8, opacity: 0, y: 60, duration: 0.2, ease: "power3.in" }, 4.52);
-    swipe("#fr-s2w", "#fr-s2r", "#fr-s2g", 6.53, -1);
+    swipe("#fr-s2w", "#fr-s2r", "#fr-s2g", 8.3, -1);
 
 
     // B3: single short flash on the snap zoom, rank label, "ปีซ้อน"
     tl.fromTo("#fr-flash", { opacity: 0.75 }, { opacity: 0, duration: 0.28, ease: "power2.out" }, 4.74);
     tl.fromTo("#fr-rank-pill", { y: -80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "back.out(2)" }, 4.76);
-    tl.to("#fr-rank-pill", { y: -60, opacity: 0, duration: 0.18, ease: "power2.in" }, 6.52);
+    tl.to("#fr-rank-pill", { y: -60, opacity: 0, duration: 0.18, ease: "power2.in" }, 8.3);
     tl.fromTo("#fr-years", { scale: 0.3, opacity: 0, rotation: -6 }, { scale: 1, opacity: 1, rotation: -3, duration: 0.3, ease: "back.out(2.4)" }, 6.06);
     tl.fromTo("#fr-years", { scale: 1.35 }, { scale: 1, duration: 0.35, ease: "elastic.out(1, 0.5)", immediateRender: false }, 6.36);
     const FCF = [[163, 195, 1298, -149, 0.04], [317, 171, 1327, -107, 0.024], [-137, -654, 303, -53, 0.058], [332, -641, 475, 715, 0.065], [-562, -465, 332, 699, 0.051], [-256, -19, 753, 368, 0.054], [406, -3, 943, 250, 0.02], [-267, -526, 750, -563, 0.038], [217, 17, 1105, -97, 0.05], [-170, -443, 983, 231, 0.037], [233, -242, 706, 317, 0.077], [493, 124, 1230, 16, 0.011], [373, -308, 730, -713, 0.076], [-253, 379, 1760, -28, 0.067], [388, -102, 849, -564, 0.029], [-280, -470, 810, -176, 0.035], [202, -638, 164, 414, 0.044], [413, 225, 1221, 406, 0.01], [33, 171, 1078, -475, 0.013], [-379, -124, 706, 155, 0.011], [-415, 245, 1288, -679, 0.06], [6, -561, 625, 17, 0.01], [335, -399, 947, 164, 0.076], [52, -741, 640, 283, 0.0], [3, 128, 1443, 349, 0.078], [41, -296, 674, 446, 0.074], [-547, 84, 1110, -105, 0.042], [-145, 92, 1210, 600, 0.067], [-108, -379, 444, 300, 0.071], [38, 65, 840, 141, 0.029], [-336, -211, 1061, -323, 0.018], [371, -469, 560, -605, 0.076], [-82, -416, 969, -77, 0.059], [-452, -193, 869, 55, 0.067]];
@@ -233,6 +311,28 @@
       tl.to(el, { scale: 0, rotation: 180, duration: 0.25, ease: "power2.in" }, t + 0.25);
     });
     tl.fromTo("#fr-years-bar", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 6.14);
+    tl.to(["#fr-years", "#fr-years-bar"], { opacity: 0, y: 40, duration: 0.2, ease: "power2.in" }, 8.3);
+
+    // ---------- B3: burst + number roll 1 -> 10 ----------
+    tl.fromTo("#bh-burst", { scale: 0.2, opacity: 0, rotation: 0 }, { scale: 1, opacity: 0.12, rotation: 40, duration: 1.4, ease: "expo.out" }, 4.75);
+    tl.fromTo("#bh-burst", { scale: 1, opacity: 0.12, rotation: 40 }, { scale: 1.5, opacity: 0.22, rotation: 140, duration: 0.6, ease: "expo.out", immediateRender: false }, 6.15);
+    tl.fromTo("#bh-num", { scale: 2.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "expo.out" }, 5.34);
+    const counter = { v: 1 };
+    const numEl = document.querySelector("#bh-numtxt");
+    tl.fromTo(counter, { v: 1 }, { v: 10, duration: 0.3, ease: "power1.in",
+      onUpdate: () => { numEl.textContent = String(Math.round(counter.v)); } }, 5.84);
+    tl.fromTo("#bh-num", { scale: 1.55 }, { scale: 1, duration: 0.4, ease: "elastic.out(1, 0.45)", immediateRender: false }, 6.15);
+    const BCF = [[523, 34, 540, 473, 0.005], [-229, -243, 273, -263, 0.05], [539, -2, 723, -425, 0.043], [-236, -404, 295, -592, 0.045], [322, -259, 472, -352, 0.056], [-145, 375, 1256, 136, 0.013], [-511, -338, 486, 703, 0.028], [-478, -28, 748, 716, 0.025], [-341, 247, 1060, 531, 0.009], [361, -277, 558, 102, 0.044], [490, -182, 406, -248, 0.012], [136, 135, 1025, 374, 0.03], [-290, -503, 155, 673, 0.064], [275, -10, 718, -24, 0.048], [272, -45, 598, 579, 0.02], [-403, -26, 665, -511, 0.06], [410, -211, 405, 392, 0.073], [-25, 181, 810, -264, 0.043], [214, -496, 410, 340, 0.039], [-213, -611, -29, -5, 0.076], [-610, -136, 689, -717, 0.038], [105, -573, -47, -355, 0.035], [-10, -309, 376, -460, 0.002], [-258, 179, 713, -691, 0.064], [381, -435, 375, -205, 0.017], [478, -88, 579, 636, 0.047], [245, 39, 592, -345, 0.049], [-196, 123, 693, -503, 0.071], [-484, -403, 342, 187, 0.026], [-401, -318, 562, 711, 0.042], [173, 2, 581, -572, 0.054], [286, 135, 821, -428, 0.02], [-614, -190, 469, -390, 0.057], [-39, -357, 350, 182, 0.056], [270, -359, 458, -548, 0.021], [287, -568, 162, 111, 0.012], [89, -463, 364, -170, 0.075], [260, -384, 367, 412, 0.033], [317, -162, 414, -82, 0.05], [204, -553, 17, -683, 0.059], [164, -453, 127, 85, 0.078], [-127, -518, -22, -9, 0.079], [456, -16, 576, 316, 0.054], [-26, 28, 621, -47, 0.078]];
+    tl.fromTo("#bh-flare", { scale: 0.2, opacity: 0 }, { scale: 1.1, opacity: 1, duration: 0.18, ease: "expo.out" }, 6.15);
+    tl.to("#bh-flare", { opacity: 0, scale: 1.3, duration: 0.4, ease: "power2.in" }, 6.33);
+    tl.fromTo("#bh-shock1", { scale: 0.2, opacity: 1 }, { scale: 2.6, opacity: 0, duration: 0.55, ease: "expo.out" }, 6.15);
+    tl.fromTo("#bh-shock2", { scale: 0.2, opacity: 1 }, { scale: 2.1, opacity: 0, duration: 0.55, ease: "expo.out" }, 6.22);
+    BCF.forEach((d, i) => {
+      tl.fromTo("#bcf" + i, { x: 0, y: 0, rotation: 0, opacity: 0 }, { x: d[0], y: d[1], rotation: d[3] * 0.4, opacity: 1, duration: 0.3, ease: "expo.out" }, 6.15 + d[4]);
+      tl.to("#bcf" + i, { y: d[2], rotation: d[3], opacity: 0, duration: 0.5, ease: "power1.in" }, 6.45 + d[4]);
+    });
+    tl.to("#bh-num", { opacity: 0, scale: 1.4, duration: 0.18, ease: "power2.in" }, 8.3);
+    tl.to("#bh-burst", { opacity: 0, scale: 1.8, duration: 0.25, ease: "power2.in" }, 8.28);
 
     // B4/B5: tracked group follows the handheld camera
     const trackEl = document.querySelector("#fr-track");
@@ -244,20 +344,20 @@
     }
     tl.fromTo(tp, { t: 6.75 }, { t: 9.8, duration: 3.05, ease: "none", onUpdate: applyTrack }, 6.75);
     // floor 2 (words "ชั้น" 7.28, "2" 7.52)
-    tl.fromTo("#fr-f2-dot", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, 7.0);
-    tl.fromTo("#fr-f2-pulse", { scale: 0.4, opacity: 1 }, { scale: 1.6, opacity: 0, duration: 0.9, ease: "power2.out" }, 7.05);
-    tl.fromTo("#fr-f2-pulse", { scale: 0.4, opacity: 1 }, { scale: 1.6, opacity: 0, duration: 0.9, ease: "power2.out", immediateRender: false }, 8.0);
-    tl.fromTo("#fr-f2-line", { scaleY: 0 }, { scaleY: 1, duration: 0.25, ease: "expo.out" }, 7.12);
-    tl.fromTo("#fr-f2-pill", { scale: 0, transformOrigin: "70% 0%" }, { scale: 1, duration: 0.4, ease: "back.out(2)" }, 7.24);
-    tl.fromTo("#fr-f2-num", { scale: 0.2, rotation: -20 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(3)" }, 7.5);
+    tl.fromTo("#fr-f2-dot", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, 8.42);
+    tl.fromTo("#fr-f2-pulse", { scale: 0.4, opacity: 1 }, { scale: 1.6, opacity: 0, duration: 0.9, ease: "power2.out" }, 8.45);
+    tl.fromTo("#fr-f2-pulse", { scale: 0.4, opacity: 1 }, { scale: 1.6, opacity: 0, duration: 0.9, ease: "power2.out", immediateRender: false }, 9.0);
+    tl.fromTo("#fr-f2-line", { scaleY: 0 }, { scaleY: 1, duration: 0.25, ease: "expo.out" }, 8.5);
+    tl.fromTo("#fr-f2-pill", { scale: 0, transformOrigin: "70% 0%" }, { scale: 1, duration: 0.4, ease: "back.out(2)" }, 8.56);
+    tl.fromTo("#fr-f2-num", { scale: 0.2, rotation: -20 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(3)" }, 8.68);
     // Isuzu Siam City sign: brackets close in at "ตึก" 7.88, label at "อีซูซุ" 8.58
-    tl.fromTo("#fr-br-tl", { x: -60, y: -60, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.35, ease: "expo.out" }, 7.9);
-    tl.fromTo("#fr-br-tr", { x: 60, y: -60, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.35, ease: "expo.out" }, 7.93);
-    tl.fromTo("#fr-br-bl", { x: -60, y: 60, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.35, ease: "expo.out" }, 7.96);
-    tl.fromTo("#fr-br-br", { x: 60, y: 60, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.35, ease: "expo.out" }, 7.99);
-    tl.fromTo("#fr-same-pill", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(2)" }, 8.1);
-    tl.fromTo("#fr-isz-pill", { x: -300, opacity: 0 }, { x: 0, opacity: 1, duration: 0.42, ease: "expo.out" }, 8.56);
-    tl.to(["#fr-f2-pill", "#fr-f2-dot", "#fr-f2-line", "#fr-isz-pill", "#fr-same-pill", "#fr-br"], { opacity: 0, scale: 0.8, duration: 0.2, ease: "power2.in", stagger: 0.02 }, 9.5);
+    tl.fromTo("#fr-br-tl", { x: -60, y: -60, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.35, ease: "expo.out" }, 8.7);
+    tl.fromTo("#fr-br-tr", { x: 60, y: -60, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.35, ease: "expo.out" }, 8.73);
+    tl.fromTo("#fr-br-bl", { x: -60, y: 60, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.35, ease: "expo.out" }, 8.76);
+    tl.fromTo("#fr-br-br", { x: 60, y: 60, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.35, ease: "expo.out" }, 8.79);
+    tl.fromTo("#fr-same-pill", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(2)" }, 8.8);
+    tl.fromTo("#fr-isz-pill", { x: -300, opacity: 0 }, { x: 0, opacity: 1, duration: 0.42, ease: "expo.out" }, 8.85);
+    tl.to(["#fr-f2-pill", "#fr-f2-dot", "#fr-f2-line", "#fr-isz-pill", "#fr-same-pill", "#fr-br"], { opacity: 0, scale: 0.8, duration: 0.2, ease: "power2.in", stagger: 0.02 }, 9.55);
 
     // B6 map (ปากซอย 9.74, ลาดพร้าว 21 10.24)
 tl.fromTo("#fr-map", { opacity: 0 }, { opacity: 1, duration: 0.05 }, 9.68);
