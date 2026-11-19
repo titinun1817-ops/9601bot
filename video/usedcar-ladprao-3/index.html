@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #17181c; }
+      #root { position: relative; width: 100%; height: 100%; }
+      #footage, #cutout { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+      #footage { z-index: 1; }
+      #behind { z-index: 2; }
+      #cutout { z-index: 3; }
+      #front { z-index: 4; }
+      #captions { z-index: 5; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0.0" data-duration="15.8" data-width="1080" data-height="1920">
+      <div id="camA" class="cam" style="position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:1">
+      <video id="footage" class="clip" src="assets/footage.mp4" data-start="0.0" data-duration="15.8" data-track-index="0" playsinline data-has-audio="true" data-volume="1"></video>
+      </div>
+
+      <div id="behind" data-composition-id="behind" data-composition-src="compositions/behind.html"
+        data-start="0.0" data-duration="15.8" data-track-index="1" data-track-kind="graphics"
+        data-width="1080" data-height="1920"></div>
+
+      <div id="camB" class="cam" style="position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:3">
+      <video id="cutout" class="clip" src="assets/cut.webm" data-start="0.0" data-duration="15.8" data-track-index="2"
+        muted playsinline data-layout-allow-occlusion></video>
+      </div>
+
+      <audio id="sfx" class="clip" src="assets/sfx.wav" data-start="0.0" data-duration="15.8" data-track-index="5" data-volume="0.6"></audio>
+
+      <div id="front" data-composition-id="front" data-composition-src="compositions/front.html"
+        data-start="0.0" data-duration="15.8" data-track-index="3" data-track-kind="graphics"
+        data-width="1080" data-height="1920"></div>
+
+      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html"
+        data-start="0.0" data-duration="15.8" data-track-index="4" data-track-kind="captions"
+        data-width="1080" data-height="1920"></div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      // camera shake on the big hits (footage + behind graphics + cutout move together)
+      function shake(t0, amp, n) {
+        for (let i = 0; i < n; i++) {
+          const a = amp * (1 - i / n), sx = (i % 2 ? -1 : 1) * a, sy = (i % 3 === 0 ? 1 : -1) * a * 0.6;
+          tl.to(".cam", { x: sx, y: sy, scale: 1 + amp * 0.0022, rotation: sx * 0.03, duration: 0.035, ease: "none" }, t0 + i * 0.035);
+        }
+        tl.to(".cam", { x: 0, y: 0, scale: 1, rotation: 0, duration: 0.05, ease: "power1.out" }, t0 + n * 0.035);
+      }
+      tl.set(".cam", { x: 0, y: 0, scale: 1, rotation: 0 }, 0.0);
+      shake(5.54, 14, 6);
+      shake(6.39, 10, 5);
+      shake(7.695, 30, 10);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

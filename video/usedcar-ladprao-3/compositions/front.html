@@ -1,0 +1,297 @@
+<template>
+  <style>
+    @font-face { font-family: "Kanit"; font-weight: 900; src: url("assets/fonts/Kanit-Black.ttf"); }
+    @font-face { font-family: "Kanit"; font-weight: 800; src: url("assets/fonts/Kanit-ExtraBold.ttf"); }
+    @font-face { font-family: "Kanit"; font-weight: 700; src: url("assets/fonts/Kanit-Bold.ttf"); }
+    @font-face { font-family: "Kanit"; font-weight: 600; src: url("assets/fonts/Kanit-SemiBold.ttf"); }
+    #root { position: absolute; inset: 0; font-family: "Kanit", sans-serif; --red: #e3202a; --green: #5bb947; --ink: #17181c; }
+    .abs { position: absolute; }
+    .pill { display: inline-flex; align-items: center; gap: 18px; border-radius: 999px; line-height: 1; white-space: nowrap; }
+    .shadow { box-shadow: 0 18px 50px rgba(0,0,0,.35); }
+
+
+    /* B1 branch pill */
+    #fr-branch { left: 0; top: 300px; width: 1080px; text-align: center; }
+    #fr-branch-pill { background: var(--red); color: #fff; font-weight: 800; font-size: 76px; padding: 18px 46px 22px 30px; border: 6px solid #fff; }
+    #fr-pin { width: 72px; height: 72px; }
+
+    /* swipes */
+    .swipe { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+    .sw { position: absolute; top: -400px; height: 2700px; transform-origin: 50% 50%; }
+    .sw-w { width: 1300px; background: #fff; }
+    .sw-r { width: 140px; background: var(--red); }
+    .sw-g { width: 70px; background: var(--green); }
+
+    /* B2 card */
+    #fr-card { left: 170px; top: 215px; width: 740px; height: 330px; background: #fff; border-radius: 34px; overflow: hidden; }
+    #fr-card-label { position: absolute; left: 0; top: 22px; width: 740px; text-align: center; font-weight: 800; font-size: 54px; color: var(--ink); line-height: 1.1; }
+    #fr-card-label b { color: var(--red); }
+    #fr-card-bar { position: absolute; left: 0; bottom: 0; width: 740px; height: 14px; background: var(--green); }
+    #fr-card-logo { position: absolute; left: 70px; top: 98px; width: 600px; }
+    #fr-shine { position: absolute; top: -40px; left: 0; width: 120px; height: 420px; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.85), rgba(255,255,255,0)); }
+
+    /* B3 */
+    #fr-flash { left: 0; top: 0; width: 1080px; height: 1920px; background: #fff; }
+    #fr-rank { left: 0; top: 820px; width: 1080px; text-align: center; }
+    #fr-rank-pill { background: #fff; color: var(--ink); font-weight: 800; font-size: 64px; padding: 14px 40px 18px; }
+    #fr-rank-pill b { color: var(--red); }
+    #fr-years { left: 0; top: 930px; width: 1080px; text-align: center; font-weight: 900; font-size: 170px; line-height: 1; color: #fff;
+      -webkit-text-stroke: 12px var(--ink); paint-order: stroke fill; text-shadow: 0 14px 40px rgba(0,0,0,.5); white-space: nowrap; }
+    .cf { position: absolute; display: block; }
+    .spk { position: absolute; width: 90px; height: 90px; }
+    #fr-years-bar { left: 300px; top: 1118px; width: 480px; height: 22px; background: var(--red); border-radius: 11px; }
+
+    /* B4/B5 tracked */
+    #fr-track { left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 0 0; }
+    #fr-f2-dot { left: 816px; top: 536px; width: 48px; height: 48px; border-radius: 50%; background: var(--green); border: 8px solid #fff; }
+    #fr-f2-pulse { left: 790px; top: 510px; width: 100px; height: 100px; border-radius: 50%; border: 6px solid #fff; }
+    #fr-f2-line { left: 837px; top: 584px; width: 6px; height: 90px; background: #fff; transform-origin: 50% 0; }
+    #fr-f2-tag { left: 640px; top: 670px; }
+    #fr-f2-pill { background: #fff; color: var(--ink); font-weight: 800; font-size: 72px; padding: 10px 14px 10px 36px; }
+    #fr-f2-num { display: inline-block; background: var(--green); color: #fff; border-radius: 22px; padding: 0 26px 8px; }
+    .br { position: absolute; width: 70px; height: 70px; border-color: #fff; border-style: solid; border-width: 0; }
+    #fr-br-tl { left: 380px; top: 170px; border-top-width: 12px; border-left-width: 12px; }
+    #fr-br-tr { left: 720px; top: 170px; border-top-width: 12px; border-right-width: 12px; }
+    #fr-br-bl { left: 380px; top: 560px; border-bottom-width: 12px; border-left-width: 12px; }
+    #fr-br-br { left: 720px; top: 560px; border-bottom-width: 12px; border-right-width: 12px; }
+    #fr-isz-tag { left: 140px; top: 640px; }
+    #fr-isz-pill { background: var(--red); color: #fff; font-weight: 800; font-size: 64px; padding: 14px 38px 18px; border: 6px solid #fff; }
+    #fr-same { left: 0; top: 800px; width: 1080px; text-align: center; }
+    #fr-same-pill { background: #fff; color: var(--ink); font-weight: 700; font-size: 50px; padding: 10px 32px 14px; }
+
+    /* B6 map */
+    #fr-map { left: 90px; top: 230px; width: 900px; height: 720px; }
+    #im-svg { position: absolute; left: 0; top: 0; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
+    #fr-map-label { left: 0; top: 600px; width: 900px; text-align: center; }
+    #fr-map-pill { background: #fff; color: var(--ink); font-weight: 900; font-size: 66px; padding: 12px 40px 18px; }
+    #fr-map-pill b { color: var(--green); }
+
+    /* CTA */
+    #fr-cta-logo { left: 90px; top: 230px; width: 900px; }
+    #fr-cta-logo img { width: 900px; display: block; }
+    #fr-cta-slogan { left: 0; top: 500px; width: 1080px; text-align: center; font-weight: 700; font-size: 56px; color: var(--ink); line-height: 1; white-space: nowrap; }
+    #fr-cta-slogan b { color: var(--red); }
+    #fr-cta-branch { left: 150px; top: 540px; width: 780px; }
+    #fr-bc { position: relative; width: 780px; background: #fff; border-radius: 40px; padding: 26px 30px 30px; box-shadow: 0 24px 60px rgba(0,0,0,.4); overflow: hidden; }
+    #fr-bc-top { display: flex; align-items: center; justify-content: center; gap: 16px; line-height: 1; height: 130px; }
+    #fr-bc-pin { flex: none; width: 70px; height: 88px; transform-origin: 50% 100%; }
+    #fr-bc-chip { background: var(--green); color: #fff; font-weight: 800; font-size: 58px; border-radius: 18px; padding: 6px 20px 14px; }
+    #fr-bc-name { font-weight: 900; font-size: 122px; color: var(--ink); white-space: nowrap; }
+    #fr-bc-phone { margin-top: 14px; height: 124px; background: var(--red); border-radius: 64px; display: flex; align-items: center; gap: 18px; padding: 0 30px 0 14px; }
+    #fr-bc-ic { width: 98px; height: 98px; border-radius: 50%; background: #fff; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+    #fr-bc-icsvg { width: 60px; height: 60px; }
+    #fr-bc-num { display: inline-flex; font-weight: 900; font-size: 84px; color: #fff; line-height: 1; height: 100px; align-items: center; font-variant-numeric: tabular-nums; letter-spacing: 1px; }
+    .fr-d { display: inline-block; height: 100px; overflow: hidden; padding-top: 4px; }
+    .fr-di { display: inline-block; }
+    #fr-bc-shine { position: absolute; top: -60px; left: 0; width: 130px; height: 480px; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.55), rgba(255,255,255,0)); transform: rotate(18deg); }
+    #fr-end-logo { left: 140px; top: 270px; width: 800px; }
+    #fr-end-logo img { width: 800px; display: block; filter: drop-shadow(0 14px 30px rgba(0,0,0,.4)); }
+    #fr-cta-btn { left: 0; top: 1290px; width: 1080px; text-align: center; }
+    #fr-cta-pill { background: var(--red); color: #fff; font-weight: 900; font-size: 92px; padding: 18px 60px 26px 44px; border: 8px solid #fff; }
+    #fr-chat { width: 92px; height: 92px; }
+  </style>
+
+  <div id="root" data-composition-id="front" data-width="1080" data-height="1920">
+
+
+    <!-- whip-style swipe transitions over the camera cuts -->
+    <div id="fr-swipe1" class="swipe clip" data-start="2.423" data-duration="0.594" data-layout-allow-overflow data-layout-ignore>
+      <div id="fr-s1w" class="sw sw-w"></div><div id="fr-s1r" class="sw sw-r"></div><div id="fr-s1g" class="sw sw-g"></div>
+    </div>
+    <div id="fr-swipe2" class="swipe clip" data-start="8.046" data-duration="0.575" data-layout-allow-overflow data-layout-ignore>
+      <div id="fr-s2w" class="sw sw-w"></div><div id="fr-s2r" class="sw sw-r"></div><div id="fr-s2g" class="sw sw-g"></div>
+    </div>
+
+
+    <!-- B3 -->
+    <div id="fr-flash" class="abs clip" data-start="5.53" data-duration="0.428" data-layout-ignore></div>
+    <div id="fr-rank" class="abs clip" data-start="5.51" data-duration="2.712"><span id="fr-rank-pill" class="pill shadow">ผู้จำหน่าย<b>อันดับ</b></span></div>
+    <div id="fr-years" class="abs clip" data-start="7.51" data-duration="0.712">ปีซ้อน</div>
+    <div id="fr-cfwrap" class="abs clip" data-start="7.695" data-duration="1.742" style="left:0;top:0;width:1080px;height:1920px" data-layout-allow-overflow data-layout-ignore>
+        <i id="fcf0" class="cf" style="width:23px;height:16px;background:#5bb947;border-radius:50%;left:529px;top:982px"></i>
+        <i id="fcf1" class="cf" style="width:22px;height:30px;background:#ffffff;border-radius:50%;left:529px;top:975px"></i>
+        <i id="fcf2" class="cf" style="width:18px;height:21px;background:#ffffff;border-radius:3px;left:531px;top:980px"></i>
+        <i id="fcf3" class="cf" style="width:18px;height:9px;background:#ffffff;border-radius:50%;left:531px;top:986px"></i>
+        <i id="fcf4" class="cf" style="width:14px;height:19px;background:#ffffff;border-radius:50%;left:533px;top:981px"></i>
+        <i id="fcf5" class="cf" style="width:17px;height:15px;background:#ffffff;border-radius:3px;left:532px;top:983px"></i>
+        <i id="fcf6" class="cf" style="width:30px;height:44px;background:#e3202a;border-radius:50%;left:525px;top:968px"></i>
+        <i id="fcf7" class="cf" style="width:20px;height:14px;background:#e3202a;border-radius:3px;left:530px;top:983px"></i>
+        <i id="fcf8" class="cf" style="width:20px;height:10px;background:#ffffff;border-radius:50%;left:530px;top:985px"></i>
+        <i id="fcf9" class="cf" style="width:17px;height:21px;background:#ffffff;border-radius:3px;left:532px;top:980px"></i>
+        <i id="fcf10" class="cf" style="width:23px;height:36px;background:#ffffff;border-radius:3px;left:529px;top:972px"></i>
+        <i id="fcf11" class="cf" style="width:20px;height:10px;background:#ffffff;border-radius:3px;left:530px;top:985px"></i>
+        <i id="fcf12" class="cf" style="width:25px;height:17px;background:#5bb947;border-radius:3px;left:528px;top:982px"></i>
+        <i id="fcf13" class="cf" style="width:27px;height:22px;background:#e3202a;border-radius:50%;left:527px;top:979px"></i>
+        <i id="fcf14" class="cf" style="width:23px;height:17px;background:#e3202a;border-radius:3px;left:529px;top:982px"></i>
+        <i id="fcf15" class="cf" style="width:17px;height:8px;background:#ffffff;border-radius:3px;left:532px;top:986px"></i>
+        <i id="fcf16" class="cf" style="width:27px;height:39px;background:#e3202a;border-radius:3px;left:527px;top:971px"></i>
+        <i id="fcf17" class="cf" style="width:28px;height:32px;background:#e3202a;border-radius:3px;left:526px;top:974px"></i>
+        <i id="fcf18" class="cf" style="width:22px;height:20px;background:#ffffff;border-radius:50%;left:529px;top:980px"></i>
+        <i id="fcf19" class="cf" style="width:29px;height:31px;background:#5bb947;border-radius:50%;left:526px;top:975px"></i>
+        <i id="fcf20" class="cf" style="width:16px;height:13px;background:#ffffff;border-radius:3px;left:532px;top:984px"></i>
+        <i id="fcf21" class="cf" style="width:26px;height:19px;background:#ffffff;border-radius:3px;left:527px;top:981px"></i>
+        <i id="fcf22" class="cf" style="width:20px;height:11px;background:#5bb947;border-radius:3px;left:530px;top:985px"></i>
+        <i id="fcf23" class="cf" style="width:15px;height:14px;background:#ffffff;border-radius:3px;left:533px;top:983px"></i>
+        <i id="fcf24" class="cf" style="width:28px;height:43px;background:#e3202a;border-radius:50%;left:526px;top:969px"></i>
+        <i id="fcf25" class="cf" style="width:28px;height:15px;background:#e3202a;border-radius:3px;left:526px;top:983px"></i>
+        <i id="fcf26" class="cf" style="width:22px;height:23px;background:#ffffff;border-radius:3px;left:529px;top:979px"></i>
+        <i id="fcf27" class="cf" style="width:14px;height:6px;background:#ffffff;border-radius:50%;left:533px;top:987px"></i>
+        <i id="fcf28" class="cf" style="width:14px;height:21px;background:#ffffff;border-radius:3px;left:533px;top:980px"></i>
+        <i id="fcf29" class="cf" style="width:27px;height:40px;background:#ffffff;border-radius:3px;left:527px;top:970px"></i>
+        <i id="fcf30" class="cf" style="width:30px;height:15px;background:#ffffff;border-radius:50%;left:525px;top:983px"></i>
+        <i id="fcf31" class="cf" style="width:29px;height:33px;background:#ffffff;border-radius:50%;left:526px;top:974px"></i>
+        <i id="fcf32" class="cf" style="width:18px;height:16px;background:#ffffff;border-radius:3px;left:531px;top:982px"></i>
+        <i id="fcf33" class="cf" style="width:19px;height:22px;background:#ffffff;border-radius:3px;left:531px;top:979px"></i>
+      <svg id="fr-spk1" class="spk" style="left:150px;top:880px" viewBox="-10 -10 20 20"><path fill="#fff" d="M0-10 2-2 10 0 2 2 0 10-2 2-10 0-2-2z"/></svg>
+      <svg id="fr-spk2" class="spk" style="left:850px;top:860px" viewBox="-10 -10 20 20"><path fill="#fff" d="M0-10 2-2 10 0 2 2 0 10-2 2-10 0-2-2z"/></svg>
+      <svg id="fr-spk3" class="spk" style="left:800px;top:1060px" viewBox="-10 -10 20 20"><path fill="#5bb947" d="M0-10 2-2 10 0 2 2 0 10-2 2-10 0-2-2z"/></svg>
+      <svg id="fr-spk4" class="spk" style="left:200px;top:1080px" viewBox="-10 -10 20 20"><path fill="#e3202a" d="M0-10 2-2 10 0 2 2 0 10-2 2-10 0-2-2z"/></svg>
+    </div>
+    <div id="fr-years-bar" class="abs clip" data-start="7.51" data-duration="0.712"></div>
+
+    <!-- B4/B5: pinned to the building (camera-tracked) -->
+    <div id="fr-track" class="abs clip" data-start="8.25" data-duration="3.732" data-layout-allow-overflow data-layout-allow-overlap>
+      <div id="fr-f2-pulse" class="abs"></div>
+      <div id="fr-f2-dot" class="abs"></div>
+      <div id="fr-f2-line" class="abs"></div>
+      <div id="fr-f2-tag" class="abs"><span id="fr-f2-pill" class="pill shadow">ชั้น <span id="fr-f2-num">2</span></span></div>
+      <div id="fr-br" class="abs" style="left:0;top:0;width:1080px;height:1920px">
+        <div id="fr-br-tl" class="br"></div><div id="fr-br-tr" class="br"></div><div id="fr-br-bl" class="br"></div><div id="fr-br-br" class="br"></div>
+      </div>
+      <div id="fr-isz-tag" class="abs"><span id="fr-isz-pill" class="pill shadow">อีซูซุ สยามซิตี้</span></div>
+      <div id="fr-same" class="abs"><span id="fr-same-pill" class="pill shadow">ตึกเดียวกัน</span></div>
+    </div>
+
+    <!-- B6 map -->
+    <div id="fr-map" class="abs clip" data-start="11.756" data-duration="2.415" data-layout-allow-overflow data-layout-allow-overlap>
+      <svg id="im-svg" width="900" height="620" viewBox="0 0 900 620" overflow="visible"><g id="im-slab"><polygon points="831.1,290.0 450.0,510.0 450.0,534.2 831.1,314.2" fill="#c9cdd4" /><polygon points="68.9,290.0 450.0,510.0 450.0,534.2 68.9,314.2" fill="#dfe2e7" /><polygon points="450.0,70.0 831.1,290.0 450.0,510.0 68.9,290.0" fill="#f3f4f6" /></g><g id="im-grass"><polygon points="450.0,83.2 625.3,184.4 419.5,303.2 244.2,202.0" fill="#e3f1df" /><polygon points="686.3,219.6 808.2,290.0 602.4,408.8 480.5,338.4" fill="#e3f1df" /><polygon points="168.0,246.0 526.2,452.8 450.0,496.8 91.8,290.0" fill="#e3f1df" /></g><g id="im-road1"><polygon points="221.4,202.0 602.4,422.0 549.1,452.8 168.0,232.8" fill="#3f434c" /><polyline points="194.7,217.4 575.7,437.4" stroke="#fff" stroke-width="4" stroke-dasharray="18 14" fill="none"/></g><g id="im-road2"><polygon points="648.1,184.4 686.3,206.4 457.6,338.4 419.5,316.4" fill="#4a4e57" /><polyline points="667.2,195.4 438.6,327.4" stroke="#fff" stroke-width="3" stroke-dasharray="12 10" fill="none"/></g><g id="im-b0"><polygon points="518.6,136.0 442.4,180.0 442.4,109.6 518.6,65.6" fill="#d3d7de" /><polygon points="373.8,140.4 442.4,180.0 442.4,109.6 373.8,70.0" fill="#e9ecf0" /><polygon points="450.0,26.0 518.6,65.6 442.4,109.6 373.8,70.0" fill="#ffffff" /><polyline points="381.4,120.2 434.8,151.0" stroke="#c4cad3" stroke-width="5" fill="none"/><polyline points="381.4,95.5 434.8,126.3" stroke="#c4cad3" stroke-width="5" fill="none"/></g><g id="im-b1"><polygon points="602.4,184.4 541.5,219.6 541.5,114.0 602.4,78.8" fill="#d3d7de" /><polygon points="472.9,180.0 541.5,219.6 541.5,114.0 472.9,74.4" fill="#e9ecf0" /><polygon points="533.8,39.2 602.4,78.8 541.5,114.0 472.9,74.4" fill="#ffffff" /><polyline points="480.5,147.4 533.8,178.2" stroke="#c4cad3" stroke-width="5" fill="none"/><polyline points="480.5,110.5 533.8,141.3" stroke="#c4cad3" stroke-width="5" fill="none"/></g><g id="im-b2"><polygon points="411.9,188.8 328.1,237.2 328.1,188.8 411.9,140.4" fill="#d3d7de" /><polygon points="267.1,202.0 328.1,237.2 328.1,188.8 267.1,153.6" fill="#e9ecf0" /><polygon points="350.9,105.2 411.9,140.4 328.1,188.8 267.1,153.6" fill="#ffffff" /><polyline points="274.7,189.5 320.4,215.9" stroke="#c4cad3" stroke-width="5" fill="none"/><polyline points="274.7,172.5 320.4,198.9" stroke="#c4cad3" stroke-width="5" fill="none"/></g><g id="im-b3"><polygon points="789.1,287.8 709.1,334.0 709.1,268.0 789.1,221.8" fill="#d3d7de" /><polygon points="617.7,281.2 709.1,334.0 709.1,268.0 617.7,215.2" fill="#e9ecf0" /><polygon points="697.7,169.0 789.1,221.8 709.1,268.0 617.7,215.2" fill="#ffffff" /><polyline points="625.3,262.5 701.5,306.5" stroke="#c4cad3" stroke-width="5" fill="none"/><polyline points="625.3,239.4 701.5,283.4" stroke="#c4cad3" stroke-width="5" fill="none"/></g><g id="im-b5"><polygon points="259.5,312.0 198.5,347.2 198.5,303.2 259.5,268.0" fill="#d3d7de" /><polygon points="114.7,298.8 198.5,347.2 198.5,303.2 114.7,254.8" fill="#e9ecf0" /><polygon points="175.6,219.6 259.5,268.0 198.5,303.2 114.7,254.8" fill="#ffffff" /><polyline points="122.3,287.8 190.9,327.4" stroke="#c4cad3" stroke-width="5" fill="none"/><polyline points="122.3,272.4 190.9,312.0" stroke="#c4cad3" stroke-width="5" fill="none"/></g><g id="im-b4"><polygon points="674.8,345.0 587.2,395.6 587.2,294.4 674.8,243.8" fill="#b3161e" /><polygon points="488.1,338.4 587.2,395.6 587.2,294.4 488.1,237.2" fill="#e3202a" /><polygon points="575.7,186.6 674.8,243.8 587.2,294.4 488.1,237.2" fill="#ffffff" /><polyline points="495.7,307.4 579.6,355.8" stroke="#ffffff" stroke-width="6" fill="none" opacity=".85"/><polyline points="495.7,272.0 579.6,320.4" stroke="#ffffff" stroke-width="6" fill="none" opacity=".85"/><polygon points="575.7,196.7 655.8,242.9 587.2,282.5 507.2,236.3" fill="#5bb947" /></g><g id="im-b6"><polygon points="350.9,364.8 290.0,400.0 290.0,316.4 350.9,281.2" fill="#d3d7de" /><polygon points="221.4,360.4 290.0,400.0 290.0,316.4 221.4,276.8" fill="#e9ecf0" /><polygon points="282.3,241.6 350.9,281.2 290.0,316.4 221.4,276.8" fill="#ffffff" /><polyline points="229.0,335.5 282.3,366.3" stroke="#c4cad3" stroke-width="5" fill="none"/><polyline points="229.0,306.3 282.3,337.1" stroke="#c4cad3" stroke-width="5" fill="none"/></g><g id="im-b7"><polygon points="491.9,450.6 438.6,481.4 438.6,428.6 491.9,397.8" fill="#d3d7de" /><polygon points="331.9,419.8 438.6,481.4 438.6,428.6 331.9,367.0" fill="#e9ecf0" /><polygon points="385.2,336.2 491.9,397.8 438.6,428.6 331.9,367.0" fill="#ffffff" /><polyline points="339.5,405.7 430.9,458.5" stroke="#c4cad3" stroke-width="5" fill="none"/><polyline points="339.5,387.2 430.9,440.0" stroke="#c4cad3" stroke-width="5" fill="none"/></g><g id="im-t0"><ellipse cx="434.8" cy="241.2" rx="16" ry="8" fill="rgba(0,0,0,.12)"/><rect x="431.8" y="215.2" width="6" height="22" fill="#8a6a4a"/><circle cx="434.8" cy="203.2" r="20" fill="#5bb947"/><circle cx="428.8" cy="197.2" r="9" fill="#7ccc6a"/></g><g id="im-t1"><ellipse cx="495.7" cy="241.2" rx="16" ry="8" fill="rgba(0,0,0,.12)"/><rect x="492.7" y="215.2" width="6" height="22" fill="#8a6a4a"/><circle cx="495.7" cy="203.2" r="20" fill="#5bb947"/><circle cx="489.7" cy="197.2" r="9" fill="#7ccc6a"/></g><g id="im-t2"><ellipse cx="381.4" cy="254.4" rx="16" ry="8" fill="rgba(0,0,0,.12)"/><rect x="378.4" y="228.4" width="6" height="22" fill="#8a6a4a"/><circle cx="381.4" cy="216.4" r="20" fill="#5bb947"/><circle cx="375.4" cy="210.4" r="9" fill="#7ccc6a"/></g><g id="im-t3"><ellipse cx="451.9" cy="424.9" rx="16" ry="8" fill="rgba(0,0,0,.12)"/><rect x="448.9" y="398.9" width="6" height="22" fill="#8a6a4a"/><circle cx="451.9" cy="386.9" r="20" fill="#5bb947"/><circle cx="445.9" cy="380.9" r="9" fill="#7ccc6a"/></g><g id="im-t4"><ellipse cx="223.3" cy="292.9" rx="16" ry="8" fill="rgba(0,0,0,.12)"/><rect x="220.3" y="266.9" width="6" height="22" fill="#8a6a4a"/><circle cx="223.3" cy="254.89999999999998" r="20" fill="#5bb947"/><circle cx="217.3" cy="248.89999999999998" r="9" fill="#7ccc6a"/></g><g id="im-t5"><ellipse cx="701.5" cy="351.2" rx="16" ry="8" fill="rgba(0,0,0,.12)"/><rect x="698.5" y="325.2" width="6" height="22" fill="#8a6a4a"/><circle cx="701.5" cy="313.2" r="20" fill="#5bb947"/><circle cx="695.5" cy="307.2" r="9" fill="#7ccc6a"/></g><g id="im-t6"><ellipse cx="400.5" cy="173.0" rx="16" ry="8" fill="rgba(0,0,0,.12)"/><rect x="397.5" y="147.0" width="6" height="22" fill="#8a6a4a"/><circle cx="400.5" cy="135.0" r="20" fill="#5bb947"/><circle cx="394.5" cy="129.0" r="9" fill="#7ccc6a"/></g><g id="im-lbl1"><rect x="201" y="244" width="170" height="44" rx="22" fill="#17181c"/><text x="286" y="278" text-anchor="middle" font-family="Kanit" font-weight="800" font-size="28" fill="#fff">ถ.ลาดพร้าว</text></g><g id="im-lbl2"><rect x="412" y="279" width="130" height="44" rx="22" fill="#17181c"/><text x="477" y="313" text-anchor="middle" font-family="Kanit" font-weight="800" font-size="28" fill="#fff">ซอย 21</text></g><ellipse id="im-pulse" cx="581.5" cy="240.5" rx="70" ry="35" fill="none" stroke="#e3202a" stroke-width="6"/><ellipse id="im-pinshadow" cx="581.5" cy="240.5" rx="22" ry="11" fill="rgba(0,0,0,.3)"/><g id="im-pin"><path transform="translate(545.5,128.5) scale(3)" fill="#e3202a" stroke="#fff" stroke-width="1.4" d="M12 1.5C6.8 1.5 2.8 5.5 2.8 10.6c0 6.6 9.2 17.4 9.2 17.4s9.2-10.8 9.2-17.4c0-5.1-4-9.1-9.2-9.1z"/><circle cx="581.5" cy="160.5" r="11" fill="#fff"/></g></svg>
+      <div id="fr-map-label" class="abs"><span id="fr-map-pill" class="pill shadow">ปากซอย<b>ลาดพร้าว 21</b></span></div>
+    </div>
+
+    <!-- end: contact info over the real footage -->
+    <div id="fr-end-logo" class="abs clip" data-start="14.0" data-duration="1.8"><img id="fr-end-logo-img" src="assets/logo-usedcar.png" alt="" /></div>
+    <div id="fr-cta-branch" class="abs clip" data-start="14.086" data-duration="1.714" data-layout-allow-overflow>
+      <div id="fr-bc">
+        <div id="fr-bc-top">
+          <svg id="fr-bc-pin" viewBox="0 0 24 30"><path fill="#e3202a" d="M12 1.5C6.8 1.5 2.8 5.5 2.8 10.6c0 6.6 9.2 17.4 9.2 17.4s9.2-10.8 9.2-17.4c0-5.1-4-9.1-9.2-9.1z"/><circle cx="12" cy="10.6" r="3.8" fill="#fff"/></svg>
+          <span id="fr-bc-chip">สาขา</span><span id="fr-bc-name">ลาดพร้าว</span>
+        </div>
+        <div id="fr-bc-phone">
+          <span id="fr-bc-ic"><svg id="fr-bc-icsvg" viewBox="0 0 24 24"><path fill="#e3202a" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></span>
+          <span id="fr-bc-num"><span class="fr-d"><span id="fr-d0" class="fr-di">0</span></span><span class="fr-d"><span id="fr-d1" class="fr-di">8</span></span><span class="fr-d"><span id="fr-d2" class="fr-di">6</span></span><span class="fr-d"><span id="fr-d3" class="fr-di">-</span></span><span class="fr-d"><span id="fr-d4" class="fr-di">7</span></span><span class="fr-d"><span id="fr-d5" class="fr-di">7</span></span><span class="fr-d"><span id="fr-d6" class="fr-di">2</span></span><span class="fr-d"><span id="fr-d7" class="fr-di">-</span></span><span class="fr-d"><span id="fr-d8" class="fr-di">3</span></span><span class="fr-d"><span id="fr-d9" class="fr-di">3</span></span><span class="fr-d"><span id="fr-d10" class="fr-di">3</span></span><span class="fr-d"><span id="fr-d11" class="fr-di">3</span></span></span>
+        </div>
+        <div id="fr-bc-shine"></div>
+      </div>
+    </div>
+    <div id="fr-cta-btn" class="abs clip" data-start="14.257" data-duration="1.543" data-layout-allow-overflow>
+      <span id="fr-cta-pill" class="pill shadow">
+        <svg id="fr-chat" viewBox="0 0 24 24"><path fill="#fff" d="M4 3h16a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm3 7a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01z"/></svg>
+        สนใจทักแชท
+      </span>
+    </div>
+  </div>
+
+  <script>
+    const TRACK=[[0.99165,0.00019,4.56,7.55],[0.99206,0.00029,4.38,7.11],[0.99278,0.00029,4.0,6.48],[0.99386,0.0002,3.38,5.52],[0.99535,0.00019,2.57,4.14],[0.99682,0.00016,1.77,2.81],[0.9983,7e-05,0.94,1.51],[1.0,0.0,0.0,0.0],[1.00186,-2e-05,-1.0,-1.63],[1.00372,-0.00012,-2.02,-3.3],[1.00558,-0.00034,-3.09,-4.86],[1.00737,-0.00022,-4.02,-6.55],[1.00919,-0.00031,-5.03,-8.16],[1.01111,-0.00034,-6.06,-9.9],[1.01295,-0.00043,-7.08,-11.55],[1.01472,-0.00045,-8.03,-13.11],[1.01636,-0.00049,-8.92,-14.6],[1.01779,-0.00057,-9.7,-15.87],[1.01906,-0.00062,-10.38,-16.98],[1.02009,-0.00065,-10.91,-17.88],[1.02078,-0.00078,-11.3,-18.39],[1.02129,-0.00088,-11.59,-18.74],[1.02136,-0.00101,-11.66,-18.69],[1.10368,-0.00075,-56.04,-68.11],[1.12971,-0.00075,-70.04,-82.73],[1.13792,-0.00071,-74.4,-87.24],[1.14037,-0.0008,-75.7,-88.48],[1.14112,-0.00068,-76.03,-88.86],[1.14143,-0.00086,-76.18,-88.84],[1.14142,-0.00075,-76.07,-88.85],[1.14136,-0.0007,-75.96,-88.81],[1.14122,-0.00063,-75.75,-88.7],[1.14117,-0.00063,-75.61,-88.69],[1.14102,-0.00062,-75.45,-88.59],[1.10568,-0.00073,-56.34,-66.3],[1.06404,-0.00093,-33.81,-39.02],[1.03766,-0.00103,-19.53,-21.27],[1.02066,-0.00106,-10.28,-9.62],[1.00971,-0.00114,-4.31,-1.95],[1.00268,-0.00119,-0.47,3.05],[0.9982,-0.00126,1.98,6.26],[0.99521,-0.00126,3.66,8.39],[0.99331,-0.00129,4.72,9.81],[0.992,-0.00131,5.46,10.84],[0.99117,-0.00138,5.91,11.57],[0.99053,-0.00143,6.28,12.17],[0.99015,-0.00151,6.47,12.64],[0.98978,-0.00155,6.66,13.1],[0.98956,-0.00163,6.75,13.44],[0.98921,-0.00167,6.93,13.82],[0.98921,-0.00179,6.87,14.09],[0.98931,-0.00192,6.74,14.38],[0.98975,-0.00199,6.48,14.5],[0.99029,-0.00214,6.1,14.69],[0.99109,-0.0022,5.64,14.74],[0.99196,-0.00236,5.1,14.9],[0.99302,-0.00247,4.46,14.98],[0.99428,-0.00258,3.7,14.93],[0.99568,-0.00274,2.84,14.95],[0.99719,-0.00289,1.89,14.83],[0.99877,-0.00302,0.91,14.77],[1.00063,-0.00312,-0.21,14.56],[1.00238,-0.00325,-1.29,14.47],[1.00432,-0.00333,-2.47,14.15],[1.00643,-0.00346,-3.72,13.82],[1.00856,-0.0035,-4.96,13.46],[1.01055,-0.00355,-6.07,13.27],[1.01256,-0.0037,-7.22,13.2],[1.01452,-0.00383,-8.31,13.16],[1.01644,-0.00401,-9.41,13.24],[1.0184,-0.00422,-10.53,13.3],[1.02026,-0.00447,-11.64,13.53],[1.02218,-0.00471,-12.77,13.61],[1.02406,-0.00488,-13.89,13.75],[1.02622,-0.00515,-15.14,13.59],[1.02785,-0.00543,-16.17,14.0],[1.0295,-0.00568,-17.18,14.25],[1.03103,-0.00594,-18.13,14.54],[1.03265,-0.00614,-19.14,14.81],[1.03404,-0.00642,-20.02,15.28],[1.03513,-0.00666,-20.67,15.71],[1.03628,-0.00689,-21.37,16.04],[1.03676,-0.00713,-21.64,16.76],[1.03758,-0.00744,-22.23,17.25],[1.0377,-0.00755,-22.41,18.13],[1.03827,-0.0078,-22.89,18.58],[1.0383,-0.00787,-23.0,19.18],[1.03847,-0.00832,-23.3,19.97],[1.03821,-0.0083,-23.2,20.52],[1.03837,-0.00889,-23.52,21.31],[1.03818,-0.00882,-23.44,21.65],[1.03869,-0.0092,-23.89,21.98],[1.03923,-0.00928,-24.29,22.06],[1.03979,-0.00909,-24.62,21.93],[1.04096,-0.00912,-25.34,21.66],[1.04248,-0.00965,-26.42,21.61],[1.04373,-0.0098,-27.26,21.35],[1.0427,-0.00909,-26.51,21.41],[1.04405,-0.0093,-27.4,21.22],[1.04898,-0.01107,-30.75,20.95],[1.04749,-0.00983,-29.65,20.54],[1.04945,-0.01014,-30.94,20.0],[1.05155,-0.01029,-32.24,19.21],[1.05356,-0.01051,-33.49,18.48],[1.0556,-0.01054,-34.67,17.64],[1.05742,-0.0109,-35.76,17.04],[1.06435,-0.01234,-40.45,14.75],[1.06611,-0.0122,-41.36,13.94],[1.06884,-0.01245,-43.0,12.83],[1.07058,-0.0126,-44.0,12.21],[1.07313,-0.01276,-45.49,11.2],[1.07509,-0.01277,-46.57,10.42],[1.07741,-0.01294,-47.88,9.62],[1.07902,-0.01303,-48.83,8.98],[1.08145,-0.01306,-50.19,8.01],[1.08284,-0.01316,-51.03,7.48],[1.08443,-0.01318,-51.91,6.89],[1.08594,-0.01315,-52.73,6.31],[1.0865,-0.01542,-52.88,8.74],[1.08769,-0.01531,-53.49,8.21],[1.08871,-0.01541,-54.04,7.94],[1.0896,-0.01519,-54.5,7.43],[1.09017,-0.01501,-54.78,7.17],[1.09049,-0.01495,-54.92,7.12],[1.17372,-0.01081,-99.51,-137.16],[1.09663,-0.01484,-58.34,-62.95],[1.04682,-0.01002,-30.13,-22.37],[1.01905,-0.00942,-15.0,3.93],[1.0011,-0.00923,-5.18,20.88],[0.98991,-0.00898,1.0,31.43],[0.98298,-0.00885,4.8,38.08],[0.97834,-0.00868,7.42,42.35],[0.97571,-0.00846,8.94,44.85],[0.97394,-0.00824,9.97,46.41],[0.97279,-0.00796,10.69,47.34],[0.97227,-0.00786,11.01,47.93],[0.97208,-0.0076,11.14,48.08],[0.97175,-0.00733,11.39,48.29],[0.97133,-0.00709,11.7,48.48],[0.97089,-0.00676,12.02,48.61],[0.97113,-0.00656,11.91,48.42],[0.97131,-0.0063,11.83,48.16],[0.97146,-0.00604,11.76,47.88],[0.97153,-0.00578,11.69,47.63],[0.97159,-0.00555,11.62,47.41],[0.97181,-0.0053,11.45,47.13],[0.97188,-0.00505,11.38,46.91],[0.9719,-0.00493,11.32,46.74],[0.97176,-0.00466,11.42,46.55],[0.97199,-0.00432,11.27,46.1],[0.97194,-0.0041,11.27,45.88],[0.97224,-0.00382,11.04,45.44],[0.97243,-0.00357,10.88,45.07],[0.97253,-0.00328,10.75,44.72],[0.97255,-0.00305,10.65,44.42],[0.97272,-0.00277,10.48,44.0],[0.97257,-0.00264,10.47,43.83],[0.97263,-0.00231,10.36,43.41],[0.97314,-0.00191,10.01,42.64],[0.97458,-0.00164,9.0,41.31],[0.97317,-0.00161,9.7,42.12],[0.97324,-0.00136,9.52,41.72],[0.97332,-0.00117,9.31,41.36],[0.97354,-0.00091,9.04,40.78],[0.97365,-0.00075,8.78,40.37],[0.97391,-0.0005,8.49,39.77],[0.9742,-0.00016,8.2,39.1],[0.97525,0.00033,7.5,37.82],[0.97537,0.00051,7.26,37.35],[0.97566,0.00081,7.0,36.63],[0.97597,0.00117,6.76,35.84],[0.97627,0.0015,6.52,35.04],[0.97663,0.00178,6.19,34.22],[0.9769,0.0021,5.94,33.4],[0.97728,0.00232,5.59,32.54],[0.97765,0.00291,5.44,31.54],[0.97811,0.00326,5.15,30.6],[0.97862,0.00376,4.89,29.44],[0.97908,0.00417,4.61,28.36],[0.97971,0.00466,4.21,27.02],[0.98006,0.00527,4.08,25.78],[0.98072,0.00602,3.85,24.16],[0.98123,0.00672,3.7,22.68],[0.98159,0.00739,3.66,21.25],[0.98525,0.00709,1.02,18.6],[0.98703,0.00811,0.15,15.54],[0.9891,0.00928,-0.78,12.05]];
+    const tl = gsap.timeline({ paused: true });
+
+
+
+    // swipes: skewed panels sweep across, fully covering the cut at mid-point
+    function swipe(w, r, g, t0, dir) {
+      const from = dir > 0 ? -1700 : 1500, to = dir > 0 ? 1500 : -1700;
+      [[g, 0], [r, 0.03], [w, 0.06]].forEach(([el, d]) => {
+        tl.fromTo(el, { x: from, rotation: 14 * dir }, { x: to, rotation: 14 * dir, duration: 0.4, ease: "power2.inOut" }, t0 + d);
+      });
+    }
+    swipe("#fr-s1w", "#fr-s1r", "#fr-s1g", 2.38, 1);
+    swipe("#fr-s2w", "#fr-s2r", "#fr-s2g", 6.53, -1);
+
+
+    // B3: single short flash on the snap zoom, rank label, "ปีซ้อน"
+    tl.fromTo("#fr-flash", { opacity: 0.75 }, { opacity: 0, duration: 0.28, ease: "power2.out" }, 5.53);
+    tl.fromTo("#fr-rank-pill", { y: -80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "back.out(2)" }, 5.554);
+    tl.to("#fr-rank-pill", { y: -60, opacity: 0, duration: 0.18, ease: "power2.in" }, 8.037);
+    tl.fromTo("#fr-years", { scale: 0.3, opacity: 0, rotation: -6 }, { scale: 1, opacity: 1, rotation: -3, duration: 0.3, ease: "back.out(2.4)" }, 7.6);
+    tl.fromTo("#fr-years", { scale: 1.35 }, { scale: 1, duration: 0.35, ease: "elastic.out(1, 0.5)", immediateRender: false }, 7.889);
+    const FCF = [[163, 195, 1298, -149, 0.04], [317, 171, 1327, -107, 0.024], [-137, -654, 303, -53, 0.058], [332, -641, 475, 715, 0.065], [-562, -465, 332, 699, 0.051], [-256, -19, 753, 368, 0.054], [406, -3, 943, 250, 0.02], [-267, -526, 750, -563, 0.038], [217, 17, 1105, -97, 0.05], [-170, -443, 983, 231, 0.037], [233, -242, 706, 317, 0.077], [493, 124, 1230, 16, 0.011], [373, -308, 730, -713, 0.076], [-253, 379, 1760, -28, 0.067], [388, -102, 849, -564, 0.029], [-280, -470, 810, -176, 0.035], [202, -638, 164, 414, 0.044], [413, 225, 1221, 406, 0.01], [33, 171, 1078, -475, 0.013], [-379, -124, 706, 155, 0.011], [-415, 245, 1288, -679, 0.06], [6, -561, 625, 17, 0.01], [335, -399, 947, 164, 0.076], [52, -741, 640, 283, 0.0], [3, 128, 1443, 349, 0.078], [41, -296, 674, 446, 0.074], [-547, 84, 1110, -105, 0.042], [-145, 92, 1210, 600, 0.067], [-108, -379, 444, 300, 0.071], [38, 65, 840, 141, 0.029], [-336, -211, 1061, -323, 0.018], [371, -469, 560, -605, 0.076], [-82, -416, 969, -77, 0.059], [-452, -193, 869, 55, 0.067]];
+    FCF.forEach((d, i) => {
+      tl.fromTo("#fcf" + i, { x: 0, y: 0, rotation: 0, opacity: 0, scale: 0.6 }, { x: d[0], y: d[1], rotation: d[3] * 0.4, opacity: 1, scale: 1, duration: 0.32, ease: "expo.out" }, 7.695 + d[4]);
+      tl.to("#fcf" + i, { y: d[2], x: d[0] * 1.15, rotation: d[3], opacity: 0, duration: 1.0, ease: "power1.in" }, 7.991 + d[4]);
+    });
+    [["#fr-spk1", 7.741], ["#fr-spk2", 7.815], ["#fr-spk3", 7.889], ["#fr-spk4", 7.945]].forEach(([el, t]) => {
+      tl.fromTo(el, { scale: 0, rotation: 0 }, { scale: 1.2, rotation: 90, duration: 0.2, ease: "back.out(3)" }, t);
+      tl.to(el, { scale: 0, rotation: 180, duration: 0.25, ease: "power2.in" }, t + 0.25);
+    });
+    tl.fromTo("#fr-years-bar", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 7.686);
+
+    // B4/B5: tracked group follows the handheld camera
+    const trackEl = document.querySelector("#fr-track");
+    const tp = { t: 8.25 };
+    function applyTrack() {
+      const i = Math.max(0, Math.min(TRACK.length - 1, Math.round(tp.t * 30) - 248));
+      const [a, b, x, y] = TRACK[i];
+      trackEl.style.transform = "matrix(" + a + "," + b + "," + (-b) + "," + a + "," + x + "," + y + ")";
+    }
+    tl.fromTo(tp, { t: 8.25 }, { t: 12.0, duration: 3.75, ease: "none", onUpdate: applyTrack }, 8.25);
+    // floor 2 (words "ชั้น" 7.28, "2" 7.52)
+    tl.fromTo("#fr-f2-dot", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, 8.637);
+    tl.fromTo("#fr-f2-pulse", { scale: 0.4, opacity: 1 }, { scale: 1.6, opacity: 0, duration: 0.9, ease: "power2.out" }, 8.714);
+    tl.fromTo("#fr-f2-pulse", { scale: 0.4, opacity: 1 }, { scale: 1.6, opacity: 0, duration: 0.9, ease: "power2.out", immediateRender: false }, 9.736);
+    tl.fromTo("#fr-f2-line", { scaleY: 0 }, { scaleY: 1, duration: 0.25, ease: "expo.out" }, 8.822);
+    tl.fromTo("#fr-f2-pill", { scale: 0, transformOrigin: "70% 0%" }, { scale: 1, duration: 0.4, ease: "back.out(2)" }, 9.008);
+    tl.fromTo("#fr-f2-num", { scale: 0.2, rotation: -20 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(3)" }, 9.327);
+    // Isuzu Siam City sign: brackets close in at "ตึก" 7.88, label at "อีซูซุ" 8.58
+    tl.fromTo("#fr-br-tl", { x: -60, y: -60, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.35, ease: "expo.out" }, 9.614);
+    tl.fromTo("#fr-br-tr", { x: 60, y: -60, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.35, ease: "expo.out" }, 9.651);
+    tl.fromTo("#fr-br-bl", { x: -60, y: 60, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.35, ease: "expo.out" }, 9.687);
+    tl.fromTo("#fr-br-br", { x: 60, y: 60, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.35, ease: "expo.out" }, 9.724);
+    tl.fromTo("#fr-same-pill", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(2)" }, 9.857);
+    tl.fromTo("#fr-isz-pill", { x: -300, opacity: 0 }, { x: 0, opacity: 1, duration: 0.42, ease: "expo.out" }, 10.463);
+    tl.to(["#fr-f2-pill", "#fr-f2-dot", "#fr-f2-line", "#fr-isz-pill", "#fr-same-pill", "#fr-br"], { opacity: 0, scale: 0.8, duration: 0.2, ease: "power2.in", stagger: 0.02 }, 11.569);
+
+    // B6 map (ปากซอย 9.74, ลาดพร้าว 21 10.24)
+tl.fromTo("#fr-map", { opacity: 0 }, { opacity: 1, duration: 0.05 }, 11.78);
+    tl.fromTo("#im-svg", { scale: 0.3, rotation: -12, y: 80, transformOrigin: "50% 60%" }, { scale: 1, rotation: 0, y: 0, duration: 0.45, ease: "back.out(1.5)" }, 11.78);
+    tl.fromTo("#im-svg", { y: 0 }, { y: -14, duration: 1.0, ease: "sine.inOut", immediateRender: false }, 12.708);
+    tl.fromTo("#im-road1", { opacity: 0, scaleX: 0, transformOrigin: "0% 50%" }, { opacity: 1, scaleX: 1, duration: 0.3, ease: "power3.out" }, 11.938);
+    tl.fromTo("#im-road2", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, 12.114);
+    tl.fromTo(["#im-lbl1","#im-lbl2"], { opacity: 0 }, { opacity: 1, duration: 0.2 }, 12.422);
+    tl.fromTo("#im-pin", { y: -320, opacity: 0 }, { y: 0, opacity: 1, duration: 0.42, ease: "bounce.out" }, 12.862);
+    tl.fromTo("#im-pinshadow", { scale: 0.2, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, duration: 0.3, ease: "power2.out" }, 12.862);
+    tl.fromTo("#im-pulse", { scale: 0.3, opacity: 1, transformOrigin: "50% 50%" }, { scale: 2.2, opacity: 0, duration: 0.6, ease: "expo.out" }, 13.125);
+    tl.fromTo("#fr-map-label", { y: 40, opacity: 0, scale: 0.8 }, { y: 0, opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 12.95);
+    tl.to("#fr-map", { scale: 0.7, opacity: 0, duration: 0.18, ease: "power3.in" }, 14.0);
+    tl.fromTo("#im-b0", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.32, ease: "back.out(1.7)" }, 12.114);
+    tl.fromTo("#im-b1", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.32, ease: "back.out(1.7)" }, 12.191);
+    tl.fromTo("#im-b2", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.32, ease: "back.out(1.7)" }, 12.268);
+    tl.fromTo("#im-b3", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.32, ease: "back.out(1.7)" }, 12.345);
+    tl.fromTo("#im-b5", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.32, ease: "back.out(1.7)" }, 12.422);
+    tl.fromTo("#im-b4", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.32, ease: "back.out(1.7)" }, 12.499);
+    tl.fromTo("#im-b6", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.32, ease: "back.out(1.7)" }, 12.576);
+    tl.fromTo("#im-b7", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.32, ease: "back.out(1.7)" }, 12.653);
+    tl.fromTo("#im-t0", { scale: 0, transformOrigin: "50% 100%" }, { scale: 1, duration: 0.3, ease: "back.out(2.5)" }, 12.422);
+    tl.fromTo("#im-t1", { scale: 0, transformOrigin: "50% 100%" }, { scale: 1, duration: 0.3, ease: "back.out(2.5)" }, 12.488);
+    tl.fromTo("#im-t2", { scale: 0, transformOrigin: "50% 100%" }, { scale: 1, duration: 0.3, ease: "back.out(2.5)" }, 12.554);
+    tl.fromTo("#im-t3", { scale: 0, transformOrigin: "50% 100%" }, { scale: 1, duration: 0.3, ease: "back.out(2.5)" }, 12.62);
+    tl.fromTo("#im-t4", { scale: 0, transformOrigin: "50% 100%" }, { scale: 1, duration: 0.3, ease: "back.out(2.5)" }, 12.686);
+    tl.fromTo("#im-t5", { scale: 0, transformOrigin: "50% 100%" }, { scale: 1, duration: 0.3, ease: "back.out(2.5)" }, 12.752);
+    tl.fromTo("#im-t6", { scale: 0, transformOrigin: "50% 100%" }, { scale: 1, duration: 0.3, ease: "back.out(2.5)" }, 12.818);
+
+    // end contact info
+    tl.fromTo("#fr-end-logo-img", { scale: 1.3, opacity: 0, y: -40 }, { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "expo.out" }, 14.0);
+    tl.fromTo("#fr-bc", { clipPath: "inset(50% 50% 50% 50% round 40px)", scale: 0.85 }, { clipPath: "inset(0% 0% 0% 0% round 40px)", scale: 1, duration: 0.45, ease: "expo.out" }, 14.086);
+    tl.fromTo("#fr-bc-pin", { y: -140, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "bounce.out" }, 14.154);
+    tl.fromTo("#fr-bc-chip", { scale: 0, rotation: -12 }, { scale: 1, rotation: 0, duration: 0.35, ease: "back.out(2.6)" }, 14.206);
+    tl.fromTo("#fr-bc-name", { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.4, ease: "expo.out" }, 14.257);
+    tl.fromTo("#fr-bc-phone", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.4, ease: "expo.out" }, 14.3);
+    tl.fromTo("#fr-bc-ic", { scale: 0 }, { scale: 1, duration: 0.35, ease: "back.out(3)" }, 14.429);
+    for (let i = 0; i < 12; i++) tl.fromTo("#fr-d" + i, { yPercent: 110 }, { yPercent: 0, duration: 0.32, ease: "back.out(1.6)" }, 14.446 + i * 0.035);
+    tl.fromTo("#fr-bc-icsvg", { rotation: 0 }, { rotation: -14, duration: 0.07, yoyo: true, repeat: 5, ease: "sine.inOut" }, 14.943);
+    tl.fromTo("#fr-bc-shine", { x: -200 }, { x: 980, duration: 0.7, ease: "power2.inOut" }, 15.029);
+    tl.fromTo("#fr-cta-pill", { scale: 0, rotation: -6 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.2)" }, 14.257);
+    tl.fromTo("#fr-cta-pill", { scale: 1 }, { scale: 1.06, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 14.857);
+
+    window.__timelines["front"] = tl;
+  </script>
+</template>
