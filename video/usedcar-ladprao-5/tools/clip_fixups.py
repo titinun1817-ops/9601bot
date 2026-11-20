@@ -38,6 +38,10 @@ for i,c in enumerate(['tl','tr','bl','br']):
 sub(r'tl\.fromTo\("#fr-same-pill".*?\);',f'tl.fromTo("#fr-loc-pill", {{ y: 40, scale: 0.6, opacity: 0 }}, {{ y: 0, scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2)" }}, {T["loc"]});')
 sub(r'tl\.fromTo\("#fr-isz-pill".*?\);',f'tl.fromTo("#fr-loc-b", {{ scale: 1 }}, {{ scale: 1.1, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }}, {T["isz"]});')
 sub(r'"#fr-isz-pill", "#fr-same-pill", "#fr-br"','"#fr-loc-pill", "#fr-br"')
+# end-card phone number for this clip (user-supplied): 092-915-4928
+PHONE='092-915-4928'
+for i,ch in enumerate(PHONE):
+    sub(rf'(<span id="fr-d{i}" class="fr-di">)[^<]*(</span>)',rf'\g<1>{ch}\g<2>')
 tr=sys.argv[1] if len(sys.argv)>1 else 'tools/track5.json'
 t=json.load(open(tr)); arr=[t[k] for k in sorted(t,key=int)]
 sub(r'const TRACK=\[.*?\];','const TRACK='+json.dumps(arr,separators=(',',':'))+';')
