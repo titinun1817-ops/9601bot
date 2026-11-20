@@ -1,0 +1,8 @@
+.hyperframes/
+node_modules/
+renders/
+# large generated media (rebuild from the Drive source clip)
+assets/footage.mp4
+assets/cut.webm
+assets/ring.webm
+__pycache__/
