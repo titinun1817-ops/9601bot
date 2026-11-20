@@ -46,6 +46,10 @@ R2=[("#fr-f2-line { left: 732px; top: 604px; width: 6px; height: 90px;","#fr-f2-
 ('"#fr-isz-pill", "#fr-same-pill", "#fr-br"','"#fr-loc-pill", "#fr-br"')]
 for a,c in R2:
     assert a in s,a; s=s.replace(a,c)
+# end-card phone number for this clip (user-supplied): 086-515-1279
+import re as _re
+for i,ch in enumerate('086-515-1279'):
+    s,_k=_re.subn(rf'(<span id="fr-d{i}" class="fr-di">)[^<]*(</span>)',rf'\g<1>{ch}\g<2>',s,count=1); assert _k==1
 tr=sys.argv[1] if len(sys.argv)>1 else 'tools/track3.json'
 t=json.load(open(tr)); arr=[t[k] for k in sorted(t,key=int)]
 s=re.sub(r'const TRACK=\[.*?\];','const TRACK='+json.dumps(arr,separators=(',',':'))+';',s,count=1,flags=re.S)
